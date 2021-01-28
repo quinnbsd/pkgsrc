@@ -61,7 +61,7 @@ BUILDLINK_LDFLAGS.pthread=	# empty
 # XXX This should really be a check for GCC!
 # XXX
 BUILDLINK_OPSYS_SUPPORT_PTHREAD=	\
-	DragonFly FreeBSD Linux MirBSD NetBSD OpenBSD SunOS
+	DragonFly FreeBSD Linux MirBSD NetBSD OpenBSD SunOS QuinnBSD
 .    if !empty(BUILDLINK_OPSYS_SUPPORT_PTHREAD:M${OPSYS})
 BUILDLINK_CFLAGS.pthread+=	-pthread
 BUILDLINK_LDFLAGS.pthread+=	-pthread
@@ -73,6 +73,9 @@ BUILDLINK_CPPFLAGS.pthread+=	-D_REENTRANT
 .    endif
 .    if ${OPSYS} == "FreeBSD"
 BUILDLINK_CPPFLAGS.pthread+=	-D_THREAD_SAFE
+.    elif ${OPSYS} == "QuinnBSD"
+BUILDLINK_CPPFLAGS.pthread+=    -D_THREAD_SAFE
+
 .    endif
 
 # Handle systems which have pthreads functions in libc_r such as

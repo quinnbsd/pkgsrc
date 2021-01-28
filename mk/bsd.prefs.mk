@@ -176,6 +176,15 @@ LOWER_VENDOR?=		pc
 .  endif
 LOWER_VENDOR?=		unknown
 
+.elif ${OPSYS} == "QuinnBSD"
+OS_VERSION:=            ${OS_VERSION:C/-.*$//}
+LOWER_OPSYS?=           quinnbsd
+LOWER_OPSYS_VERSUFFIX=  ${LOWER_OS_VERSION:C/([0-9]*).*/\1/}
+.  if ${MACHINE_ARCH} == "i386"
+LOWER_VENDOR?=          pc
+.  endif
+LOWER_VENDOR?=          unknown
+
 .elif ${OPSYS} == "Haiku"
 LOWER_OPSYS?=		haiku
 .  if ${MACHINE_ARCH} == "i386"
@@ -335,6 +344,8 @@ OBJECT_FMT?=	ELF
 OBJECT_FMT?=	a.out
 .  endif
 .elif ${OPSYS} == "FreeBSD"
+OBJECT_FMT?=    ELF
+.elif ${OPSYS} == "QuinnBSD"
 OBJECT_FMT?=	ELF
 .elif ${OPSYS} == "DragonFly"
 OBJECT_FMT=	ELF

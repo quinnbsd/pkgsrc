@@ -760,6 +760,11 @@ QNX)
 	# actually need it during the build.
 	export ACCEPT_INFERIOR_RM_PROGRAM=yes
 	;;
+QuinnBSD)
+	root_group=wheel
+	CC=${CC:-cc}; export CC
+	machine_arch=`uname -p`
+	;;
 SCO_SV)
 	root_group=root
 	need_awk=yes

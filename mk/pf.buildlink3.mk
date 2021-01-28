@@ -16,7 +16,7 @@ PF_BUILDLINK3_MK=	#defined
 
 # Platforms where pf is available on.
 ONLY_FOR_PLATFORM?=	NetBSD-[3-9]*-* OpenBSD-[3-9]*-* FreeBSD-*-* \
-			DragonFly-*-*
+			DragonFly-*-* QuinnBSD-*-*
 
 # Detect the pfvar.h header.
 .if exists(/usr/include/net/pfvar.h)

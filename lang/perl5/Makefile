@@ -130,6 +130,7 @@ LIBSWANTED.Cygwin=	m crypt dl
 LIBSWANTED.Darwin=	m c
 LIBSWANTED.DragonFly=	m crypt
 LIBSWANTED.FreeBSD=	m crypt
+LIBSWANTED.QuinnBSD=	m crypt
 LIBSWANTED.GNUkFreeBSD=	m crypt dl nsl
 LIBSWANTED.Haiku=	network
 LIBSWANTED.HPUX=	cl pthread $$libswanted # see Perl's README.hpux
@@ -208,6 +209,10 @@ SUBST_SED.dirmode=	-e "s/755/${PKGDIRMODE}/g;/umask(/d"
 
 post-extract:
 	${CP} ${FILESDIR}/Policy.sh ${WRKSRC}/Policy.sh
+.if ${OPSYS} == "QuinnBSD"
+	${CP} ${FILESDIR}/hints_quinnbsd.sh ${WRKSRC}/hints/quinnbsd.sh
+	${CP} ${FILESDIR}/ext_POSIX_hints_quinnbsd.pl ${WRKSRC}/ext/POSIX/hints/quinnbsd.pl
+.endif
 
 pre-configure:
 	${FIND} ${WRKSRC} -name "*.orig" -type f -exec rm -f {} \;

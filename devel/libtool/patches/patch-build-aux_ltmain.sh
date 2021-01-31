@@ -1,9 +1,6 @@
-$NetBSD: patch-build-aux_ltmain.sh,v 1.2 2018/11/13 21:44:42 sevan Exp $
+$NetBSD$
 
-Automatically generated using manual-* patches and bootstrap.
-DO NOT MODIFY THIS PATCH MANUALLY!  YOUR CHANGES WILL BE LOST!
-
---- build-aux/ltmain.sh.orig	2018-11-13 09:14:27.768088590 +0000
+--- build-aux/ltmain.sh.orig	2021-01-30 07:09:41.115863328 +0000
 +++ build-aux/ltmain.sh
 @@ -309,6 +309,9 @@ test -z "$GREP" && {
  # uses them if a suitable command of that name is not already available
@@ -24,6 +21,24 @@ DO NOT MODIFY THIS PATCH MANUALLY!  YOUR CHANGES WILL BE LOST!
  General help using GNU software: <http://www.gnu.org/gethelp/>."
      exit 0
  }
+@@ -7019,7 +7022,7 @@ func_mode_link ()
+ 	    # These systems don't actually have a C library (as such)
+ 	    test X-lc = "X$arg" && continue
+ 	    ;;
+-	  *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-bitrig*)
++	  *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-bitrig* | *-*-quinnbsd*)
+ 	    # Do not include libc due to us having libc/libc_r.
+ 	    test X-lc = "X$arg" && continue
+ 	    ;;
+@@ -7039,7 +7042,7 @@ func_mode_link ()
+ 	  esac
+ 	elif test X-lc_r = "X$arg"; then
+ 	 case $host in
+-	 *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-bitrig*)
++	 *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-bitrig* | *-*-quinnbsd*)
+ 	   # Do not include libc_r directly, use -pthread flag.
+ 	   continue
+ 	   ;;
 @@ -8342,7 +8345,11 @@ func_mode_link ()
  	    # Finalize command for both is simple: just hardcode it.
  	    if test yes = "$hardcode_direct" &&
@@ -77,7 +92,7 @@ DO NOT MODIFY THIS PATCH MANUALLY!  YOUR CHANGES WILL BE LOST!
  	    # Don't link with libc until the a.out ld.so is fixed.
  	    ;;
 -	  *-*-openbsd* | *-*-freebsd* | *-*-dragonfly*)
-+	  *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-mirbsd*)
++	  *-*-openbsd* | *-*-freebsd* | *-*-dragonfly* | *-*-mirbsd* | *-*-quinnbsd*)
  	    # Do not include libc due to us having libc/libc_r.
  	    ;;
  	  *-*-sco3.2v5* | *-*-sco5v6*)

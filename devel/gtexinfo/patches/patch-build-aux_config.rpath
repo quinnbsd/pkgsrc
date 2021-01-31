@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- build-aux/config.rpath.orig	2019-08-25 17:11:44.000000000 +0000
++++ build-aux/config.rpath
+@@ -371,7 +371,7 @@ else
+       hardcode_direct=yes
+       hardcode_minus_L=yes
+       ;;
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+       ;;
+@@ -547,7 +547,7 @@ case "$host_os" in
+   freebsd[23].*)
+     library_names_spec='$libname$shrext$versuffix'
+     ;;
+-  freebsd* | dragonfly*)
++  freebsd* | dragonfly* | quinnbsd*)
+     library_names_spec='$libname$shrext'
+     ;;
+   gnu*)

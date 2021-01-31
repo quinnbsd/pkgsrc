@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- tp/Texinfo/XS/config.in.orig	2019-09-19 14:27:37.000000000 +0000
++++ tp/Texinfo/XS/config.in
+@@ -544,7 +544,7 @@
+    It defines a macro __GNUC_GNU_INLINE__ to indicate this situation.
+  */
+ #if (((defined __APPLE__ && defined __MACH__) \
+-      || defined __DragonFly__ || defined __FreeBSD__) \
++      || defined __DragonFly__ || defined __FreeBSD__ || defined __QuinnBSD__) \
+      && (defined __header_inline \
+          ? (defined __cplusplus && defined __GNUC_STDC_INLINE__ \
+             && ! defined __clang__) \

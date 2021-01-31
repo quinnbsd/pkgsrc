@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- tp/Texinfo/XS/config.rpath.orig	2019-09-19 14:24:29.000000000 +0000
++++ tp/Texinfo/XS/config.rpath
+@@ -371,7 +371,7 @@ else
+       hardcode_direct=yes
+       hardcode_minus_L=yes
+       ;;
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+       ;;
+@@ -547,7 +547,7 @@ case "$host_os" in
+   freebsd[23].*)
+     library_names_spec='$libname$shrext$versuffix'
+     ;;
+-  freebsd* | dragonfly*)
++  freebsd* | dragonfly* | quinnbsd*)
+     library_names_spec='$libname$shrext'
+     ;;
+   gnu*)

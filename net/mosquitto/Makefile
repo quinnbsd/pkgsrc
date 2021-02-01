@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.15 2021/01/29 13:58:20 gdt Exp $
+# $NetBSD: Makefile,v 1.17 2021/01/30 10:17:55 wiz Exp $
 
 DISTNAME=	mosquitto-2.0.6
 CATEGORIES=	net
@@ -8,6 +8,8 @@ MAINTAINER=	gdt@NetBSD.org
 HOMEPAGE=	https://mosquitto.org/
 COMMENT=	Open Source MQTT broker
 LICENSE=	epl-v1.0
+
+BUILD_DEPENDS+=	libxslt-[0-9]*:../../textproc/libxslt
 
 USE_LANGUAGES+=	c c++
 # Upstream documents that "unix" should use make, but Mac cmake.

@@ -1,11 +1,4 @@
-$NetBSD: patch-configure,v 1.6 2021/01/02 09:51:49 adam Exp $
-
-- Use gnu99 instead of c99 to avoid "alloca() undefined" problems.
-- Fix linking on Darwin; don't use -stack_size.
-- Changes for consistency across pkgsrc platforms.
-- Simplify _sysconfigdata to include only platform name.
-- Support for macOS 11 and Apple Silicon (ARM). Mostly backported from:
-  https://github.com/python/cpython/pull/22855
+$NetBSD$
 
 --- configure.orig	2020-12-21 16:25:24.000000000 +0000
 +++ configure
@@ -24,6 +17,15 @@ $NetBSD: patch-configure,v 1.6 2021/01/02 09:51:49 adam Exp $
    --with-framework-name=FRAMEWORK
                            specify an alternate name of the framework built
                            with --enable-framework
+@@ -5909,7 +5911,7 @@ $as_echo "#define Py_ENABLE_SHARED 1" >>
+ 	      PY3LIBRARY=libpython3.so
+ 	  fi
+           ;;
+-    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*)
++    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|QuinnBSD*)
+ 	  LDLIBRARY='libpython$(LDVERSION).so'
+ 	  BLDLIBRARY='-L. -lpython$(LDVERSION)'
+ 	  RUNSHARED=LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 @@ -6924,7 +6926,7 @@ UNIVERSAL_ARCH_FLAGS=
  # tweak BASECFLAGS based on compiler and platform
  case $GCC in
@@ -64,6 +66,24 @@ $NetBSD: patch-configure,v 1.6 2021/01/02 09:51:49 adam Exp $
      		;;
      	*)
      		as_fn_error $? "Unexpected output of 'arch' on OSX" "$LINENO" 5
+@@ -9455,7 +9465,7 @@ then
+ 	Linux*|GNU*|QNX*|VxWorks*)
+ 		LDSHARED='$(CC) -shared'
+ 		LDCXXSHARED='$(CXX) -shared';;
+-	FreeBSD*)
++	FreeBSD*|QuinnBSD*)
+ 		if [ "`$CC -dM -E - </dev/null | grep __ELF__`" != "" ]
+ 		then
+ 			LDSHARED='$(CC) -shared'
+@@ -9522,7 +9532,7 @@ then
+ 		 fi;;
+ 	Linux-android*) ;;
+ 	Linux*|GNU*) CCSHARED="-fPIC";;
+-	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*) CCSHARED="-fPIC";;
++	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*|QuinnBSD*) CCSHARED="-fPIC";;
+ 	OpenUNIX*|UnixWare*)
+ 		if test "$GCC" = "yes"
+ 		then CCSHARED="-fPIC"
 @@ -9561,7 +9571,6 @@ then
  		# to ensure that tests don't crash
  		# Note: This matches the value of THREAD_STACK_SIZE in
@@ -72,6 +92,15 @@ $NetBSD: patch-configure,v 1.6 2021/01/02 09:51:49 adam Exp $
  
  		if test "$enable_framework"
  		then
+@@ -9571,7 +9580,7 @@ then
+ 	OpenUNIX*|UnixWare*) LINKFORSHARED="-Wl,-Bexport";;
+ 	SCO_SV*) LINKFORSHARED="-Wl,-Bexport";;
+ 	ReliantUNIX*) LINKFORSHARED="-W1 -Blargedynsym";;
+-	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*)
++	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*|QuinnBSD*)
+ 		if [ "`$CC -dM -E - </dev/null | grep __ELF__`" != "" ]
+ 		then
+ 			LINKFORSHARED="-Wl,--export-dynamic"
 @@ -11849,6 +11858,31 @@ $as_echo "no" >&6; }
  
  fi

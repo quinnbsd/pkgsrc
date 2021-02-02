@@ -1,9 +1,34 @@
-$NetBSD: patch-configure,v 1.2 2020/04/24 10:19:32 dsainty Exp $
-
-Add NetBSD support.
+$NetBSD$
 
 --- configure.orig	2019-11-23 13:59:04.000000000 +0000
 +++ configure
+@@ -10766,7 +10766,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -13912,7 +13912,7 @@ fi
+         archive_cmds_need_lc_CXX=no
+         ;;
+ 
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+         # FreeBSD 3 and later use GNU C++ and GNU ld with standard ELF
+         # conventions
+         ld_shlibs_CXX=yes
+@@ -14852,7 +14852,7 @@ lt_prog_compiler_static_CXX=
+ 	    ;;
+ 	esac
+ 	;;
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+ 	# FreeBSD uses GNU C++
+ 	;;
+       hpux9* | hpux10* | hpux11*)
 @@ -18483,7 +18483,7 @@ case "$target" in
  $as_echo "#define FFI_EXEC_TRAMPOLINE_TABLE 1" >>confdefs.h
  

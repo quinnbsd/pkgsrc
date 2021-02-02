@@ -1,14 +1,6 @@
-$NetBSD: patch-setup.py,v 1.5 2020/11/19 16:29:42 bsiegert Exp $
+$NetBSD$
 
- - Disable certain modules, so they can be built as separate packages.
- - Do not look for ncursesw.
- - Assume panel_library is correct; this is a fix for ncurses' gnupanel
-   which will get transformed to panel in buildlink.
- - Also look for uuid/uuid.h.
- - Support for macOS 11 and Apple Silicon (ARM). Mostly backported from:
-   https://github.com/python/cpython/pull/22855
-
---- setup.py.orig	2020-09-23 12:36:32.000000000 +0000
+--- setup.py.orig	2020-12-21 16:25:24.000000000 +0000
 +++ setup.py
 @@ -10,7 +10,7 @@ import sys
  import sysconfig
@@ -140,6 +132,15 @@ $NetBSD: patch-setup.py,v 1.5 2020/11/19 16:29:42 bsiegert Exp $
                          # Some systems have -lndbm, others have -lgdbm_compat,
                          # others don't have either
                          if self.compiler.find_library_file(self.lib_dirs,
+@@ -1472,7 +1507,7 @@ class PyBuildExt(build_ext):
+             self.missing.extend(['resource', 'termios'])
+ 
+         # Platform-specific libraries
+-        if HOST_PLATFORM.startswith(('linux', 'freebsd', 'gnukfreebsd')):
++        if HOST_PLATFORM.startswith(('linux', 'freebsd', 'gnukfreebsd', 'quinnbsd')):
+             self.add(Extension('ossaudiodev', ['ossaudiodev.c']))
+         elif not AIX:
+             self.missing.append('ossaudiodev')
 @@ -1674,6 +1709,8 @@ class PyBuildExt(build_ext):
      def detect_uuid(self):
          # Build the _uuid module if possible

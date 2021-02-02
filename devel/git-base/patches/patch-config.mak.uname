@@ -1,8 +1,8 @@
-$NetBSD: patch-config.mak.uname,v 1.4 2014/08/25 07:49:08 adam Exp $
+$NetBSD$
 
---- config.mak.uname.orig	2014-08-15 22:26:55.000000000 +0000
+--- config.mak.uname.orig	2020-12-28 03:26:32.000000000 +0000
 +++ config.mak.uname
-@@ -104,7 +104,7 @@ endif
+@@ -148,7 +148,7 @@ endif
  ifeq ($(uname_S),SunOS)
  	NEEDS_SOCKET = YesPlease
  	NEEDS_NSL = YesPlease
@@ -11,7 +11,7 @@ $NetBSD: patch-config.mak.uname,v 1.4 2014/08/25 07:49:08 adam Exp $
  	SANE_TOOL_PATH = /usr/xpg6/bin:/usr/xpg4/bin
  	HAVE_ALLOCA_H = YesPlease
  	NO_STRCASESTR = YesPlease
-@@ -147,8 +147,6 @@ ifeq ($(uname_S),SunOS)
+@@ -190,8 +190,6 @@ ifeq ($(uname_S),SunOS)
  		NO_STRTOUMAX = YesPlease
  		GIT_TEST_CMP = cmp
  	endif
@@ -20,3 +20,42 @@ $NetBSD: patch-config.mak.uname,v 1.4 2014/08/25 07:49:08 adam Exp $
  	BASIC_CFLAGS += -D__EXTENSIONS__ -D__sun__
  endif
  ifeq ($(uname_O),Cygwin)
+@@ -252,6 +250,38 @@ ifeq ($(uname_S),FreeBSD)
+ 	FREAD_READS_DIRECTORIES = UnfortunatelyYes
+ 	FILENO_IS_A_MACRO = UnfortunatelyYes
+ endif
++ifeq ($(uname_S),QuinnBSD)
++        NEEDS_LIBICONV = YesPlease
++        # Versions up to 10.1 require OLD_ICONV; 10.2 and beyond don't.
++        # A typical version string looks like "10.2-RELEASE".
++        ifeq ($(shell expr "$(uname_R)" : '[1-9]\.'),2)
++                OLD_ICONV = YesPlease
++        endif
++        ifeq ($(firstword $(subst -, ,$(uname_R))),10.0)
++                OLD_ICONV = YesPlease
++        endif
++        ifeq ($(firstword $(subst -, ,$(uname_R))),10.1)
++                OLD_ICONV = YesPlease
++        endif
++        NO_MEMMEM = YesPlease
++        BASIC_CFLAGS += -I/usr/pkg/include
++        BASIC_LDFLAGS += -L/usr/pkg/lib
++        DIR_HAS_BSD_GROUP_SEMANTICS = YesPlease
++        USE_ST_TIMESPEC = YesPlease
++        ifeq ($(shell expr "$(uname_R)" : '4\.'),2)
++                PTHREAD_LIBS = -pthread
++                NO_UINTMAX_T = YesPlease
++                NO_STRTOUMAX = YesPlease
++        endif
++        PYTHON_PATH = /usr/pkg/bin/python
++        PERL_PATH = /usr/pkg/bin/perl 
++        HAVE_PATHS_H = YesPlease
++        HAVE_BSD_SYSCTL = YesPlease
++        HAVE_BSD_KERN_PROC_SYSCTL = YesPlease
++        PAGER_ENV = LESS=FRX LV=-c MORE=FRX
++        FREAD_READS_DIRECTORIES = UnfortunatelyYes
++        FILENO_IS_A_MACRO = UnfortunatelyYes
++endif
+ ifeq ($(uname_S),OpenBSD)
+ 	NO_STRCASESTR = YesPlease
+ 	NO_MEMMEM = YesPlease

@@ -22,7 +22,7 @@ MAKE_ENV+=	PKGSRCDIR=${_PKGSRCDIR:Q}
 
 BUILD_DEFS+=	MANINSTALL
 
-.if ${OPSYS} == "SunOS" || ${OPSYS} == "OSF1"
+.if ${OPSYS} == "SunOS" || ${OPSYS} == "OSF1" || ${OPSYS} == "QuinnBSD"
 DEPENDS+=	diffutils-[0-9]*:../../devel/diffutils
 DIFF?=		${PREFIX}/bin/gdiff
 .else

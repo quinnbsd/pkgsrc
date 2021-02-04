@@ -33,6 +33,5 @@ SHA1 (patch-m4_extern-inline.m4) = a3bfd9310163216759c00d6ca36c79e7ed0ab0a3
 SHA1 (patch-m4_threadlib.m4) = 112df8d409299add553704517befe36123305e17
 SHA1 (patch-redir.c) = 6f84d7799b474716f60e2aae741ecd3c5a3c4ebf
 SHA1 (patch-shell.c) = daa07914d4c318cd72463f80344f4f7c364809cd
-SHA1 (patch-shobj__conf) = a6afbf0e08c947c7ca006a3bfc48a4cc51236a00
-SHA1 (patch-support_shobj-conf) = 8750c104549ea8a4a722bd21a684a9fe13e05fe5
+SHA1 (patch-support_shobj-conf) = a6afbf0e08c947c7ca006a3bfc48a4cc51236a00
 SHA1 (patch-variables.c) = 6a60c2f7011f952d7804e0614ebdb2575973a4a7

@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- lib/intl/config.charset.orig	2009-01-04 19:32:30.000000000 +0000
++++ lib/intl/config.charset
+@@ -244,7 +244,7 @@ case "$os" in
+ 	#echo "sun_eu_greek ?" # what is this?
+ 	echo "UTF-8 UTF-8"
+ 	;;
+-    freebsd* | os2*)
++    freebsd* | os2* | quinnbsd*)
+ 	# FreeBSD 4.2 doesn't have nl_langinfo(CODESET); therefore
+ 	# localcharset.c falls back to using the full locale name
+ 	# from the environment variables.

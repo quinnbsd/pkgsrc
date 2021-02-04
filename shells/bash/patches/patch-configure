@@ -1,11 +1,17 @@
-$NetBSD: patch-configure,v 1.2 2015/03/07 22:40:48 rodent Exp $
+$NetBSD$
 
-Use -Wl,-R instead of just -R to avoid breaking the build on FreeBSD.
-From Dennis Lindroos in PR 49375.
-
---- configure.orig	2014-02-11 15:38:00.000000000 +0000
+--- configure.orig	2020-12-04 14:05:14.000000000 +0000
 +++ configure
-@@ -8047,7 +8047,7 @@ fi
+@@ -8157,7 +8157,7 @@ fi
+     # need special flags to disable these optimizations. For example, the
+     # definition of 'errno' in <errno.h>.
+     case "$host_os" in
+-      aix* | freebsd*) CPPFLAGS="$CPPFLAGS -D_THREAD_SAFE" ;;
++      aix* | freebsd* | quinnbsd*) CPPFLAGS="$CPPFLAGS -D_THREAD_SAFE" ;;
+       solaris*) CPPFLAGS="$CPPFLAGS -D_REENTRANT" ;;
+     esac
+   fi
+@@ -10291,7 +10291,7 @@ fi
    fi
    if test "X$ltrpathdirs" != "X"; then
              for found_dir in $ltrpathdirs; do
@@ -14,7 +20,7 @@ From Dennis Lindroos in PR 49375.
      done
    fi
  
-@@ -8837,7 +8837,7 @@ fi
+@@ -12818,7 +12818,7 @@ fi
    fi
    if test "X$ltrpathdirs" != "X"; then
              for found_dir in $ltrpathdirs; do
@@ -23,3 +29,12 @@ From Dennis Lindroos in PR 49375.
      done
    fi
  
+@@ -20413,7 +20413,7 @@ linux*)		LOCAL_LDFLAGS=-rdynamic		 # all
+  ;;
+ 		esac ;;
+ netbsd*|openbsd*)	LOCAL_CFLAGS="-DDEV_FD_STAT_BROKEN" ;;
+-freebsd*)	LOCAL_CFLAGS='-DHEREDOC_PIPESIZE=4096' ;;
++freebsd* | quinnbsd*)	LOCAL_CFLAGS='-DHEREDOC_PIPESIZE=4096' ;;
+ *qnx[67]*)	LOCAL_LIBS="-lncurses" ;;
+ *qnx*)		LOCAL_CFLAGS="-Dqnx -F -3s" LOCAL_LDFLAGS="-3s" LOCAL_LIBS="-lunix -lncurses" ;;
+ powerux*)	LOCAL_LIBS="-lgen" ;;

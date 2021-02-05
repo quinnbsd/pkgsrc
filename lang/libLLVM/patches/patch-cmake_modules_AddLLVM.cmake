@@ -1,9 +1,4 @@
-$NetBSD: patch-cmake_modules_AddLLVM.cmake,v 1.9 2020/03/06 22:44:18 tnn Exp $
-
-Disable library install rules. Handled manually.
-Make sure llvm-config goes in libexec/libLLVM to avoid conflict.
-Don't use non-portable -z discard-unused on SunOS.
-Don't use relative @rpath in llvm-config on Darwin.
+$NetBSD$
 
 --- cmake/modules/AddLLVM.cmake.orig	2019-12-11 19:15:30.000000000 +0000
 +++ cmake/modules/AddLLVM.cmake
@@ -39,7 +34,7 @@ Don't use relative @rpath in llvm-config on Darwin.
                COMPONENT ${name})
  
        if (NOT LLVM_ENABLE_IDE)
-@@ -1727,7 +1718,7 @@ function(llvm_setup_rpath name)
+@@ -1727,11 +1718,11 @@ function(llvm_setup_rpath name)
    endif()
  
    if (APPLE)
@@ -48,3 +43,8 @@ Don't use relative @rpath in llvm-config on Darwin.
      set(_install_rpath "@loader_path/../lib" ${extra_libdir})
    elseif(UNIX)
      set(_install_rpath "\$ORIGIN/../lib${LLVM_LIBDIR_SUFFIX}" ${extra_libdir})
+-    if(${CMAKE_SYSTEM_NAME} MATCHES "(FreeBSD|DragonFly)")
++    if(${CMAKE_SYSTEM_NAME} MATCHES "(FreeBSD|DragonFly|QuinnBSD)")
+       set_property(TARGET ${name} APPEND_STRING PROPERTY
+                    LINK_FLAGS " -Wl,-z,origin ")
+     endif()

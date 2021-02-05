@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- Makefile.am.orig	2020-09-25 00:34:43.000000000 +0000
++++ Makefile.am
+@@ -433,6 +433,17 @@ libuv_la_SOURCES += src/unix/bsd-ifaddrs
+ test_run_tests_LDFLAGS += -lutil
+ endif
+ 
++if QUINNBSD
++uvinclude_HEADERS += include/uv/bsd.h
++libuv_la_SOURCES += src/unix/bsd-ifaddrs.c \
++                    src/unix/bsd-proctitle.c \
++                    src/unix/freebsd.c \
++                    src/unix/kqueue.c \
++                    src/unix/posix-hrtime.c \
++                    src/unix/random-getrandom.c
++test_run_tests_LDFLAGS += -lutil
++endif
++
+ if FREEBSD
+ uvinclude_HEADERS += include/uv/bsd.h
+ libuv_la_SOURCES += src/unix/bsd-ifaddrs.c \

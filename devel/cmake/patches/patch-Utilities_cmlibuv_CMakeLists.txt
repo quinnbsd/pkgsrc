@@ -1,0 +1,27 @@
+$NetBSD$
+
+--- Utilities/cmlibuv/CMakeLists.txt.orig	2021-01-28 15:28:45.000000000 +0000
++++ Utilities/cmlibuv/CMakeLists.txt
+@@ -229,6 +229,22 @@ if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+     )
+ endif()
+ 
++if(CMAKE_SYSTEM_NAME STREQUAL "QuinnBSD")
++  list(APPEND uv_libraries
++    kvm
++    )
++  list(APPEND uv_headers
++    include/uv/bsd.h
++    )
++  list(APPEND uv_sources
++    src/unix/bsd-ifaddrs.c
++    src/unix/bsd-proctitle.c
++    src/unix/freebsd.c
++    src/unix/kqueue.c
++    src/unix/posix-hrtime.c
++    )
++endif()
++
+ if(CMAKE_SYSTEM_NAME STREQUAL "kFreeBSD")
+   list(APPEND uv_libraries
+     freebsd-glue

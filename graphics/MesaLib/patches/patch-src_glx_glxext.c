@@ -1,16 +1,8 @@
-$NetBSD: patch-src_glx_glxext.c,v 1.1 2019/08/21 13:35:28 nia Exp $
+$NetBSD$
 
-* Patch from FreeBSD ports graphics/mesa-dri 18.0.0
-
-# work-around for https://bugs.freedesktop.org/show_bug.cgi?id=100627
-
-* Extended to DragonFly and NetBSD.  Other OSes might need this as well.
-
-* Added logging statements to note dri3 initialization being invoked.
-
---- src/glx/glxext.c.orig	2017-12-08 13:49:11.000000000 +0000
+--- src/glx/glxext.c.orig	2020-04-29 22:48:24.000000000 +0000
 +++ src/glx/glxext.c
-@@ -55,6 +55,7 @@
+@@ -58,6 +58,7 @@
  #include <xcb/xcb.h>
  #include <xcb/glx.h>
  
@@ -18,7 +10,7 @@ $NetBSD: patch-src_glx_glxext.c,v 1.1 2019/08/21 13:35:28 nia Exp $
  
  #ifdef DEBUG
  void __glXDumpDrawBuffer(struct glx_context * ctx);
-@@ -817,7 +818,11 @@ AllocAndFetchScreenConfigs(Display * dpy
+@@ -815,7 +816,11 @@ AllocAndFetchScreenConfigs(Display * dpy
  #if defined(GLX_USE_DRM)
  #if defined(HAVE_DRI3)
        if (priv->dri3Display)
@@ -30,12 +22,12 @@ $NetBSD: patch-src_glx_glxext.c,v 1.1 2019/08/21 13:35:28 nia Exp $
  #endif /* HAVE_DRI3 */
        if (psc == NULL && priv->dri2Display)
  	 psc = (*priv->dri2Display->createScreen) (i, priv);
-@@ -920,8 +925,13 @@ __glXInitialize(Display * dpy)
+@@ -923,8 +928,13 @@ __glXInitialize(Display * dpy)
  #if defined(GLX_USE_DRM)
     if (glx_direct && glx_accel) {
  #if defined(HAVE_DRI3)
 -      if (!env_var_as_boolean("LIBGL_DRI3_DISABLE", false))
-+#if ((defined(__FreeBSD__) || defined(__FreeBSD_kernel__)) && !defined(__DRM_NEXT__)) || defined(__DragonFly__) || defined(__NetBSD__)
++#if ((defined(__freeBSD__) || defined(__FreeBSD_kernel__)) && !defined(__DRM_NEXT__)) || defined(__DragonFly__) || defined(__NetBSD__)
 +      if (env_var_as_boolean("LIBGL_DRI3_ENABLE", false))
 +#endif
 +      if (!env_var_as_boolean("LIBGL_DRI3_DISABLE", false)) {

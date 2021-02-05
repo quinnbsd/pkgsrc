@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- src/SConscript.orig	2020-04-29 22:48:24.000000000 +0000
++++ src/SConscript
+@@ -52,7 +52,7 @@ if env['platform'] in ['haiku']:
+ SConscript('mesa/SConscript')
+ 
+ if not env['embedded']:
+-    if env['platform'] not in ('cygwin', 'darwin', 'freebsd', 'haiku', 'windows'):
++    if env['platform'] not in ('cygwin', 'darwin', 'freebsd', 'quinnbsd', 'haiku', 'windows'):
+         SConscript('glx/SConscript')
+     if env['platform'] == 'haiku':
+         SConscript('egl/SConscript')

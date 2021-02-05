@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- src/gallium/winsys/sw/xlib/SConscript.orig	2020-04-29 22:48:24.000000000 +0000
++++ src/gallium/winsys/sw/xlib/SConscript
+@@ -4,7 +4,7 @@
+ 
+ Import('*')
+ 
+-if env['platform'] in ('cygwin', 'darwin', 'freebsd', 'linux', 'sunos'):
++if env['platform'] in ('cygwin', 'darwin', 'freebsd', 'linux', 'quinnbsd', 'sunos'):
+ 
+     env = env.Clone()
+ 

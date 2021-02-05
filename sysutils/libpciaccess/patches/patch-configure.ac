@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.ac.orig	2019-07-17 16:25:27.000000000 +0000
++++ configure.ac
+@@ -68,7 +68,7 @@ if test "x$use_zlib" = xyes; then
+ fi
+ 
+ case $host_os in
+-	*freebsd* | *dragonfly*)
++	*freebsd* | *dragonfly* | quinnbsd*)
+ 		freebsd=yes
+ 		;;
+ 	*linux*)

@@ -2635,6 +2635,7 @@ share/cmake-${CMAKE_API}/Modules/Platform/OS2.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/OSF1.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/OpenBSD.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/OpenVMS.cmake
+share/cmake-${CMAKE_API}/Modules/Platform/QuinnBSD.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/QNX.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/RISCos.cmake
 share/cmake-${CMAKE_API}/Modules/Platform/SCO_SV.cmake

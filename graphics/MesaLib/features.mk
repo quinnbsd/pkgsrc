@@ -3,7 +3,7 @@
 .include "../../mk/bsd.fast.prefs.mk"
 
 .if !defined(MESALIB_SUPPORTS_DRI)
-.  for dri_os in DragonFly FreeBSD NetBSD OpenBSD Linux SunOS
+.  for dri_os in DragonFly FreeBSD NetBSD OpenBSD Linux SunOS QuinnBSD
 .    if !empty(OPSYS:M${dri_os})
 MESALIB_SUPPORTS_DRI?=		yes
 .    endif

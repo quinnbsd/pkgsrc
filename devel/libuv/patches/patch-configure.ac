@@ -1,0 +1,12 @@
+$NetBSD$
+
+--- configure.ac.orig	2020-09-25 00:34:43.000000000 +0000
++++ configure.ac
+@@ -66,6 +66,7 @@ AM_CONDITIONAL([OS390],    [AS_CASE([$ho
+ AM_CONDITIONAL([OS400],    [AS_CASE([$host_os],[os400],         [true], [false])])
+ AM_CONDITIONAL([SUNOS],    [AS_CASE([$host_os],[solaris*],      [true], [false])])
+ AM_CONDITIONAL([WINNT],    [AS_CASE([$host_os],[mingw*],        [true], [false])])
++AM_CONDITIONAL([QUINNBSD],  [AS_CASE([$host_os],[*quinnbsd*],     [true], [false])])
+ AS_CASE([$host_os],[mingw*], [
+     LIBS="$LIBS -lws2_32 -lpsapi -liphlpapi -lshell32 -luserenv -luser32"
+ ])

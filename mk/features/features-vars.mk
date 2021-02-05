@@ -100,7 +100,7 @@ MISSING_FEATURES+=	cdefs
 
 .for _feature_ in err warn
 .  if !empty(USE_FEATURES:M${_feature_})
-.    if (${OPSYS} != NetBSD) && (${OPSYS} != FreeBSD) && (${OPSYS} != DragonFly)
+.    if (${OPSYS} != NetBSD) && (${OPSYS} != FreeBSD) && (${OPSYS} != DragonFly) && (${OPSYS} != QuinnBSD)
 MISSING_FEATURES+=	${_feature_}
 .    endif
 .  endif
@@ -135,7 +135,7 @@ MISSING_FEATURES+=	${_feature_}
 
 .for _feature_ in getprogname setprogname
 .  if !empty(USE_FEATURES:M${_feature_})
-.    if (${OPSYS} != NetBSD) && (${OPSYS} != FreeBSD) && (${OPSYS} != DragonFly) && (${OPSYS} != Haiku)
+.    if (${OPSYS} != NetBSD) && (${OPSYS} != FreeBSD) && (${OPSYS} != DragonFly) && (${OPSYS} != Haiku) && (${OPSYS} != QuinnBSD)
 MISSING_FEATURES+=	${_feature_}
 .    endif
 .  endif

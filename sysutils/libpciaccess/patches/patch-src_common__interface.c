@@ -1,10 +1,8 @@
-$NetBSD: patch-src_common__interface.c,v 1.1 2013/12/21 11:05:23 jperkin Exp $
+$NetBSD$
 
-Add Darwin support.
-
---- src/common_interface.c.orig	2013-07-20 22:54:34.000000000 +0000
+--- src/common_interface.c.orig	2019-07-17 16:25:27.000000000 +0000
 +++ src/common_interface.c
-@@ -67,6 +67,22 @@
+@@ -70,6 +70,22 @@
  # define HTOLE_32(x)   (x)
  #endif /* Solaris */
  
@@ -27,3 +25,12 @@ Add Darwin support.
  #else
  
  #include <sys/endian.h>
+@@ -77,7 +93,7 @@
+ #define HTOLE_16(x)	htole16(x)
+ #define HTOLE_32(x)	htole32(x)
+ 
+-#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__NetBSD__)
++#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__NetBSD__) || defined(__QuinnBSD__)
+ #define LETOH_16(x)	le16toh(x)
+ #define LETOH_32(x)	le32toh(x)
+ #else

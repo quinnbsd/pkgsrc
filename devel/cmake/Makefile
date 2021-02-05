@@ -48,6 +48,7 @@ pre-configure:
 	${CP} ${FILESDIR}/Source_Checks_cm_cxx_size_t.cxx ${WRKSRC}/Source/Checks/cm_cxx_size_t.cxx
 	${RM} -f ${WRKSRC}/Modules/*.orig ${WRKSRC}/Modules/Compiler/*.orig ${WRKSRC}/Modules/Platform/*.orig  ${WRKSRC}/Modules/FindPython/*.orig
 	${LN} -f ${WRKSRC}/Modules/Platform/OpenBSD.cmake ${WRKSRC}/Modules/Platform/MirBSD.cmake
+	${LN} -f ${WRKSRC}/Modules/Platform/FreeBSD.cmake ${WRKSRC}/Modules/Platform/QuinnBSD.cmake
 .for lang in C CXX Fortran
 	${LN} -f ${WRKSRC}/Modules/Platform/SunOS-GNU-${lang}.cmake \
 	    ${WRKSRC}/Modules/Platform/SunOS-Clang-${lang}.cmake

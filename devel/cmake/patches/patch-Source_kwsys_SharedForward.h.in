@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Source/kwsys/SharedForward.h.in.orig	2021-01-28 15:28:45.000000000 +0000
++++ Source/kwsys/SharedForward.h.in
+@@ -208,7 +208,7 @@ static const char kwsys_shared_forward_p
+ #    define KWSYS_SHARED_FORWARD_LDPATH "LD_LIBRARY_PATH"
+ 
+ /* FreeBSD */
+-#  elif defined(__FreeBSD__)
++#  elif defined(__FreeBSD__) || defined(__QuinnBSD__)
+ #    define KWSYS_SHARED_FORWARD_LDD "ldd"
+ #    define KWSYS_SHARED_FORWARD_LDD_N 1
+ #    define KWSYS_SHARED_FORWARD_LDPATH "LD_LIBRARY_PATH"

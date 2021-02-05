@@ -1,21 +1,12 @@
-$NetBSD: patch-src_gallium_state__trackers_clover_util_range.hpp,v 1.1 2019/08/21 13:35:28 nia Exp $
+$NetBSD$
 
-From FreeBSD ports for mesa 17.1.10:
-
-From b95533b981af9a6687b41418e7cc2a5652fc2bdb Mon Sep 17 00:00:00 2001
-Date: Fri, 7 Mar 2014 15:16:08 +0100
-Subject: [PATCH 3/3] Work around for clang 3.4 which fails to build Clover
-
-See:
-  https://bugs.freedesktop.org/show_bug.cgi?id=74098#c3
-
---- src/gallium/state_trackers/clover/util/range.hpp.orig	2017-09-25 16:56:19.000000000 +0000
+--- src/gallium/state_trackers/clover/util/range.hpp.orig	2020-04-29 22:48:24.000000000 +0000
 +++ src/gallium/state_trackers/clover/util/range.hpp
 @@ -362,6 +362,14 @@ namespace clover {
        return { i, i + n };
     }
  
-+#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__DragonFly__)
++#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__DragonFly__) || defined(__QuinnBSD__)
 +   namespace detail {
 +      template<typename T>
 +      using fixup_function_type =
@@ -30,7 +21,7 @@ See:
     /// \sa adaptor_range.
     ///
     template<typename F, typename... Rs>
-+#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__DragonFly__)
++#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__DragonFly__) || defined(__QuinnBSD__)
 +   adaptor_range<detail::fixup_function_type<F>, Rs...>
 +#else
     adaptor_range<F, Rs...>

@@ -547,7 +547,7 @@ darwin* | rhapsody*)
   esac
   ;;
 
-freebsd* )
+freebsd* | quinnbsd*)
   if echo __ELF__ | $CC -E - | grep __ELF__ > /dev/null; then
     case $host_cpu in
     i*86 )

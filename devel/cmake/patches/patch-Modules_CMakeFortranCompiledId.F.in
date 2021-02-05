@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Modules/CMakeFortranCompilerId.F.in.orig	2021-01-28 15:28:45.000000000 +0000
++++ Modules/CMakeFortranCompilerId.F.in
+@@ -125,7 +125,7 @@
+         PRINT *, 'INFO:platform[Darwin]'
+ #elif defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+         PRINT *, 'INFO:platform[Windows]'
+-#elif defined(__FreeBSD__) || defined(__FreeBSD)
++#elif defined(__FreeBSD__) || defined(__FreeBSD) || defined(__QuinnBSD__) || defined(__QuinnBSD)
+         PRINT *, 'INFO:platform[FreeBSD]'
+ #elif defined(__NetBSD__) || defined(__NetBSD)
+         PRINT *, 'INFO:platform[NetBSD]'

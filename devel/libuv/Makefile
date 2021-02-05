@@ -30,6 +30,7 @@ CFLAGS+=	-DSUNOS_NO_IFADDRS
 
 pre-configure:
 	${RUN} cd ${WRKSRC} && ${SH} ./autogen.sh
+	${RM} -f ${WRKSRC}/include/uv/*.orig
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/include/uv/* ${DESTDIR}${PREFIX}/include/uv/

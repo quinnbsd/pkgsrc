@@ -84,6 +84,9 @@ DEPENDS+=	xf86-video-tga-[0-9]*:../../x11/xf86-video-tga
 DEPENDS+=	xf86-video-trident-[0-9]*:../../x11/xf86-video-trident
 DEPENDS+=	xf86-video-tseng-[0-9]*:../../x11/xf86-video-tseng
 DEPENDS+=	xf86-video-vesa-[0-9]*:../../x11/xf86-video-vesa
+.if ${OPSYS} == "QuinnBSD"
+DEPENDS+=       xf86-video-scfb-[0-9]*:../../x11/xf86-video-scfb
+.endif
 DEPENDS+=	xf86-video-vboxvideo-[0-9]*:../../x11/xf86-video-vboxvideo
 .if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64"
 DEPENDS+=	xf86-video-vmware-[0-9]*:../../x11/xf86-video-vmware

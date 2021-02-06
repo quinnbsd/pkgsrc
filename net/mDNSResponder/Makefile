@@ -20,6 +20,7 @@ USE_GCC_RUNTIME=	yes
 
 MAKE_ENV.NetBSD+=	os=netbsd
 MAKE_ENV.FreeBSD+=	os=freebsd
+MAKE_ENV.QuinnBSD+=	os=freebsd
 MAKE_ENV.OpenBSD+=	os=openbsd
 MAKE_ENV.SunOS+=	os=solaris
 MAKE_ENV.Linux+=	os=linux

@@ -1,6 +1,4 @@
-$NetBSD: patch-ae,v 1.6 2014/05/12 15:06:56 ryoon Exp $
-
-* Add OpenBSD condition
+$NetBSD$
 
 --- mDNSShared/CommonServices.h.orig	2009-08-11 01:13:47.000000000 +0000
 +++ mDNSShared/CommonServices.h
@@ -19,7 +17,7 @@ $NetBSD: patch-ae,v 1.6 2014/05/12 15:06:56 ryoon Exp $
 +#endif
 +
 +#if( !defined( TARGET_OS_FREEBSD ) )
-+	#if( defined( __FreeBSD__ ) )
++	#if( defined( __FreeBSD__ ) || defined(__QuinnBSD__) )
 +		#define	TARGET_OS_FREEBSD		1
 +	#else
 +		#define	TARGET_OS_FREEBSD		0
@@ -59,7 +57,7 @@ $NetBSD: patch-ae,v 1.6 2014/05/12 15:06:56 ryoon Exp $
  	// No predefined macro for VxWorks so just assume VxWorks if nothing else is set.
  	
 -	#if( !macintosh && !__MACH__  && !defined( __linux__ ) && !defined ( __SVR4 ) && !defined ( __sun ) && !defined( __PALMOS_TRAPS__ ) && !defined( __PALMOS_ARMLET__ ) && !defined( _WIN32 ) )
-+	#if( !macintosh && !__MACH__  && !defined( __linux__ ) && !defined ( __SVR4 ) && !defined ( __sun ) && !defined( __PALMOS_TRAPS__ ) && !defined( __PALMOS_ARMLET__ ) && !defined( _WIN32 ) && !defined(__NetBSD__) && !defined(__DragonFly__) && !defined(__FreeBSD__) && !defined(__OpenBSD__))
++	#if( !macintosh && !__MACH__  && !defined( __linux__ ) && !defined ( __SVR4 ) && !defined ( __sun ) && !defined( __PALMOS_TRAPS__ ) && !defined( __PALMOS_ARMLET__ ) && !defined( _WIN32 ) && !defined(__NetBSD__) && !defined(__DragonFly__) && !defined(__FreeBSD__) && !defined(__OpenBSD__) && !defined(__QuinnBSD__))
  		#define	TARGET_OS_VXWORKS		1
  	#else
  		#define	TARGET_OS_VXWORKS		0

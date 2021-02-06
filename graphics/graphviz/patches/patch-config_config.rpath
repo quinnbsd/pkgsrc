@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- config/config.rpath.orig	2020-06-29 08:47:18.000000000 +0000
++++ config/config.rpath
+@@ -247,7 +247,7 @@ else
+       hardcode_direct=yes
+       hardcode_minus_L=yes
+       ;;
+-    freebsd*)
++    freebsd*|quinnbsd*)
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+       ;;
+@@ -392,7 +392,7 @@ case "$host_os" in
+     ;;
+   freebsd1*)
+     ;;
+-  freebsd*)
++  freebsd*|quinnbsd*)
+     shlibext=so
+     ;;
+   gnu*)

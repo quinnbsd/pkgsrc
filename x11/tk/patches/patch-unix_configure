@@ -1,8 +1,4 @@
-$NetBSD: patch-unix_configure,v 1.16 2021/01/20 20:40:28 adam Exp $
-
-Support MirBSD.
-Honor LDFLAGS.
-Standardize file names.
+$NetBSD$
 
 --- unix/configure.orig	2020-12-31 01:55:50.000000000 +0000
 +++ unix/configure
@@ -50,6 +46,24 @@ Standardize file names.
  	    if test $doRpath = yes; then
  
  		CC_SEARCH_FLAGS='"-Wl,-rpath,${LIB_RUNTIME_DIR}"'
+@@ -5403,7 +5402,7 @@ fi
+ fi
+ 
+ 	    ;;
+-	DragonFly-*|FreeBSD-*)
++	DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 	    # This configuration from FreeBSD Ports.
+ 	    SHLIB_CFLAGS="-fPIC"
+ 	    SHLIB_LD="${CC} -shared"
+@@ -6604,7 +6603,7 @@ fi
+ 	    BSD/OS*) ;;
+ 	    CYGWIN_*|MINGW32_*|MSYS_*) ;;
+ 	    IRIX*) ;;
+-	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*) ;;
++	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*|QuinnBSD-*) ;;
+ 	    Darwin-*) ;;
+ 	    SCO_SV-3.2*) ;;
+ 	    *) SHLIB_CFLAGS="-fPIC" ;;
 @@ -6625,12 +6624,12 @@ fi
  
      if test "$SHARED_LIB_SUFFIX" = ""; then

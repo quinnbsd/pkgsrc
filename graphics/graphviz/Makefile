@@ -70,7 +70,7 @@ REPLACE_PERL+=		tclpkg/gv/demo/modgraph.pl contrib/dotmcl.pl \
 BUILDLINK_TRANSFORM+=	rm:-Wno-unused-parameter
 .endif
 
-.if ${OPSYS} == "FreeBSD"
+.if ${OPSYS} == "FreeBSD" || ${OPSYS} == "QuinnBSD"
 SUBST_CLASSES+=		sfflags
 SUBST_STAGE.sfflags=	pre-configure
 SUBST_MESSAGE.sfflags=	Fixing SF_FLAGS identifier for FreeBSD.

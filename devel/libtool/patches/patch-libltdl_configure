@@ -1,6 +1,6 @@
 $NetBSD$
 
---- libltdl/configure.orig	2021-01-30 07:10:38.236937934 +0000
+--- libltdl/configure.orig	2021-02-06 09:47:20.141904000 +0000
 +++ libltdl/configure
 @@ -1,11 +1,11 @@
  #! /bin/sh
@@ -117,7 +117,7 @@ $NetBSD$
    PATH_SEPARATOR=:
    (PATH='/bin;/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 && {
      (PATH='/bin:/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 ||
-@@ -81,13 +83,6 @@ if test "${PATH_SEPARATOR+set}" != set; 
+@@ -81,13 +83,6 @@ if test "${PATH_SEPARATOR+set}" != set;
  fi
  
  
@@ -281,7 +281,7 @@ $NetBSD$
  IFS=$as_save_IFS
 +if $as_found
 +then :
-+
+ 
 +else $as_nop
 +  if { test -f "$SHELL" || test -f "$SHELL.exe"; } &&
 +	      as_run=a "$SHELL" -c "$as_bourne_compatible""$as_required" 2>/dev/null
@@ -290,8 +290,8 @@ $NetBSD$
 +fi
 +fi
  
- 
 -      if test "x$CONFIG_SHELL" != x; then :
++
 +      if test "x$CONFIG_SHELL" != x
 +then :
    export CONFIG_SHELL
@@ -1816,7 +1816,7 @@ $NetBSD$
        ac_cache_corrupted=: ;;
      ,);;
      *)
-@@ -2192,24 +2581,24 @@ $as_echo "$as_me: error: \`$ac_var' was 
+@@ -2192,24 +2581,24 @@ $as_echo "$as_me: error: \`$ac_var' was
  	ac_old_val_w=`echo x $ac_old_val`
  	ac_new_val_w=`echo x $ac_new_val`
  	if test "$ac_old_val_w" != "$ac_new_val_w"; then
@@ -1909,10 +1909,10 @@ $NetBSD$
  
 -am__api_version='1.15'
 +am__api_version='1.16'
++
++
  
 -# Find a good install program.  We prefer a C program (faster),
-+
-+
 +  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
  # incompatible versions:
@@ -4642,16 +4642,27 @@ $NetBSD$
    lt_cv_file_magic_cmd='$MAGIC_CMD'
  lt_cv_file_magic_test_file=
  lt_cv_deplibs_check_method='unknown'
-@@ -5196,7 +5863,7 @@ darwin* | rhapsody*)
-   lt_cv_deplibs_check_method=pass_all
+@@ -5202,7 +5869,7 @@ freebsd* | dragonfly*)
+     i*86 )
+       # Not sure whether the presence of OpenBSD here was a mistake.
+       # Let's accept both of them until this is cleared up.
+-      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly)/i[3-9]86 (compact )?demand paged shared library'
++      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly|QuinnBSD)/i[3-9]86 (compact )?demand paged shared library'
+       lt_cv_file_magic_cmd=/usr/bin/file
+       lt_cv_file_magic_test_file=`echo /usr/lib/libc.so.*`
+       ;;
+@@ -5212,6 +5879,10 @@ freebsd* | dragonfly*)
+   fi
    ;;
  
--freebsd* | dragonfly*)
-+freebsd* | dragonfly* | quinnbsd*)
-   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
-     case $host_cpu in
-     i*86 )
-@@ -5254,12 +5921,19 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu 
++quinnbsd*)
++  lt_cv_deplibs_check_method=pass_all
++  ;;
++
+ haiku*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+@@ -5254,12 +5925,19 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu
    lt_cv_deplibs_check_method=pass_all
    ;;
  
@@ -4677,7 +4688,7 @@ $NetBSD$
    ;;
  
  newos6*)
-@@ -5269,7 +5943,7 @@ newos6*)
+@@ -5269,7 +5947,7 @@ newos6*)
    ;;
  
  *nto* | *qnx*)
@@ -4686,7 +4697,7 @@ $NetBSD$
    ;;
  
  openbsd* | bitrig*)
-@@ -5332,8 +6006,8 @@ os2*)
+@@ -5332,8 +6010,8 @@ os2*)
  esac
  
  fi
@@ -4697,7 +4708,7 @@ $NetBSD$
  
  file_magic_glob=
  want_nocaseglob=no
-@@ -5377,11 +6051,12 @@ test -z "$deplibs_check_method" && depli
+@@ -5377,11 +6055,12 @@ test -z "$deplibs_check_method" && depli
  if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}dlltool", so it can be a program name with args.
  set dummy ${ac_tool_prefix}dlltool; ac_word=$2
@@ -4715,7 +4726,7 @@ $NetBSD$
    if test -n "$DLLTOOL"; then
    ac_cv_prog_DLLTOOL="$DLLTOOL" # Let the user override the test.
  else
-@@ -5389,11 +6064,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5389,11 +6068,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -4734,7 +4745,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5404,11 +6083,11 @@ fi
+@@ -5404,11 +6087,11 @@ fi
  fi
  DLLTOOL=$ac_cv_prog_DLLTOOL
  if test -n "$DLLTOOL"; then
@@ -4750,7 +4761,7 @@ $NetBSD$
  fi
  
  
-@@ -5417,11 +6096,12 @@ if test -z "$ac_cv_prog_DLLTOOL"; then
+@@ -5417,11 +6100,12 @@ if test -z "$ac_cv_prog_DLLTOOL"; then
    ac_ct_DLLTOOL=$DLLTOOL
    # Extract the first word of "dlltool", so it can be a program name with args.
  set dummy dlltool; ac_word=$2
@@ -4768,7 +4779,7 @@ $NetBSD$
    if test -n "$ac_ct_DLLTOOL"; then
    ac_cv_prog_ac_ct_DLLTOOL="$ac_ct_DLLTOOL" # Let the user override the test.
  else
-@@ -5429,11 +6109,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5429,11 +6113,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -4787,7 +4798,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5444,11 +6128,11 @@ fi
+@@ -5444,11 +6132,11 @@ fi
  fi
  ac_ct_DLLTOOL=$ac_cv_prog_ac_ct_DLLTOOL
  if test -n "$ac_ct_DLLTOOL"; then
@@ -4803,7 +4814,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_DLLTOOL" = x; then
-@@ -5456,8 +6140,8 @@ fi
+@@ -5456,8 +6144,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -4814,7 +4825,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      DLLTOOL=$ac_ct_DLLTOOL
-@@ -5474,11 +6158,12 @@ test -z "$DLLTOOL" && DLLTOOL=dlltool
+@@ -5474,11 +6162,12 @@ test -z "$DLLTOOL" && DLLTOOL=dlltool
  
  
  
@@ -4832,7 +4843,7 @@ $NetBSD$
    lt_cv_sharedlib_from_linklib_cmd='unknown'
  
  case $host_os in
-@@ -5501,8 +6186,8 @@ cygwin* | mingw* | pw32* | cegcc*)
+@@ -5501,8 +6190,8 @@ cygwin* | mingw* | pw32* | cegcc*)
  esac
  
  fi
@@ -4843,7 +4854,7 @@ $NetBSD$
  sharedlib_from_linklib_cmd=$lt_cv_sharedlib_from_linklib_cmd
  test -z "$sharedlib_from_linklib_cmd" && sharedlib_from_linklib_cmd=$ECHO
  
-@@ -5518,11 +6203,12 @@ if test -n "$ac_tool_prefix"; then
+@@ -5518,11 +6207,12 @@ if test -n "$ac_tool_prefix"; then
    do
      # Extract the first word of "$ac_tool_prefix$ac_prog", so it can be a program name with args.
  set dummy $ac_tool_prefix$ac_prog; ac_word=$2
@@ -4861,7 +4872,7 @@ $NetBSD$
    if test -n "$AR"; then
    ac_cv_prog_AR="$AR" # Let the user override the test.
  else
-@@ -5530,11 +6216,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5530,11 +6220,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -4880,7 +4891,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5545,11 +6235,11 @@ fi
+@@ -5545,11 +6239,11 @@ fi
  fi
  AR=$ac_cv_prog_AR
  if test -n "$AR"; then
@@ -4896,7 +4907,7 @@ $NetBSD$
  fi
  
  
-@@ -5562,11 +6252,12 @@ if test -z "$AR"; then
+@@ -5562,11 +6256,12 @@ if test -z "$AR"; then
  do
    # Extract the first word of "$ac_prog", so it can be a program name with args.
  set dummy $ac_prog; ac_word=$2
@@ -4914,7 +4925,7 @@ $NetBSD$
    if test -n "$ac_ct_AR"; then
    ac_cv_prog_ac_ct_AR="$ac_ct_AR" # Let the user override the test.
  else
-@@ -5574,11 +6265,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5574,11 +6269,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -4933,7 +4944,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5589,11 +6284,11 @@ fi
+@@ -5589,11 +6288,11 @@ fi
  fi
  ac_ct_AR=$ac_cv_prog_ac_ct_AR
  if test -n "$ac_ct_AR"; then
@@ -4949,7 +4960,7 @@ $NetBSD$
  fi
  
  
-@@ -5605,8 +6300,8 @@ done
+@@ -5605,8 +6304,8 @@ done
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -4960,7 +4971,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      AR=$ac_ct_AR
-@@ -5626,30 +6321,32 @@ fi
+@@ -5626,30 +6325,32 @@ fi
  
  
  
@@ -5001,7 +5012,7 @@ $NetBSD$
    test $ac_status = 0; }
        if test 0 -eq "$ac_status"; then
  	# Ensure the archiver fails upon bogus file names.
-@@ -5657,7 +6354,7 @@ if ac_fn_c_try_compile "$LINENO"; then :
+@@ -5657,7 +6358,7 @@ if ac_fn_c_try_compile "$LINENO"; then :
  	{ { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$lt_ar_try\""; } >&5
    (eval $lt_ar_try) 2>&5
    ac_status=$?
@@ -5010,7 +5021,7 @@ $NetBSD$
    test $ac_status = 0; }
  	if test 0 -ne "$ac_status"; then
            lt_cv_ar_at_file=@
-@@ -5666,11 +6363,11 @@ if ac_fn_c_try_compile "$LINENO"; then :
+@@ -5666,11 +6367,11 @@ if ac_fn_c_try_compile "$LINENO"; then :
        rm -f conftest.* libconftest.a
  
  fi
@@ -5025,7 +5036,7 @@ $NetBSD$
  
  if test no = "$lt_cv_ar_at_file"; then
    archiver_list_spec=
-@@ -5687,11 +6384,12 @@ fi
+@@ -5687,11 +6388,12 @@ fi
  if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}strip", so it can be a program name with args.
  set dummy ${ac_tool_prefix}strip; ac_word=$2
@@ -5043,7 +5054,7 @@ $NetBSD$
    if test -n "$STRIP"; then
    ac_cv_prog_STRIP="$STRIP" # Let the user override the test.
  else
-@@ -5699,11 +6397,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5699,11 +6401,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5062,7 +5073,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5714,11 +6416,11 @@ fi
+@@ -5714,11 +6420,11 @@ fi
  fi
  STRIP=$ac_cv_prog_STRIP
  if test -n "$STRIP"; then
@@ -5078,7 +5089,7 @@ $NetBSD$
  fi
  
  
-@@ -5727,11 +6429,12 @@ if test -z "$ac_cv_prog_STRIP"; then
+@@ -5727,11 +6433,12 @@ if test -z "$ac_cv_prog_STRIP"; then
    ac_ct_STRIP=$STRIP
    # Extract the first word of "strip", so it can be a program name with args.
  set dummy strip; ac_word=$2
@@ -5096,7 +5107,7 @@ $NetBSD$
    if test -n "$ac_ct_STRIP"; then
    ac_cv_prog_ac_ct_STRIP="$ac_ct_STRIP" # Let the user override the test.
  else
-@@ -5739,11 +6442,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5739,11 +6446,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5115,7 +5126,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5754,11 +6461,11 @@ fi
+@@ -5754,11 +6465,11 @@ fi
  fi
  ac_ct_STRIP=$ac_cv_prog_ac_ct_STRIP
  if test -n "$ac_ct_STRIP"; then
@@ -5131,7 +5142,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_STRIP" = x; then
-@@ -5766,8 +6473,8 @@ fi
+@@ -5766,8 +6477,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -5142,7 +5153,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      STRIP=$ac_ct_STRIP
-@@ -5786,11 +6493,12 @@ test -z "$STRIP" && STRIP=:
+@@ -5786,11 +6497,12 @@ test -z "$STRIP" && STRIP=:
  if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}ranlib", so it can be a program name with args.
  set dummy ${ac_tool_prefix}ranlib; ac_word=$2
@@ -5160,7 +5171,7 @@ $NetBSD$
    if test -n "$RANLIB"; then
    ac_cv_prog_RANLIB="$RANLIB" # Let the user override the test.
  else
-@@ -5798,11 +6506,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5798,11 +6510,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5179,7 +5190,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5813,11 +6525,11 @@ fi
+@@ -5813,11 +6529,11 @@ fi
  fi
  RANLIB=$ac_cv_prog_RANLIB
  if test -n "$RANLIB"; then
@@ -5195,7 +5206,7 @@ $NetBSD$
  fi
  
  
-@@ -5826,11 +6538,12 @@ if test -z "$ac_cv_prog_RANLIB"; then
+@@ -5826,11 +6542,12 @@ if test -z "$ac_cv_prog_RANLIB"; then
    ac_ct_RANLIB=$RANLIB
    # Extract the first word of "ranlib", so it can be a program name with args.
  set dummy ranlib; ac_word=$2
@@ -5213,7 +5224,7 @@ $NetBSD$
    if test -n "$ac_ct_RANLIB"; then
    ac_cv_prog_ac_ct_RANLIB="$ac_ct_RANLIB" # Let the user override the test.
  else
-@@ -5838,11 +6551,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -5838,11 +6555,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5232,7 +5243,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -5853,11 +6570,11 @@ fi
+@@ -5853,11 +6574,11 @@ fi
  fi
  ac_ct_RANLIB=$ac_cv_prog_ac_ct_RANLIB
  if test -n "$ac_ct_RANLIB"; then
@@ -5248,7 +5259,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_RANLIB" = x; then
-@@ -5865,8 +6582,8 @@ fi
+@@ -5865,8 +6586,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -5259,7 +5270,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      RANLIB=$ac_ct_RANLIB
-@@ -5901,7 +6618,7 @@ fi
+@@ -5901,7 +6622,7 @@ fi
  
  case $host_os in
    darwin*)
@@ -5268,7 +5279,7 @@ $NetBSD$
    *)
      lock_old_archive_extraction=no ;;
  esac
-@@ -5955,11 +6672,12 @@ compiler=$CC
+@@ -5955,11 +6676,12 @@ compiler=$CC
  
  
  # Check for command to grab the raw symbol name followed by C symbol from nm.
@@ -5286,7 +5297,7 @@ $NetBSD$
  
  # These are sane defaults that work on at least a few old systems.
  # [They come from Ultrix.  What could be older than Ultrix?!! ;)]
-@@ -5990,7 +6708,7 @@ osf*)
+@@ -5990,7 +6712,7 @@ osf*)
    symcode='[BCDEGQRST]'
    ;;
  solaris*)
@@ -5295,7 +5306,7 @@ $NetBSD$
    ;;
  sco3.2v5*)
    symcode='[DT]'
-@@ -6111,14 +6829,14 @@ _LT_EOF
+@@ -6111,14 +6833,14 @@ _LT_EOF
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5312,7 +5323,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s "$nlist"; then
        # Try sorting and uniquifying the output.
        if sort "$nlist" | uniq > "$nlist"T; then
-@@ -6187,7 +6905,7 @@ _LT_EOF
+@@ -6187,7 +6909,7 @@ _LT_EOF
  	  if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_link\""; } >&5
    (eval $ac_link) 2>&5
    ac_status=$?
@@ -5321,7 +5332,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s conftest$ac_exeext; then
  	    pipe_works=yes
  	  fi
-@@ -6222,11 +6940,11 @@ if test -z "$lt_cv_sys_global_symbol_pip
+@@ -6222,11 +6944,11 @@ if test -z "$lt_cv_sys_global_symbol_pip
    lt_cv_sys_global_symbol_to_cdecl=
  fi
  if test -z "$lt_cv_sys_global_symbol_pipe$lt_cv_sys_global_symbol_to_cdecl"; then
@@ -5337,7 +5348,7 @@ $NetBSD$
  fi
  
  # Response file support.
-@@ -6272,13 +6990,14 @@ fi
+@@ -6272,13 +6994,14 @@ fi
  
  
  
@@ -5356,7 +5367,7 @@ $NetBSD$
    with_sysroot=no
  fi
  
-@@ -6296,24 +7015,25 @@ case $with_sysroot in #(
+@@ -6296,24 +7019,25 @@ case $with_sysroot in #(
   no|'')
     ;; #(
   *)
@@ -5391,7 +5402,7 @@ $NetBSD$
    printf 0123456789abcdef0123456789abcdef >conftest.i
  cat conftest.i conftest.i >conftest2.i
  : ${lt_DD:=$DD}
-@@ -6324,10 +7044,15 @@ if test -z "$lt_DD"; then
+@@ -6324,10 +7048,15 @@ if test -z "$lt_DD"; then
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5410,7 +5421,7 @@ $NetBSD$
        as_fn_executable_p "$ac_path_lt_DD" || continue
  if "$ac_path_lt_DD" bs=32 count=1 <conftest2.i >conftest.out 2>/dev/null; then
    cmp -s conftest.i conftest.out \
-@@ -6347,15 +7072,16 @@ fi
+@@ -6347,15 +7076,16 @@ fi
  
  rm -f conftest.i conftest2.i conftest.out
  fi
@@ -5434,7 +5445,7 @@ $NetBSD$
    printf 0123456789abcdef0123456789abcdef >conftest.i
  cat conftest.i conftest.i >conftest2.i
  lt_cv_truncate_bin=
-@@ -6366,8 +7092,8 @@ fi
+@@ -6366,8 +7096,8 @@ fi
  rm -f conftest.i conftest2.i conftest.out
  test -z "$lt_cv_truncate_bin" && lt_cv_truncate_bin="$SED -e 4q"
  fi
@@ -5445,7 +5456,7 @@ $NetBSD$
  
  
  
-@@ -6386,11 +7112,15 @@ func_cc_basename ()
+@@ -6386,11 +7116,15 @@ func_cc_basename ()
          *) break;;
        esac
      done
@@ -5463,7 +5474,7 @@ $NetBSD$
    enableval=$enable_libtool_lock;
  fi
  
-@@ -6406,7 +7136,7 @@ ia64-*-hpux*)
+@@ -6406,7 +7140,7 @@ ia64-*-hpux*)
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5472,7 +5483,7 @@ $NetBSD$
    test $ac_status = 0; }; then
      case `/usr/bin/file conftest.$ac_objext` in
        *ELF-32*)
-@@ -6426,7 +7156,7 @@ ia64-*-hpux*)
+@@ -6426,7 +7160,7 @@ ia64-*-hpux*)
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5481,7 +5492,7 @@ $NetBSD$
    test $ac_status = 0; }; then
      if test yes = "$lt_cv_prog_gnu_ld"; then
        case `/usr/bin/file conftest.$ac_objext` in
-@@ -6464,7 +7194,7 @@ mips64*-*linux*)
+@@ -6464,7 +7198,7 @@ mips64*-*linux*)
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5490,7 +5501,7 @@ $NetBSD$
    test $ac_status = 0; }; then
      emul=elf
      case `/usr/bin/file conftest.$ac_objext` in
-@@ -6505,7 +7235,7 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*
+@@ -6505,7 +7239,7 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5499,7 +5510,7 @@ $NetBSD$
    test $ac_status = 0; }; then
      case `/usr/bin/file conftest.o` in
        *32-bit*)
-@@ -6568,11 +7298,12 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*
+@@ -6568,11 +7302,12 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*
    # On SCO OpenServer 5, we need -belf to get full-featured binaries.
    SAVE_CFLAGS=$CFLAGS
    CFLAGS="$CFLAGS -belf"
@@ -5517,7 +5528,7 @@ $NetBSD$
    ac_ext=c
  ac_cpp='$CPP $CPPFLAGS'
  ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-@@ -6583,19 +7314,20 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -6583,19 +7318,20 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
  /* end confdefs.h.  */
  
  int
@@ -5542,7 +5553,7 @@ $NetBSD$
      conftest$ac_exeext conftest.$ac_ext
       ac_ext=c
  ac_cpp='$CPP $CPPFLAGS'
-@@ -6604,8 +7336,8 @@ ac_link='$CC -o conftest$ac_exeext $CFLA
+@@ -6604,8 +7340,8 @@ ac_link='$CC -o conftest$ac_exeext $CFLA
  ac_compiler_gnu=$ac_cv_c_compiler_gnu
  
  fi
@@ -5553,7 +5564,7 @@ $NetBSD$
    if test yes != "$lt_cv_cc_needs_belf"; then
      # this is probably gcc 2.8.0, egcs 1.0 or newer; no need for -belf
      CFLAGS=$SAVE_CFLAGS
-@@ -6618,7 +7350,7 @@ $as_echo "$lt_cv_cc_needs_belf" >&6; }
+@@ -6618,7 +7354,7 @@ $as_echo "$lt_cv_cc_needs_belf" >&6; }
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -5562,7 +5573,7 @@ $NetBSD$
    test $ac_status = 0; }; then
      case `/usr/bin/file conftest.o` in
      *64-bit*)
-@@ -6655,11 +7387,12 @@ need_locks=$enable_libtool_lock
+@@ -6655,11 +7391,12 @@ need_locks=$enable_libtool_lock
  if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}mt", so it can be a program name with args.
  set dummy ${ac_tool_prefix}mt; ac_word=$2
@@ -5580,7 +5591,7 @@ $NetBSD$
    if test -n "$MANIFEST_TOOL"; then
    ac_cv_prog_MANIFEST_TOOL="$MANIFEST_TOOL" # Let the user override the test.
  else
-@@ -6667,11 +7400,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6667,11 +7404,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5599,7 +5610,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6682,11 +7419,11 @@ fi
+@@ -6682,11 +7423,11 @@ fi
  fi
  MANIFEST_TOOL=$ac_cv_prog_MANIFEST_TOOL
  if test -n "$MANIFEST_TOOL"; then
@@ -5615,7 +5626,7 @@ $NetBSD$
  fi
  
  
-@@ -6695,11 +7432,12 @@ if test -z "$ac_cv_prog_MANIFEST_TOOL"; 
+@@ -6695,11 +7436,12 @@ if test -z "$ac_cv_prog_MANIFEST_TOOL";
    ac_ct_MANIFEST_TOOL=$MANIFEST_TOOL
    # Extract the first word of "mt", so it can be a program name with args.
  set dummy mt; ac_word=$2
@@ -5633,7 +5644,7 @@ $NetBSD$
    if test -n "$ac_ct_MANIFEST_TOOL"; then
    ac_cv_prog_ac_ct_MANIFEST_TOOL="$ac_ct_MANIFEST_TOOL" # Let the user override the test.
  else
-@@ -6707,11 +7445,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6707,11 +7449,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5652,7 +5663,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6722,11 +7464,11 @@ fi
+@@ -6722,11 +7468,11 @@ fi
  fi
  ac_ct_MANIFEST_TOOL=$ac_cv_prog_ac_ct_MANIFEST_TOOL
  if test -n "$ac_ct_MANIFEST_TOOL"; then
@@ -5668,7 +5679,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_MANIFEST_TOOL" = x; then
-@@ -6734,8 +7476,8 @@ fi
+@@ -6734,8 +7480,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -5679,7 +5690,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      MANIFEST_TOOL=$ac_ct_MANIFEST_TOOL
-@@ -6745,11 +7487,12 @@ else
+@@ -6745,11 +7491,12 @@ else
  fi
  
  test -z "$MANIFEST_TOOL" && MANIFEST_TOOL=mt
@@ -5697,7 +5708,7 @@ $NetBSD$
    lt_cv_path_mainfest_tool=no
    echo "$as_me:$LINENO: $MANIFEST_TOOL '-?'" >&5
    $MANIFEST_TOOL '-?' 2>conftest.err > conftest.out
-@@ -6759,8 +7502,8 @@ else
+@@ -6759,8 +7506,8 @@ else
    fi
    rm -f conftest*
  fi
@@ -5708,7 +5719,7 @@ $NetBSD$
  if test yes != "$lt_cv_path_mainfest_tool"; then
    MANIFEST_TOOL=:
  fi
-@@ -6775,11 +7518,12 @@ fi
+@@ -6775,11 +7522,12 @@ fi
      if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}dsymutil", so it can be a program name with args.
  set dummy ${ac_tool_prefix}dsymutil; ac_word=$2
@@ -5726,7 +5737,7 @@ $NetBSD$
    if test -n "$DSYMUTIL"; then
    ac_cv_prog_DSYMUTIL="$DSYMUTIL" # Let the user override the test.
  else
-@@ -6787,11 +7531,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6787,11 +7535,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5745,7 +5756,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6802,11 +7550,11 @@ fi
+@@ -6802,11 +7554,11 @@ fi
  fi
  DSYMUTIL=$ac_cv_prog_DSYMUTIL
  if test -n "$DSYMUTIL"; then
@@ -5761,7 +5772,7 @@ $NetBSD$
  fi
  
  
-@@ -6815,11 +7563,12 @@ if test -z "$ac_cv_prog_DSYMUTIL"; then
+@@ -6815,11 +7567,12 @@ if test -z "$ac_cv_prog_DSYMUTIL"; then
    ac_ct_DSYMUTIL=$DSYMUTIL
    # Extract the first word of "dsymutil", so it can be a program name with args.
  set dummy dsymutil; ac_word=$2
@@ -5779,7 +5790,7 @@ $NetBSD$
    if test -n "$ac_ct_DSYMUTIL"; then
    ac_cv_prog_ac_ct_DSYMUTIL="$ac_ct_DSYMUTIL" # Let the user override the test.
  else
-@@ -6827,11 +7576,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6827,11 +7580,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5798,7 +5809,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6842,11 +7595,11 @@ fi
+@@ -6842,11 +7599,11 @@ fi
  fi
  ac_ct_DSYMUTIL=$ac_cv_prog_ac_ct_DSYMUTIL
  if test -n "$ac_ct_DSYMUTIL"; then
@@ -5814,7 +5825,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_DSYMUTIL" = x; then
-@@ -6854,8 +7607,8 @@ fi
+@@ -6854,8 +7611,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -5825,7 +5836,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      DSYMUTIL=$ac_ct_DSYMUTIL
-@@ -6867,11 +7620,12 @@ fi
+@@ -6867,11 +7624,12 @@ fi
      if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}nmedit", so it can be a program name with args.
  set dummy ${ac_tool_prefix}nmedit; ac_word=$2
@@ -5843,7 +5854,7 @@ $NetBSD$
    if test -n "$NMEDIT"; then
    ac_cv_prog_NMEDIT="$NMEDIT" # Let the user override the test.
  else
-@@ -6879,11 +7633,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6879,11 +7637,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5862,7 +5873,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6894,11 +7652,11 @@ fi
+@@ -6894,11 +7656,11 @@ fi
  fi
  NMEDIT=$ac_cv_prog_NMEDIT
  if test -n "$NMEDIT"; then
@@ -5878,7 +5889,7 @@ $NetBSD$
  fi
  
  
-@@ -6907,11 +7665,12 @@ if test -z "$ac_cv_prog_NMEDIT"; then
+@@ -6907,11 +7669,12 @@ if test -z "$ac_cv_prog_NMEDIT"; then
    ac_ct_NMEDIT=$NMEDIT
    # Extract the first word of "nmedit", so it can be a program name with args.
  set dummy nmedit; ac_word=$2
@@ -5896,7 +5907,7 @@ $NetBSD$
    if test -n "$ac_ct_NMEDIT"; then
    ac_cv_prog_ac_ct_NMEDIT="$ac_ct_NMEDIT" # Let the user override the test.
  else
-@@ -6919,11 +7678,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6919,11 +7682,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5915,7 +5926,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6934,11 +7697,11 @@ fi
+@@ -6934,11 +7701,11 @@ fi
  fi
  ac_ct_NMEDIT=$ac_cv_prog_ac_ct_NMEDIT
  if test -n "$ac_ct_NMEDIT"; then
@@ -5931,7 +5942,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_NMEDIT" = x; then
-@@ -6946,8 +7709,8 @@ fi
+@@ -6946,8 +7713,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -5942,7 +5953,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      NMEDIT=$ac_ct_NMEDIT
-@@ -6959,11 +7722,12 @@ fi
+@@ -6959,11 +7726,12 @@ fi
      if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}lipo", so it can be a program name with args.
  set dummy ${ac_tool_prefix}lipo; ac_word=$2
@@ -5960,7 +5971,7 @@ $NetBSD$
    if test -n "$LIPO"; then
    ac_cv_prog_LIPO="$LIPO" # Let the user override the test.
  else
-@@ -6971,11 +7735,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -6971,11 +7739,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -5979,7 +5990,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -6986,11 +7754,11 @@ fi
+@@ -6986,11 +7758,11 @@ fi
  fi
  LIPO=$ac_cv_prog_LIPO
  if test -n "$LIPO"; then
@@ -5995,7 +6006,7 @@ $NetBSD$
  fi
  
  
-@@ -6999,11 +7767,12 @@ if test -z "$ac_cv_prog_LIPO"; then
+@@ -6999,11 +7771,12 @@ if test -z "$ac_cv_prog_LIPO"; then
    ac_ct_LIPO=$LIPO
    # Extract the first word of "lipo", so it can be a program name with args.
  set dummy lipo; ac_word=$2
@@ -6013,7 +6024,7 @@ $NetBSD$
    if test -n "$ac_ct_LIPO"; then
    ac_cv_prog_ac_ct_LIPO="$ac_ct_LIPO" # Let the user override the test.
  else
-@@ -7011,11 +7780,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7011,11 +7784,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6032,7 +6043,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7026,11 +7799,11 @@ fi
+@@ -7026,11 +7803,11 @@ fi
  fi
  ac_ct_LIPO=$ac_cv_prog_ac_ct_LIPO
  if test -n "$ac_ct_LIPO"; then
@@ -6048,7 +6059,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_LIPO" = x; then
-@@ -7038,8 +7811,8 @@ fi
+@@ -7038,8 +7815,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -6059,7 +6070,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      LIPO=$ac_ct_LIPO
-@@ -7051,11 +7824,12 @@ fi
+@@ -7051,11 +7828,12 @@ fi
      if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}otool", so it can be a program name with args.
  set dummy ${ac_tool_prefix}otool; ac_word=$2
@@ -6077,7 +6088,7 @@ $NetBSD$
    if test -n "$OTOOL"; then
    ac_cv_prog_OTOOL="$OTOOL" # Let the user override the test.
  else
-@@ -7063,11 +7837,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7063,11 +7841,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6096,7 +6107,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7078,11 +7856,11 @@ fi
+@@ -7078,11 +7860,11 @@ fi
  fi
  OTOOL=$ac_cv_prog_OTOOL
  if test -n "$OTOOL"; then
@@ -6112,7 +6123,7 @@ $NetBSD$
  fi
  
  
-@@ -7091,11 +7869,12 @@ if test -z "$ac_cv_prog_OTOOL"; then
+@@ -7091,11 +7873,12 @@ if test -z "$ac_cv_prog_OTOOL"; then
    ac_ct_OTOOL=$OTOOL
    # Extract the first word of "otool", so it can be a program name with args.
  set dummy otool; ac_word=$2
@@ -6130,7 +6141,7 @@ $NetBSD$
    if test -n "$ac_ct_OTOOL"; then
    ac_cv_prog_ac_ct_OTOOL="$ac_ct_OTOOL" # Let the user override the test.
  else
-@@ -7103,11 +7882,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7103,11 +7886,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6149,7 +6160,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7118,11 +7901,11 @@ fi
+@@ -7118,11 +7905,11 @@ fi
  fi
  ac_ct_OTOOL=$ac_cv_prog_ac_ct_OTOOL
  if test -n "$ac_ct_OTOOL"; then
@@ -6165,7 +6176,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_OTOOL" = x; then
-@@ -7130,8 +7913,8 @@ fi
+@@ -7130,8 +7917,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -6176,7 +6187,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      OTOOL=$ac_ct_OTOOL
-@@ -7143,11 +7926,12 @@ fi
+@@ -7143,11 +7930,12 @@ fi
      if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}otool64", so it can be a program name with args.
  set dummy ${ac_tool_prefix}otool64; ac_word=$2
@@ -6194,7 +6205,7 @@ $NetBSD$
    if test -n "$OTOOL64"; then
    ac_cv_prog_OTOOL64="$OTOOL64" # Let the user override the test.
  else
-@@ -7155,11 +7939,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7155,11 +7943,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6213,7 +6224,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7170,11 +7958,11 @@ fi
+@@ -7170,11 +7962,11 @@ fi
  fi
  OTOOL64=$ac_cv_prog_OTOOL64
  if test -n "$OTOOL64"; then
@@ -6229,7 +6240,7 @@ $NetBSD$
  fi
  
  
-@@ -7183,11 +7971,12 @@ if test -z "$ac_cv_prog_OTOOL64"; then
+@@ -7183,11 +7975,12 @@ if test -z "$ac_cv_prog_OTOOL64"; then
    ac_ct_OTOOL64=$OTOOL64
    # Extract the first word of "otool64", so it can be a program name with args.
  set dummy otool64; ac_word=$2
@@ -6247,7 +6258,7 @@ $NetBSD$
    if test -n "$ac_ct_OTOOL64"; then
    ac_cv_prog_ac_ct_OTOOL64="$ac_ct_OTOOL64" # Let the user override the test.
  else
-@@ -7195,11 +7984,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7195,11 +7988,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6266,7 +6277,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7210,11 +8003,11 @@ fi
+@@ -7210,11 +8007,11 @@ fi
  fi
  ac_ct_OTOOL64=$ac_cv_prog_ac_ct_OTOOL64
  if test -n "$ac_ct_OTOOL64"; then
@@ -6282,7 +6293,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_OTOOL64" = x; then
-@@ -7222,8 +8015,8 @@ fi
+@@ -7222,8 +8019,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -6293,7 +6304,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      OTOOL64=$ac_ct_OTOOL64
-@@ -7258,11 +8051,12 @@ fi
+@@ -7258,11 +8055,12 @@ fi
  
  
  
@@ -6311,7 +6322,7 @@ $NetBSD$
    lt_cv_apple_cc_single_mod=no
        if test -z "$LT_MULTI_MODULE"; then
  	# By default we will add the -single_module flag. You can override
-@@ -7291,14 +8085,15 @@ else
+@@ -7291,14 +8089,15 @@ else
  	rm -f conftest.*
        fi
  fi
@@ -6334,7 +6345,7 @@ $NetBSD$
    lt_cv_ld_exported_symbols_list=no
        save_LDFLAGS=$LDFLAGS
        echo "_main" > conftest.sym
-@@ -7307,31 +8102,33 @@ else
+@@ -7307,31 +8106,33 @@ else
  /* end confdefs.h.  */
  
  int
@@ -6379,7 +6390,7 @@ $NetBSD$
    lt_cv_ld_force_load=no
        cat > conftest.c << _LT_EOF
  int forced_loaded() { return 2;}
-@@ -7359,8 +8156,8 @@ _LT_EOF
+@@ -7359,8 +8160,8 @@ _LT_EOF
          rm -rf conftest.dSYM
  
  fi
@@ -6390,7 +6401,7 @@ $NetBSD$
      case $host_os in
      rhapsody* | darwin1.[012])
        _lt_dar_allow_undefined='$wl-undefined ${wl}suppress' ;;
-@@ -7431,286 +8228,43 @@ func_munge_path_list ()
+@@ -7431,286 +8232,43 @@ func_munge_path_list ()
      esac
  }
  
@@ -6413,65 +6424,6 @@ $NetBSD$
 -    for CPP in "$CC -E" "$CC -E -traditional-cpp" "/lib/cpp"
 -    do
 -      ac_preproc_ok=false
--for ac_c_preproc_warn_flag in '' yes
--do
--  # Use a header file that comes with gcc, so configuring glibc
--  # with a fresh cross-compiler works.
--  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
--  # <limits.h> exists even on freestanding compilers.
--  # On the NeXT, cc -E runs the code through the compiler's parser,
--  # not just through cpp. "Syntax error" is here to catch this case.
--  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
--/* end confdefs.h.  */
--#ifdef __STDC__
--# include <limits.h>
--#else
--# include <assert.h>
--#endif
--		     Syntax error
--_ACEOF
--if ac_fn_c_try_cpp "$LINENO"; then :
--
--else
--  # Broken: fails on valid input.
--continue
--fi
--rm -f conftest.err conftest.i conftest.$ac_ext
--
--  # OK, works on sane cases.  Now check whether nonexistent headers
--  # can be detected and how.
--  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
--/* end confdefs.h.  */
--#include <ac_nonexistent.h>
--_ACEOF
--if ac_fn_c_try_cpp "$LINENO"; then :
--  # Broken: success on invalid input.
--continue
--else
--  # Passes both tests.
--ac_preproc_ok=:
--break
--fi
--rm -f conftest.err conftest.i conftest.$ac_ext
--
--done
--# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
--rm -f conftest.i conftest.err conftest.$ac_ext
--if $ac_preproc_ok; then :
--  break
--fi
--
--    done
--    ac_cv_prog_CPP=$CPP
--
--fi
--  CPP=$ac_cv_prog_CPP
--else
--  ac_cv_prog_CPP=$CPP
--fi
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CPP" >&5
--$as_echo "$CPP" >&6; }
--ac_preproc_ok=false
 -for ac_c_preproc_warn_flag in '' yes
 +ac_header= ac_cache=
 +for ac_item in $ac_header_c_list
@@ -6530,21 +6482,82 @@ $NetBSD$
 -# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
 -rm -f conftest.i conftest.err conftest.$ac_ext
 -if $ac_preproc_ok; then :
--
+-  break
+-fi
+ 
+-    done
+-    ac_cv_prog_CPP=$CPP
+ 
+-fi
+-  CPP=$ac_cv_prog_CPP
+-else
+-  ac_cv_prog_CPP=$CPP
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CPP" >&5
+-$as_echo "$CPP" >&6; }
+-ac_preproc_ok=false
+-for ac_c_preproc_warn_flag in '' yes
+-do
+-  # Use a header file that comes with gcc, so configuring glibc
+-  # with a fresh cross-compiler works.
+-  # Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+-  # <limits.h> exists even on freestanding compilers.
+-  # On the NeXT, cc -E runs the code through the compiler's parser,
+-  # not just through cpp. "Syntax error" is here to catch this case.
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#ifdef __STDC__
+-# include <limits.h>
+-#else
+-# include <assert.h>
+-#endif
+-		     Syntax error
+-_ACEOF
+-if ac_fn_c_try_cpp "$LINENO"; then :
+ 
+-else
+-  # Broken: fails on valid input.
+-continue
+-fi
+-rm -f conftest.err conftest.i conftest.$ac_ext
+ 
+-  # OK, works on sane cases.  Now check whether nonexistent headers
+-  # can be detected and how.
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <ac_nonexistent.h>
+-_ACEOF
+-if ac_fn_c_try_cpp "$LINENO"; then :
+-  # Broken: success on invalid input.
+-continue
+-else
+-  # Passes both tests.
+-ac_preproc_ok=:
+-break
+-fi
+-rm -f conftest.err conftest.i conftest.$ac_ext
+ 
+-done
+-# Because of `break', _AC_PREPROC_IFELSE's cleaning code was skipped.
+-rm -f conftest.i conftest.err conftest.$ac_ext
+-if $ac_preproc_ok; then :
+ 
 -else
 -  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 -$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
 -as_fn_error $? "C preprocessor \"$CPP\" fails sanity check
 -See \`config.log' for more details" "$LINENO" 5; }
 -fi
--
+ 
 -ac_ext=c
 -ac_cpp='$CPP $CPPFLAGS'
 -ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 -ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 -ac_compiler_gnu=$ac_cv_c_compiler_gnu
--
--
+ 
++if test $ac_cv_header_stdlib_h = yes && test $ac_cv_header_string_h = yes
++then :
+ 
 -{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
 -$as_echo_n "checking for ANSI C header files... " >&6; }
 -if ${ac_cv_header_stdc+:} false; then :
@@ -6588,7 +6601,7 @@ $NetBSD$
 -rm -f conftest*
 -
 -fi
- 
+-
 -if test $ac_cv_header_stdc = yes; then
 -  # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
 -  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
@@ -6598,13 +6611,14 @@ $NetBSD$
 -_ACEOF
 -if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
 -  $EGREP "free" >/dev/null 2>&1; then :
- 
+-
 -else
 -  ac_cv_header_stdc=no
 -fi
 -rm -f conftest*
 -
 -fi
++printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
  
 -if test $ac_cv_header_stdc = yes; then
 -  # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
@@ -6625,7 +6639,7 @@ $NetBSD$
 -		     || ('s' <= (c) && (c) <= 'z'))
 -# define TOUPPER(c) (ISLOWER(c) ? ((c) | 0x40) : (c))
 -#endif
- 
+-
 -#define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
 -int
 -main ()
@@ -6639,52 +6653,35 @@ $NetBSD$
 -}
 -_ACEOF
 -if ac_fn_c_try_run "$LINENO"; then :
- 
+-
 -else
 -  ac_cv_header_stdc=no
 -fi
 -rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 -  conftest.$ac_objext conftest.beam conftest.$ac_ext
 -fi
- 
+-
 -fi
--fi
+ fi
 -{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_header_stdc" >&5
 -$as_echo "$ac_cv_header_stdc" >&6; }
 -if test $ac_cv_header_stdc = yes; then
- 
+-
 -$as_echo "#define STDC_HEADERS 1" >>confdefs.h
- 
+-
 -fi
-+if test $ac_cv_header_stdlib_h = yes && test $ac_cv_header_string_h = yes
-+then :
- 
+-
 -# On IRIX 5.3, sys/types and inttypes.h are conflicting.
 -for ac_header in sys/types.h sys/stat.h stdlib.h string.h memory.h strings.h \
 -		  inttypes.h stdint.h unistd.h
 -do :
 -  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
 -ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
--"
++ac_fn_c_check_header_compile "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default
+ "
 -if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
 -  cat >>confdefs.h <<_ACEOF
 -#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
--_ACEOF
-+printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
- 
- fi
--
--done
--
--
--for ac_header in dlfcn.h
--do :
--  ac_fn_c_check_header_compile "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default
-+ac_fn_c_check_header_compile "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default
- "
--if test "x$ac_cv_header_dlfcn_h" = xyes; then :
--  cat >>confdefs.h <<_ACEOF
--#define HAVE_DLFCN_H 1
 -_ACEOF
 +if test "x$ac_cv_header_dlfcn_h" = xyes
 +then :
@@ -6694,10 +6691,24 @@ $NetBSD$
  
 -done
 -
+-
+-for ac_header in dlfcn.h
+-do :
+-  ac_fn_c_check_header_compile "$LINENO" "dlfcn.h" "ac_cv_header_dlfcn_h" "$ac_includes_default
+-"
+-if test "x$ac_cv_header_dlfcn_h" = xyes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_DLFCN_H 1
+-_ACEOF
+-
+-fi
+-
+-done
+-
  
  
  
-@@ -7724,11 +8278,12 @@ case $host in
+@@ -7724,11 +8282,12 @@ case $host in
    if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}as", so it can be a program name with args.
  set dummy ${ac_tool_prefix}as; ac_word=$2
@@ -6715,7 +6726,7 @@ $NetBSD$
    if test -n "$AS"; then
    ac_cv_prog_AS="$AS" # Let the user override the test.
  else
-@@ -7736,11 +8291,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7736,11 +8295,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6734,7 +6745,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7751,11 +8310,11 @@ fi
+@@ -7751,11 +8314,11 @@ fi
  fi
  AS=$ac_cv_prog_AS
  if test -n "$AS"; then
@@ -6750,7 +6761,7 @@ $NetBSD$
  fi
  
  
-@@ -7764,11 +8323,12 @@ if test -z "$ac_cv_prog_AS"; then
+@@ -7764,11 +8327,12 @@ if test -z "$ac_cv_prog_AS"; then
    ac_ct_AS=$AS
    # Extract the first word of "as", so it can be a program name with args.
  set dummy as; ac_word=$2
@@ -6768,7 +6779,7 @@ $NetBSD$
    if test -n "$ac_ct_AS"; then
    ac_cv_prog_ac_ct_AS="$ac_ct_AS" # Let the user override the test.
  else
-@@ -7776,11 +8336,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7776,11 +8340,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6787,7 +6798,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7791,11 +8355,11 @@ fi
+@@ -7791,11 +8359,11 @@ fi
  fi
  ac_ct_AS=$ac_cv_prog_ac_ct_AS
  if test -n "$ac_ct_AS"; then
@@ -6803,7 +6814,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_AS" = x; then
-@@ -7803,8 +8367,8 @@ fi
+@@ -7803,8 +8371,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -6814,7 +6825,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      AS=$ac_ct_AS
-@@ -7816,11 +8380,12 @@ fi
+@@ -7816,11 +8384,12 @@ fi
    if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}dlltool", so it can be a program name with args.
  set dummy ${ac_tool_prefix}dlltool; ac_word=$2
@@ -6832,7 +6843,7 @@ $NetBSD$
    if test -n "$DLLTOOL"; then
    ac_cv_prog_DLLTOOL="$DLLTOOL" # Let the user override the test.
  else
-@@ -7828,11 +8393,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7828,11 +8397,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6851,7 +6862,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7843,11 +8412,11 @@ fi
+@@ -7843,11 +8416,11 @@ fi
  fi
  DLLTOOL=$ac_cv_prog_DLLTOOL
  if test -n "$DLLTOOL"; then
@@ -6867,7 +6878,7 @@ $NetBSD$
  fi
  
  
-@@ -7856,11 +8425,12 @@ if test -z "$ac_cv_prog_DLLTOOL"; then
+@@ -7856,11 +8429,12 @@ if test -z "$ac_cv_prog_DLLTOOL"; then
    ac_ct_DLLTOOL=$DLLTOOL
    # Extract the first word of "dlltool", so it can be a program name with args.
  set dummy dlltool; ac_word=$2
@@ -6885,7 +6896,7 @@ $NetBSD$
    if test -n "$ac_ct_DLLTOOL"; then
    ac_cv_prog_ac_ct_DLLTOOL="$ac_ct_DLLTOOL" # Let the user override the test.
  else
-@@ -7868,11 +8438,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7868,11 +8442,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6904,7 +6915,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7883,11 +8457,11 @@ fi
+@@ -7883,11 +8461,11 @@ fi
  fi
  ac_ct_DLLTOOL=$ac_cv_prog_ac_ct_DLLTOOL
  if test -n "$ac_ct_DLLTOOL"; then
@@ -6920,7 +6931,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_DLLTOOL" = x; then
-@@ -7895,8 +8469,8 @@ fi
+@@ -7895,8 +8473,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -6931,7 +6942,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      DLLTOOL=$ac_ct_DLLTOOL
-@@ -7908,11 +8482,12 @@ fi
+@@ -7908,11 +8486,12 @@ fi
    if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}objdump", so it can be a program name with args.
  set dummy ${ac_tool_prefix}objdump; ac_word=$2
@@ -6949,7 +6960,7 @@ $NetBSD$
    if test -n "$OBJDUMP"; then
    ac_cv_prog_OBJDUMP="$OBJDUMP" # Let the user override the test.
  else
-@@ -7920,11 +8495,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7920,11 +8499,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -6968,7 +6979,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7935,11 +8514,11 @@ fi
+@@ -7935,11 +8518,11 @@ fi
  fi
  OBJDUMP=$ac_cv_prog_OBJDUMP
  if test -n "$OBJDUMP"; then
@@ -6984,7 +6995,7 @@ $NetBSD$
  fi
  
  
-@@ -7948,11 +8527,12 @@ if test -z "$ac_cv_prog_OBJDUMP"; then
+@@ -7948,11 +8531,12 @@ if test -z "$ac_cv_prog_OBJDUMP"; then
    ac_ct_OBJDUMP=$OBJDUMP
    # Extract the first word of "objdump", so it can be a program name with args.
  set dummy objdump; ac_word=$2
@@ -7002,7 +7013,7 @@ $NetBSD$
    if test -n "$ac_ct_OBJDUMP"; then
    ac_cv_prog_ac_ct_OBJDUMP="$ac_ct_OBJDUMP" # Let the user override the test.
  else
-@@ -7960,11 +8540,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+@@ -7960,11 +8544,15 @@ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -7021,7 +7032,7 @@ $NetBSD$
      break 2
    fi
  done
-@@ -7975,11 +8559,11 @@ fi
+@@ -7975,11 +8563,11 @@ fi
  fi
  ac_ct_OBJDUMP=$ac_cv_prog_ac_ct_OBJDUMP
  if test -n "$ac_ct_OBJDUMP"; then
@@ -7037,7 +7048,7 @@ $NetBSD$
  fi
  
    if test "x$ac_ct_OBJDUMP" = x; then
-@@ -7987,8 +8571,8 @@ fi
+@@ -7987,8 +8575,8 @@ fi
    else
      case $cross_compiling:$ac_tool_warned in
  yes:)
@@ -7048,7 +7059,7 @@ $NetBSD$
  ac_tool_warned=yes ;;
  esac
      OBJDUMP=$ac_ct_OBJDUMP
-@@ -8023,7 +8607,8 @@ test -z "$OBJDUMP" && OBJDUMP=objdump
+@@ -8023,7 +8611,8 @@ test -z "$OBJDUMP" && OBJDUMP=objdump
  
  
              # Check whether --enable-shared was given.
@@ -7058,7 +7069,7 @@ $NetBSD$
    enableval=$enable_shared; p=${PACKAGE-default}
      case $enableval in
      yes) enable_shared=yes ;;
-@@ -8041,7 +8626,7 @@ if test "${enable_shared+set}" = set; th
+@@ -8041,7 +8630,7 @@ if test "${enable_shared+set}" = set; th
        IFS=$lt_save_ifs
        ;;
      esac
@@ -7067,7 +7078,7 @@ $NetBSD$
    enable_shared=yes
  fi
  
-@@ -8054,7 +8639,8 @@ fi
+@@ -8054,7 +8643,8 @@ fi
  
  
    # Check whether --enable-static was given.
@@ -7077,7 +7088,7 @@ $NetBSD$
    enableval=$enable_static; p=${PACKAGE-default}
      case $enableval in
      yes) enable_static=yes ;;
-@@ -8072,7 +8658,7 @@ if test "${enable_static+set}" = set; th
+@@ -8072,7 +8662,7 @@ if test "${enable_static+set}" = set; th
        IFS=$lt_save_ifs
        ;;
      esac
@@ -7086,7 +7097,7 @@ $NetBSD$
    enable_static=yes
  fi
  
-@@ -8086,7 +8672,8 @@ fi
+@@ -8086,7 +8676,8 @@ fi
  
  
  # Check whether --with-pic was given.
@@ -7096,7 +7107,7 @@ $NetBSD$
    withval=$with_pic; lt_p=${PACKAGE-default}
      case $withval in
      yes|no) pic_mode=$withval ;;
-@@ -8103,7 +8690,7 @@ if test "${with_pic+set}" = set; then :
+@@ -8103,7 +8694,7 @@ if test "${with_pic+set}" = set; then :
        IFS=$lt_save_ifs
        ;;
      esac
@@ -7105,7 +7116,7 @@ $NetBSD$
    pic_mode=default
  fi
  
-@@ -8115,7 +8702,8 @@ fi
+@@ -8115,7 +8706,8 @@ fi
  
  
    # Check whether --enable-fast-install was given.
@@ -7115,7 +7126,7 @@ $NetBSD$
    enableval=$enable_fast_install; p=${PACKAGE-default}
      case $enableval in
      yes) enable_fast_install=yes ;;
-@@ -8133,7 +8721,7 @@ if test "${enable_fast_install+set}" = s
+@@ -8133,7 +8725,7 @@ if test "${enable_fast_install+set}" = s
        IFS=$lt_save_ifs
        ;;
      esac
@@ -7124,7 +7135,7 @@ $NetBSD$
    enable_fast_install=yes
  fi
  
-@@ -8147,11 +8735,12 @@ fi
+@@ -8147,11 +8739,12 @@ fi
    shared_archive_member_spec=
  case $host,$enable_shared in
  power*-*-aix[5-9]*,yes)
@@ -7140,7 +7151,7 @@ $NetBSD$
    withval=$with_aix_soname; case $withval in
      aix|svr4|both)
        ;;
-@@ -8160,18 +8749,19 @@ if test "${with_aix_soname+set}" = set; 
+@@ -8160,18 +8753,19 @@ if test "${with_aix_soname+set}" = set;
        ;;
      esac
      lt_cv_with_aix_soname=$with_aix_soname
@@ -7166,7 +7177,7 @@ $NetBSD$
    if test aix != "$with_aix_soname"; then
      # For the AIX way of multilib, we name the shared archive member
      # based on the bitwidth used, traditionally 'shr.o' or 'shr_64.o',
-@@ -8253,11 +8843,12 @@ if test -n "${ZSH_VERSION+set}"; then
+@@ -8253,11 +8847,12 @@ if test -n "${ZSH_VERSION+set}"; then
     setopt NO_GLOB_SUBST
  fi
  
@@ -7184,7 +7195,7 @@ $NetBSD$
    rm -f .libs 2>/dev/null
  mkdir .libs 2>/dev/null
  if test -d .libs; then
-@@ -8268,17 +8859,15 @@ else
+@@ -8268,17 +8863,15 @@ else
  fi
  rmdir .libs 2>/dev/null
  fi
@@ -7205,7 +7216,7 @@ $NetBSD$
  
  
  
-@@ -8324,11 +8913,12 @@ test -z "$MAGIC_CMD" && MAGIC_CMD=file
+@@ -8324,11 +8917,12 @@ test -z "$MAGIC_CMD" && MAGIC_CMD=file
  case $deplibs_check_method in
  file_magic*)
    if test "$file_magic_cmd" = '$MAGIC_CMD'; then
@@ -7223,7 +7234,7 @@ $NetBSD$
    case $MAGIC_CMD in
  [\\/*] |  ?:[\\/]*)
    lt_cv_path_MAGIC_CMD=$MAGIC_CMD # Let the user override the test with a path.
-@@ -8377,11 +8967,11 @@ fi
+@@ -8377,11 +8971,11 @@ fi
  
  MAGIC_CMD=$lt_cv_path_MAGIC_CMD
  if test -n "$MAGIC_CMD"; then
@@ -7239,7 +7250,7 @@ $NetBSD$
  fi
  
  
-@@ -8390,11 +8980,12 @@ fi
+@@ -8390,11 +8984,12 @@ fi
  
  if test -z "$lt_cv_path_MAGIC_CMD"; then
    if test -n "$ac_tool_prefix"; then
@@ -7257,7 +7268,7 @@ $NetBSD$
    case $MAGIC_CMD in
  [\\/*] |  ?:[\\/]*)
    lt_cv_path_MAGIC_CMD=$MAGIC_CMD # Let the user override the test with a path.
-@@ -8443,11 +9034,11 @@ fi
+@@ -8443,11 +9038,11 @@ fi
  
  MAGIC_CMD=$lt_cv_path_MAGIC_CMD
  if test -n "$MAGIC_CMD"; then
@@ -7273,7 +7284,7 @@ $NetBSD$
  fi
  
  
-@@ -8532,11 +9123,12 @@ if test yes = "$GCC"; then
+@@ -8532,11 +9127,12 @@ if test yes = "$GCC"; then
      lt_prog_compiler_no_builtin_flag=' -fno-builtin' ;;
    esac
  
@@ -7291,7 +7302,7 @@ $NetBSD$
    lt_cv_prog_compiler_rtti_exceptions=no
     ac_outfile=conftest.$ac_objext
     echo "$lt_simple_compile_test_code" > conftest.$ac_ext
-@@ -8567,8 +9159,8 @@ else
+@@ -8567,8 +9163,8 @@ else
     $RM conftest*
  
  fi
@@ -7302,7 +7313,7 @@ $NetBSD$
  
  if test yes = "$lt_cv_prog_compiler_rtti_exceptions"; then
      lt_prog_compiler_no_builtin_flag="$lt_prog_compiler_no_builtin_flag -fno-rtti -fno-exceptions"
-@@ -8635,9 +9227,16 @@ lt_prog_compiler_static=
+@@ -8635,9 +9231,16 @@ lt_prog_compiler_static=
        ;;
  
      darwin* | rhapsody*)
@@ -7320,7 +7331,7 @@ $NetBSD$
        ;;
  
      haiku*)
-@@ -8665,6 +9264,13 @@ lt_prog_compiler_static=
+@@ -8665,6 +9268,13 @@ lt_prog_compiler_static=
        # Instead, we relocate shared libraries at runtime.
        ;;
  
@@ -7334,7 +7345,7 @@ $NetBSD$
      msdosdjgpp*)
        # Just because we use GCC doesn't mean we suddenly get shared libraries
        # on systems that don't support them.
-@@ -8842,6 +9448,15 @@ lt_prog_compiler_static=
+@@ -8842,6 +9452,15 @@ lt_prog_compiler_static=
        esac
        ;;
  
@@ -7350,7 +7361,7 @@ $NetBSD$
      newsos6)
        lt_prog_compiler_pic='-KPIC'
        lt_prog_compiler_static='-Bstatic'
-@@ -8917,6 +9532,9 @@ lt_prog_compiler_static=
+@@ -8917,6 +9536,9 @@ lt_prog_compiler_static=
  
  case $host_os in
    # For platforms that do not support PIC, -DPIC is meaningless:
@@ -7360,7 +7371,7 @@ $NetBSD$
    *djgpp*)
      lt_prog_compiler_pic=
      ;;
-@@ -8925,26 +9543,28 @@ case $host_os in
+@@ -8925,26 +9547,28 @@ case $host_os in
      ;;
  esac
  
@@ -7401,7 +7412,7 @@ $NetBSD$
    lt_cv_prog_compiler_pic_works=no
     ac_outfile=conftest.$ac_objext
     echo "$lt_simple_compile_test_code" > conftest.$ac_ext
-@@ -8975,8 +9595,8 @@ else
+@@ -8975,8 +9599,8 @@ else
     $RM conftest*
  
  fi
@@ -7412,7 +7423,7 @@ $NetBSD$
  
  if test yes = "$lt_cv_prog_compiler_pic_works"; then
      case $lt_prog_compiler_pic in
-@@ -9004,11 +9624,12 @@ fi
+@@ -9004,11 +9628,12 @@ fi
  # Check to make sure the static flag actually works.
  #
  wl=$lt_prog_compiler_wl eval lt_tmp_static_flag=\"$lt_prog_compiler_static\"
@@ -7430,7 +7441,7 @@ $NetBSD$
    lt_cv_prog_compiler_static_works=no
     save_LDFLAGS=$LDFLAGS
     LDFLAGS="$LDFLAGS $lt_tmp_static_flag"
-@@ -9032,8 +9653,8 @@ else
+@@ -9032,8 +9657,8 @@ else
     LDFLAGS=$save_LDFLAGS
  
  fi
@@ -7441,7 +7452,7 @@ $NetBSD$
  
  if test yes = "$lt_cv_prog_compiler_static_works"; then
      :
-@@ -9047,11 +9668,12 @@ fi
+@@ -9047,11 +9672,12 @@ fi
  
  
  
@@ -7459,7 +7470,7 @@ $NetBSD$
    lt_cv_prog_compiler_c_o=no
     $RM -r conftest 2>/dev/null
     mkdir conftest
-@@ -9094,19 +9716,20 @@ else
+@@ -9094,19 +9720,20 @@ else
     $RM conftest*
  
  fi
@@ -7487,7 +7498,7 @@ $NetBSD$
    lt_cv_prog_compiler_c_o=no
     $RM -r conftest 2>/dev/null
     mkdir conftest
-@@ -9149,8 +9772,8 @@ else
+@@ -9149,8 +9776,8 @@ else
     $RM conftest*
  
  fi
@@ -7498,7 +7509,7 @@ $NetBSD$
  
  
  
-@@ -9158,19 +9781,19 @@ $as_echo "$lt_cv_prog_compiler_c_o" >&6;
+@@ -9158,19 +9785,19 @@ $as_echo "$lt_cv_prog_compiler_c_o" >&6;
  hard_links=nottested
  if test no = "$lt_cv_prog_compiler_c_o" && test no != "$need_locks"; then
    # do not overwrite the value of need_locks provided by the user
@@ -7524,7 +7535,7 @@ $NetBSD$
      need_locks=warn
    fi
  else
-@@ -9182,8 +9805,8 @@ fi
+@@ -9182,8 +9809,8 @@ fi
  
  
  
@@ -7535,7 +7546,7 @@ $NetBSD$
  
    runpath_var=
    allow_undefined_flag=
-@@ -9495,16 +10118,29 @@ _LT_EOF
+@@ -9495,16 +10122,29 @@ _LT_EOF
        fi
        ;;
  
@@ -7571,7 +7582,7 @@ $NetBSD$
      solaris*)
        if $LD -v 2>&1 | $GREP 'BFD 2\.8' > /dev/null; then
  	ld_shlibs=no
-@@ -9738,21 +10374,23 @@ _LT_EOF
+@@ -9738,21 +10378,23 @@ _LT_EOF
          if test set = "${lt_cv_aix_libpath+set}"; then
    aix_libpath=$lt_cv_aix_libpath
  else
@@ -7600,7 +7611,7 @@ $NetBSD$
  
    lt_aix_libpath_sed='
        /Import File Strings/,/^$/ {
-@@ -9767,7 +10405,7 @@ if ac_fn_c_try_link "$LINENO"; then :
+@@ -9767,7 +10409,7 @@ if ac_fn_c_try_link "$LINENO"; then :
      lt_cv_aix_libpath_=`dump -HX64 conftest$ac_exeext 2>/dev/null | $SED -n -e "$lt_aix_libpath_sed"`
    fi
  fi
@@ -7609,7 +7620,7 @@ $NetBSD$
      conftest$ac_exeext conftest.$ac_ext
    if test -z "$lt_cv_aix_libpath_"; then
      lt_cv_aix_libpath_=/usr/lib:/lib
-@@ -9791,21 +10429,23 @@ fi
+@@ -9791,21 +10433,23 @@ fi
  	 if test set = "${lt_cv_aix_libpath+set}"; then
    aix_libpath=$lt_cv_aix_libpath
  else
@@ -7638,7 +7649,7 @@ $NetBSD$
  
    lt_aix_libpath_sed='
        /Import File Strings/,/^$/ {
-@@ -9820,7 +10460,7 @@ if ac_fn_c_try_link "$LINENO"; then :
+@@ -9820,7 +10464,7 @@ if ac_fn_c_try_link "$LINENO"; then :
      lt_cv_aix_libpath_=`dump -HX64 conftest$ac_exeext 2>/dev/null | $SED -n -e "$lt_aix_libpath_sed"`
    fi
  fi
@@ -7647,7 +7658,7 @@ $NetBSD$
      conftest$ac_exeext conftest.$ac_ext
    if test -z "$lt_cv_aix_libpath_"; then
      lt_cv_aix_libpath_=/usr/lib:/lib
-@@ -9964,7 +10604,7 @@ fi
+@@ -9964,7 +10608,7 @@ fi
    allow_undefined_flag=$_lt_dar_allow_undefined
    case $cc_basename in
       ifort*|nagfor*) _lt_dar_can_shared=yes ;;
@@ -7656,7 +7667,7 @@ $NetBSD$
    esac
    if test yes = "$_lt_dar_can_shared"; then
      output_verbose_link_cmd=func_echo_all
-@@ -10005,7 +10645,7 @@ fi
+@@ -10005,7 +10649,7 @@ fi
        ;;
  
      # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
@@ -7665,7 +7676,7 @@ $NetBSD$
        archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
        hardcode_libdir_flag_spec='-R$libdir'
        hardcode_direct=yes
-@@ -10071,11 +10711,12 @@ fi
+@@ -10071,11 +10715,12 @@ fi
  
  	  # Older versions of the 11.00 compiler do not understand -b yet
  	  # (HP92453-01 A.11.01.20 doesn't, HP92453-01 B.11.X.35175-35176.GP does)
@@ -7683,7 +7694,7 @@ $NetBSD$
    lt_cv_prog_compiler__b=no
     save_LDFLAGS=$LDFLAGS
     LDFLAGS="$LDFLAGS -b"
-@@ -10099,8 +10740,8 @@ else
+@@ -10099,8 +10744,8 @@ else
     LDFLAGS=$save_LDFLAGS
  
  fi
@@ -7694,7 +7705,7 @@ $NetBSD$
  
  if test yes = "$lt_cv_prog_compiler__b"; then
      archive_cmds='$CC -b $wl+h $wl$soname $wl+b $wl$install_libdir -o $lib $libobjs $deplibs $compiler_flags'
-@@ -10140,28 +10781,30 @@ fi
+@@ -10140,28 +10785,30 @@ fi
  	# work, assume that -exports_file does not work either and
  	# implicitly export all symbols.
  	# This should be the same for all languages, so no per-tag cache variable.
@@ -7735,7 +7746,7 @@ $NetBSD$
  	if test yes = "$lt_cv_irix_exported_symbol"; then
            archive_expsym_cmds='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname `test -n "$verstring" && func_echo_all "$wl-set_version $wl$verstring"` $wl-update_registry $wl$output_objdir/so_locations $wl-exports_file $wl$export_symbols -o $lib'
  	fi
-@@ -10186,15 +10829,28 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+@@ -10186,15 +10833,28 @@ $as_echo "$lt_cv_irix_exported_symbol" >
        esac
        ;;
  
@@ -7769,7 +7780,7 @@ $NetBSD$
        ;;
  
      newsos6)
-@@ -10206,6 +10862,11 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+@@ -10206,6 +10866,11 @@ $as_echo "$lt_cv_irix_exported_symbol" >
        ;;
  
      *nto* | *qnx*)
@@ -7781,7 +7792,7 @@ $NetBSD$
        ;;
  
      openbsd* | bitrig*)
-@@ -10441,8 +11102,8 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+@@ -10441,8 +11106,8 @@ $as_echo "$lt_cv_irix_exported_symbol" >
      fi
    fi
  
@@ -7792,7 +7803,7 @@ $NetBSD$
  test no = "$ld_shlibs" && can_build_shared=no
  
  with_gnu_ld=$with_gnu_ld
-@@ -10478,18 +11139,19 @@ x|xyes)
+@@ -10478,18 +11143,19 @@ x|xyes)
        # Test whether the compiler implicitly links with -lc since on some
        # systems, -lgcc has to come before -lc. If gcc already passes -lc
        # to ld, don't add -lc before -lgcc.
@@ -7818,7 +7829,7 @@ $NetBSD$
    test $ac_status = 0; } 2>conftest.err; then
  	  soname=conftest
  	  lib=conftest
-@@ -10507,7 +11169,7 @@ else
+@@ -10507,7 +11173,7 @@ else
  	  if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$archive_cmds 2\>\&1 \| $GREP \" -lc \" \>/dev/null 2\>\&1\""; } >&5
    (eval $archive_cmds 2\>\&1 \| $GREP \" -lc \" \>/dev/null 2\>\&1) 2>&5
    ac_status=$?
@@ -7827,7 +7838,7 @@ $NetBSD$
    test $ac_status = 0; }
  	  then
  	    lt_cv_archive_cmds_need_lc=no
-@@ -10521,8 +11183,8 @@ else
+@@ -10521,8 +11187,8 @@ else
  	$RM conftest*
  
  fi
@@ -7838,7 +7849,7 @@ $NetBSD$
        archive_cmds_need_lc=$lt_cv_archive_cmds_need_lc
        ;;
      esac
-@@ -10681,8 +11343,8 @@ esac
+@@ -10681,8 +11347,8 @@ esac
  
  
  
@@ -7849,20 +7860,20 @@ $NetBSD$
  
  if test yes = "$GCC"; then
    case $host_os in
-@@ -11050,7 +11712,7 @@ dgux*)
+@@ -11050,7 +11716,7 @@ dgux*)
    shlibpath_var=LD_LIBRARY_PATH
    ;;
  
 -freebsd* | dragonfly*)
-+freebsd*)
++freebsd* | quinnbsd*)
    # DragonFly does not have aout.  When/if they implement a new
    # versioning mechanism, adjust this.
    if test -x /usr/bin/objformat; then
-@@ -11095,6 +11757,17 @@ freebsd* | dragonfly*)
+@@ -11095,6 +11761,17 @@ freebsd* | dragonfly*)
    esac
    ;;
  
-+dragonfly*|quinnbsd*)
++dragonfly*)
 +  version_type=linux
 +  need_version=no
 +  need_lib_prefix=no
@@ -7876,7 +7887,7 @@ $NetBSD$
  haiku*)
    version_type=linux # correct to gnu/linux during the next big refactor
    need_lib_prefix=no
-@@ -11172,12 +11845,7 @@ interix[3-9]*)
+@@ -11172,12 +11849,7 @@ interix[3-9]*)
  irix5* | irix6* | nonstopux*)
    case $host_os in
      nonstopux*) version_type=nonstopux ;;
@@ -7890,7 +7901,7 @@ $NetBSD$
    esac
    need_lib_prefix=no
    need_version=no
-@@ -11243,9 +11911,10 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu 
+@@ -11243,9 +11915,10 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu
    shlibpath_overrides_runpath=no
  
    # Some binutils ld are patched to set DT_RUNPATH
@@ -7904,7 +7915,7 @@ $NetBSD$
    lt_cv_shlibpath_overrides_runpath=no
      save_LDFLAGS=$LDFLAGS
      save_libdir=$libdir
-@@ -11255,19 +11924,21 @@ else
+@@ -11255,19 +11928,21 @@ else
  /* end confdefs.h.  */
  
  int
@@ -7930,7 +7941,7 @@ $NetBSD$
      conftest$ac_exeext conftest.$ac_ext
      LDFLAGS=$save_LDFLAGS
      libdir=$save_libdir
-@@ -11301,19 +11972,48 @@ fi
+@@ -11301,19 +11976,48 @@ fi
    dynamic_linker='GNU/Linux ld.so'
    ;;
  
@@ -7989,7 +8000,7 @@ $NetBSD$
    shlibpath_var=LD_LIBRARY_PATH
    shlibpath_overrides_runpath=yes
    hardcode_into_libs=yes
-@@ -11339,7 +12039,7 @@ newsos6)
+@@ -11339,7 +12043,7 @@ newsos6)
    ;;
  
  openbsd* | bitrig*)
@@ -7998,7 +8009,7 @@ $NetBSD$
    sys_lib_dlsearch_path_spec=/usr/lib
    need_lib_prefix=no
    if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`"; then
-@@ -11347,7 +12047,7 @@ openbsd* | bitrig*)
+@@ -11347,7 +12051,7 @@ openbsd* | bitrig*)
    else
      need_version=yes
    fi
@@ -8007,7 +8018,7 @@ $NetBSD$
    finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
    shlibpath_var=LD_LIBRARY_PATH
    shlibpath_overrides_runpath=yes
-@@ -11499,8 +12199,8 @@ uts4*)
+@@ -11499,8 +12203,8 @@ uts4*)
    dynamic_linker=no
    ;;
  esac
@@ -8018,7 +8029,7 @@ $NetBSD$
  test no = "$dynamic_linker" && can_build_shared=no
  
  variables_saved_for_relink="PATH $shlibpath_var $runpath_var"
-@@ -11621,8 +12321,8 @@ configure_time_lt_sys_library_path=$LT_S
+@@ -11621,8 +12325,8 @@ configure_time_lt_sys_library_path=$LT_S
  
  
  
@@ -8029,7 +8040,7 @@ $NetBSD$
  hardcode_action=
  if test -n "$hardcode_libdir_flag_spec" ||
     test -n "$runpath_var" ||
-@@ -11646,8 +12346,8 @@ else
+@@ -11646,8 +12350,8 @@ else
    # directories.
    hardcode_action=unsupported
  fi
@@ -8040,7 +8051,7 @@ $NetBSD$
  
  if test relink = "$hardcode_action" ||
     test yes = "$inherit_rpath"; then
-@@ -11691,11 +12391,12 @@ else
+@@ -11691,11 +12395,12 @@ else
  
    darwin*)
      # if libdl is installed we need to link against it
@@ -8058,7 +8069,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldl  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -11704,32 +12405,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -11704,32 +12409,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8101,7 +8112,7 @@ $NetBSD$
  
      lt_cv_dlopen=dyld
      lt_cv_dlopen_libs=
-@@ -11749,14 +12449,16 @@ fi
+@@ -11749,14 +12453,16 @@ fi
  
    *)
      ac_fn_c_check_func "$LINENO" "shl_load" "ac_cv_func_shl_load"
@@ -8125,7 +8136,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -11765,41 +12467,42 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -11765,41 +12471,42 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8186,7 +8197,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldl  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -11808,37 +12511,37 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -11808,37 +12515,37 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8240,7 +8251,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-lsvld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -11847,37 +12550,37 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -11847,37 +12554,37 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8294,7 +8305,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -11886,30 +12589,29 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -11886,30 +12593,29 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8334,7 +8345,7 @@ $NetBSD$
    lt_cv_dlopen=dld_link lt_cv_dlopen_libs=-ldld
  fi
  
-@@ -11948,11 +12650,12 @@ fi
+@@ -11948,11 +12654,12 @@ fi
      save_LIBS=$LIBS
      LIBS="$lt_cv_dlopen_libs $LIBS"
  
@@ -8352,7 +8363,7 @@ $NetBSD$
    	  if test yes = "$cross_compiling"; then :
    lt_cv_dlopen_self=cross
  else
-@@ -12031,7 +12734,7 @@ _LT_EOF
+@@ -12031,7 +12738,7 @@ _LT_EOF
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_link\""; } >&5
    (eval $ac_link) 2>&5
    ac_status=$?
@@ -8361,7 +8372,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s "conftest$ac_exeext" 2>/dev/null; then
      (./conftest; exit; ) >&5 2>/dev/null
      lt_status=$?
-@@ -12049,16 +12752,17 @@ rm -fr conftest*
+@@ -12049,16 +12756,17 @@ rm -fr conftest*
  
  
  fi
@@ -8386,7 +8397,7 @@ $NetBSD$
    	  if test yes = "$cross_compiling"; then :
    lt_cv_dlopen_self_static=cross
  else
-@@ -12137,7 +12841,7 @@ _LT_EOF
+@@ -12137,7 +12845,7 @@ _LT_EOF
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_link\""; } >&5
    (eval $ac_link) 2>&5
    ac_status=$?
@@ -8395,7 +8406,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s "conftest$ac_exeext" 2>/dev/null; then
      (./conftest; exit; ) >&5 2>/dev/null
      lt_status=$?
-@@ -12155,8 +12859,8 @@ rm -fr conftest*
+@@ -12155,8 +12863,8 @@ rm -fr conftest*
  
  
  fi
@@ -8406,7 +8417,7 @@ $NetBSD$
      fi
  
      CPPFLAGS=$save_CPPFLAGS
-@@ -12194,13 +12898,13 @@ fi
+@@ -12194,13 +12902,13 @@ fi
  
  striplib=
  old_striplib=
@@ -8424,7 +8435,7 @@ $NetBSD$
  else
  # FIXME - insert some real tests, host_os isn't really good enough
    case $host_os in
-@@ -12208,16 +12912,16 @@ else
+@@ -12208,16 +12916,16 @@ else
      if test -n "$STRIP"; then
        striplib="$STRIP -x"
        old_striplib="$STRIP -S"
@@ -8447,7 +8458,7 @@ $NetBSD$
      ;;
    esac
  fi
-@@ -12234,13 +12938,13 @@ fi
+@@ -12234,13 +12942,13 @@ fi
  
  
    # Report what library types will actually be built
@@ -8467,7 +8478,7 @@ $NetBSD$
    test no = "$can_build_shared" && enable_shared=no
  
    # On AIX, shared libraries and static libraries use the same namespace, and
-@@ -12264,15 +12968,15 @@ $as_echo_n "checking whether to build sh
+@@ -12264,15 +12972,15 @@ $as_echo_n "checking whether to build sh
      fi
      ;;
    esac
@@ -8489,7 +8500,7 @@ $NetBSD$
  
  
  
-@@ -12308,11 +13012,12 @@ CC=$lt_save_CC
+@@ -12308,11 +13016,12 @@ CC=$lt_save_CC
  # Only expand once:
  
  
@@ -8507,7 +8518,7 @@ $NetBSD$
  
  module=yes
  eval libltdl_cv_shlibext=$shrext_cmds
-@@ -12320,56 +13025,50 @@ module=no
+@@ -12320,56 +13029,50 @@ module=no
  eval libltdl_cv_shrext=$shrext_cmds
  
  fi
@@ -8586,7 +8597,7 @@ $NetBSD$
  if test -n "$lt_cv_sys_dlsearch_path"; then
    sys_dlsearch_path=
    for dir in $lt_cv_sys_dlsearch_path; do
-@@ -12380,11 +13079,102 @@ if test -n "$lt_cv_sys_dlsearch_path"; t
+@@ -12380,11 +13083,102 @@ if test -n "$lt_cv_sys_dlsearch_path"; t
      fi
    done
  
@@ -8675,10 +8686,10 @@ $NetBSD$
 +printf "%s\n" "$as_me: error: in \`$ac_pwd':" >&2;}
 +as_fn_error $? "compiler does not report undeclared identifiers
 +See \`config.log' for more details" "$LINENO" 5; }
- fi
++fi
 +else $as_nop
 +  ac_cv_c_decl_report=error
-+fi
+ fi
 +rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
 +fi
 +{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_c_decl_report" >&5
@@ -8691,7 +8702,7 @@ $NetBSD$
  
  
  LT_DLLOADERS=
-@@ -12399,11 +13189,12 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -12399,11 +13193,12 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
  lt_dlload_save_LIBS=$LIBS
  
  LIBADD_DLOPEN=
@@ -8709,7 +8720,7 @@ $NetBSD$
    ac_func_search_save_LIBS=$LIBS
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
-@@ -12411,56 +13202,58 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -12411,56 +13206,58 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8783,7 +8794,7 @@ $NetBSD$
    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  #if HAVE_DLFCN_H
-@@ -12468,25 +13261,27 @@ else
+@@ -12468,25 +13265,27 @@ else
  #endif
  
  int
@@ -8820,7 +8831,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-lsvld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -12495,39 +13290,38 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -12495,39 +13294,38 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8871,7 +8882,7 @@ $NetBSD$
      conftest$ac_exeext conftest.$ac_ext
  fi
  
-@@ -12535,16 +13329,12 @@ if test yes = "$libltdl_cv_func_dlopen" 
+@@ -12535,16 +13333,12 @@ if test yes = "$libltdl_cv_func_dlopen"
  then
    lt_save_LIBS=$LIBS
    LIBS="$LIBS $LIBADD_DLOPEN"
@@ -8891,7 +8902,7 @@ $NetBSD$
  
    LIBS=$lt_save_LIBS
  fi
-@@ -12552,17 +13342,19 @@ fi
+@@ -12552,17 +13346,19 @@ fi
  
  LIBADD_SHL_LOAD=
  ac_fn_c_check_func "$LINENO" "shl_load" "ac_cv_func_shl_load"
@@ -8919,7 +8930,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -12571,32 +13363,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -12571,32 +13367,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -8962,7 +8973,7 @@ $NetBSD$
  
  	    LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}shl_load.la"
  	    LIBADD_SHL_LOAD=-ldld
-@@ -12610,9 +13401,10 @@ case $host_os in
+@@ -12610,9 +13405,10 @@ case $host_os in
  darwin[1567].*)
  # We only want this for pre-Mac OS X 10.4.
    ac_fn_c_check_func "$LINENO" "_dyld_func_lookup" "ac_cv_func__dyld_func_lookup"
@@ -8975,7 +8986,7 @@ $NetBSD$
  
  	LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dyld.la"
  fi
-@@ -12624,25 +13416,25 @@ beos*)
+@@ -12624,25 +13420,25 @@ beos*)
  cygwin* | mingw* | pw32*)
    ac_fn_c_check_decl "$LINENO" "cygwin_conv_path" "ac_cv_have_decl_cygwin_conv_path" "#include <sys/cygwin.h>
  "
@@ -9011,7 +9022,7 @@ $NetBSD$
    ac_check_lib_save_LIBS=$LIBS
  LIBS="-ldld  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -12651,32 +13443,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+@@ -12651,32 +13447,31 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
  /* Override any GCC internal prototype to avoid an error.
     Use char because int might match the return type of a GCC
     builtin and then its argument prototype would still apply.  */
@@ -9054,7 +9065,7 @@ $NetBSD$
  
  		LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dld_link.la"
  fi
-@@ -12691,7 +13482,7 @@ then
+@@ -12691,7 +13486,7 @@ then
      LT_DLPREOPEN="$LT_DLPREOPEN-dlpreopen $lt_loader "
    done
  
@@ -9063,7 +9074,7 @@ $NetBSD$
  
  fi
  
-@@ -12707,11 +13498,12 @@ ac_link='$CC -o conftest$ac_exeext $CFLA
+@@ -12707,11 +13502,12 @@ ac_link='$CC -o conftest$ac_exeext $CFLA
  ac_compiler_gnu=$ac_cv_c_compiler_gnu
  
  
@@ -9081,7 +9092,7 @@ $NetBSD$
    lt_cv_sys_symbol_underscore=no
    cat > conftest.$ac_ext <<_LT_EOF
  void nm_test_func(){}
-@@ -12720,14 +13512,14 @@ _LT_EOF
+@@ -12720,14 +13516,14 @@ _LT_EOF
    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_compile\""; } >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
@@ -9098,7 +9109,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s "$ac_nlist"; then
        # See whether the symbols have a leading underscore.
        if grep '^. _nm_test_func' "$ac_nlist" >/dev/null; then
-@@ -12749,18 +13541,19 @@ _LT_EOF
+@@ -12749,18 +13545,19 @@ _LT_EOF
    rm -rf conftest*
  
  fi
@@ -9125,7 +9136,7 @@ $NetBSD$
    libltdl_cv_need_uscore=unknown
        dlsym_uscore_save_LIBS=$LIBS
        LIBS="$LIBS $LIBADD_DLOPEN"
-@@ -12841,7 +13634,7 @@ _LT_EOF
+@@ -12841,7 +13638,7 @@ _LT_EOF
        if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_link\""; } >&5
    (eval $ac_link) 2>&5
    ac_status=$?
@@ -9134,7 +9145,7 @@ $NetBSD$
    test $ac_status = 0; } && test -s "conftest$ac_exeext" 2>/dev/null; then
          (./conftest; exit; ) >&5 2>/dev/null
          libltdl_status=$?
-@@ -12855,22 +13648,23 @@ _LT_EOF
+@@ -12855,22 +13652,23 @@ _LT_EOF
        LIBS=$dlsym_uscore_save_LIBS
  
  fi
@@ -9166,7 +9177,7 @@ $NetBSD$
    # PORTME does your system automatically load deplibs for dlopen?
    # or its logical equivalent (e.g. shl_load for HP-UX < 11)
    # For now, we just catch OSes we know something about -- in the
-@@ -12900,7 +13694,7 @@ else
+@@ -12900,7 +13698,7 @@ else
      # If you are looking for one http://www.opendarwin.org/projects/dlcompat
      lt_cv_sys_dlopen_deplibs=yes
      ;;
@@ -9175,7 +9186,7 @@ $NetBSD$
      lt_cv_sys_dlopen_deplibs=yes
      ;;
    gnu* | linux* | k*bsd*-gnu | kopensolaris*-gnu)
-@@ -12923,7 +13717,10 @@ else
+@@ -12923,7 +13721,10 @@ else
      # at 6.2 and later dlopen does load deplibs.
      lt_cv_sys_dlopen_deplibs=yes
      ;;
@@ -9187,7 +9198,7 @@ $NetBSD$
      lt_cv_sys_dlopen_deplibs=yes
      ;;
    openbsd*)
-@@ -12963,62 +13760,57 @@ else
+@@ -12963,62 +13764,57 @@ else
    esac
  
  fi
@@ -9270,7 +9281,7 @@ $NetBSD$
    LT_ARGZ_H=lt__argz.h; case " $LIBOBJS " in
    *" lt__argz.$ac_objext "* ) ;;
    *) LIBOBJS="$LIBOBJS lt__argz.$ac_objext"
-@@ -13026,15 +13818,17 @@ else
+@@ -13026,15 +13822,17 @@ else
  esac
  
  fi
@@ -9295,7 +9306,7 @@ $NetBSD$
    case $host_os in #(
  	 *cygwin*)
  	   lt_cv_sys_argz_works=no
-@@ -13061,13 +13855,14 @@ else
+@@ -13061,13 +13859,14 @@ else
  	 *) lt_cv_sys_argz_works=yes ;;
  	 esac
  fi
@@ -9315,7 +9326,7 @@ $NetBSD$
    LT_ARGZ_H=lt__argz.h
          case " $LIBOBJS " in
    *" lt__argz.$ac_objext "* ) ;;
-@@ -13080,11 +13875,12 @@ fi
+@@ -13080,11 +13879,12 @@ fi
  
  
  
@@ -9333,7 +9344,7 @@ $NetBSD$
    if test -n "$lt_cv_sys_global_symbol_pipe"; then
      libltdl_cv_preloaded_symbols=yes
    else
-@@ -13092,18 +13888,19 @@ else
+@@ -13092,18 +13892,19 @@ else
    fi
  
  fi
@@ -9357,7 +9368,7 @@ $NetBSD$
    enableval=$enable_ltdl_install;
  fi
  
-@@ -13142,31 +13939,62 @@ fi
+@@ -13142,31 +13943,62 @@ fi
  
  
  
@@ -9374,28 +9385,30 @@ $NetBSD$
 +if test "x$ac_cv_header_unistd_h" = xyes
 +then :
 +  printf "%s\n" "#define HAVE_UNISTD_H 1" >>confdefs.h
-+
-+fi
+ 
+ fi
 +ac_fn_c_check_header_compile "$LINENO" "dl.h" "ac_cv_header_dl_h" "$ac_includes_default
 +"
 +if test "x$ac_cv_header_dl_h" = xyes
 +then :
 +  printf "%s\n" "#define HAVE_DL_H 1" >>confdefs.h
-+
+ 
+-done
 +fi
 +ac_fn_c_check_header_compile "$LINENO" "sys/dl.h" "ac_cv_header_sys_dl_h" "$ac_includes_default
 +"
 +if test "x$ac_cv_header_sys_dl_h" = xyes
 +then :
 +  printf "%s\n" "#define HAVE_SYS_DL_H 1" >>confdefs.h
-+
+ 
 +fi
 +ac_fn_c_check_header_compile "$LINENO" "dld.h" "ac_cv_header_dld_h" "$ac_includes_default
 +"
 +if test "x$ac_cv_header_dld_h" = xyes
 +then :
 +  printf "%s\n" "#define HAVE_DLD_H 1" >>confdefs.h
-+
+ 
+-for ac_func in closedir opendir readdir
 +fi
 +ac_fn_c_check_header_compile "$LINENO" "mach-o/dyld.h" "ac_cv_header_mach_o_dyld_h" "$ac_includes_default
 +"
@@ -9409,13 +9422,11 @@ $NetBSD$
 +if test "x$ac_cv_header_dirent_h" = xyes
 +then :
 +  printf "%s\n" "#define HAVE_DIRENT_H 1" >>confdefs.h
- 
- fi
- 
--done
- 
- 
--for ac_func in closedir opendir readdir
++
++fi
++
++
++
 +  for ac_func in closedir opendir readdir
  do :
 -  as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
@@ -9434,7 +9445,7 @@ $NetBSD$
    case " $LIBOBJS " in
    *" lt__dirent.$ac_objext "* ) ;;
    *) LIBOBJS="$LIBOBJS lt__dirent.$ac_objext"
-@@ -13174,18 +14002,20 @@ else
+@@ -13174,18 +14006,20 @@ else
  esac
  
  fi
@@ -9460,7 +9471,7 @@ $NetBSD$
    case " $LIBOBJS " in
    *" lt__strl.$ac_objext "* ) ;;
    *) LIBOBJS="$LIBOBJS lt__strl.$ac_objext"
-@@ -13193,21 +14023,17 @@ else
+@@ -13193,21 +14027,17 @@ else
  esac
  
  fi
@@ -9485,7 +9496,7 @@ $NetBSD$
  
  
  name=ltdl
-@@ -13248,8 +14074,8 @@ _ACEOF
+@@ -13248,8 +14078,8 @@ _ACEOF
      case $ac_val in #(
      *${as_nl}*)
        case $ac_var in #(
@@ -9496,7 +9507,7 @@ $NetBSD$
        esac
        case $ac_var in #(
        _ | IFS | as_nl) ;; #(
-@@ -13279,15 +14105,15 @@ $as_echo "$as_me: WARNING: cache variabl
+@@ -13279,15 +14109,15 @@ $as_echo "$as_me: WARNING: cache variabl
       /^ac_cv_env_/b end
       t clear
       :clear
@@ -9515,7 +9526,7 @@ $NetBSD$
        if test ! -f "$cache_file" || test -h "$cache_file"; then
  	cat confcache >"$cache_file"
        else
-@@ -13301,8 +14127,8 @@ $as_echo "$as_me: updating cache $cache_
+@@ -13301,8 +14131,8 @@ $as_echo "$as_me: updating cache $cache_
        fi
      fi
    else
@@ -9526,7 +9537,7 @@ $NetBSD$
    fi
  fi
  rm -f confcache
-@@ -13319,7 +14145,7 @@ U=
+@@ -13319,7 +14149,7 @@ U=
  for ac_i in : $LIBOBJS; do test "x$ac_i" = x: && continue
    # 1. Remove the extension, and $U if already installed.
    ac_script='s/\$U\././;s/\.o$//;s/\.obj$//'
@@ -9535,7 +9546,7 @@ $NetBSD$
    # 2. Prepend LIBOBJDIR.  When used with automake>=1.10 LIBOBJDIR
    #    will be set to the directory where LIBOBJS objects are built.
    as_fn_append ac_libobjs " \${LIBOBJDIR}$ac_i\$U.$ac_objext"
-@@ -13330,14 +14156,14 @@ LIBOBJS=$ac_libobjs
+@@ -13330,14 +14160,14 @@ LIBOBJS=$ac_libobjs
  LTLIBOBJS=$ac_ltlibobjs
  
  
@@ -9554,7 +9565,7 @@ $NetBSD$
   if test -n "$EXEEXT"; then
    am__EXEEXT_TRUE=
    am__EXEEXT_FALSE='#'
-@@ -13368,8 +14194,8 @@ LT_CONFIG_H=config.h
+@@ -13368,8 +14198,8 @@ LT_CONFIG_H=config.h
  ac_write_fail=0
  ac_clean_files_save=$ac_clean_files
  ac_clean_files="$ac_clean_files $CONFIG_STATUS"
@@ -9565,7 +9576,7 @@ $NetBSD$
  as_write_fail=0
  cat >$CONFIG_STATUS <<_ASEOF || as_write_fail=1
  #! $SHELL
-@@ -13392,14 +14218,16 @@ cat >>$CONFIG_STATUS <<\_ASEOF || as_wri
+@@ -13392,14 +14222,16 @@ cat >>$CONFIG_STATUS <<\_ASEOF || as_wri
  
  # Be more Bourne compatible
  DUALCASE=1; export DUALCASE # for MKS sh
@@ -9584,7 +9595,7 @@ $NetBSD$
    case `(set -o) 2>/dev/null` in #(
    *posix*) :
      set -o posix ;; #(
-@@ -13409,46 +14237,46 @@ esac
+@@ -13409,46 +14241,46 @@ esac
  fi
  
  
@@ -9666,7 +9677,7 @@ $NetBSD$
    PATH_SEPARATOR=:
    (PATH='/bin;/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 && {
      (PATH='/bin:/bin'; FPATH=$PATH; sh -c :) >/dev/null 2>&1 ||
-@@ -13457,13 +14285,6 @@ if test "${PATH_SEPARATOR+set}" != set; 
+@@ -13457,13 +14289,6 @@ if test "${PATH_SEPARATOR+set}" != set;
  fi
  
  
@@ -9680,7 +9691,7 @@ $NetBSD$
  # Find who we are.  Look in the path if we contain no directory separator.
  as_myself=
  case $0 in #((
-@@ -13472,8 +14293,12 @@ case $0 in #((
+@@ -13472,8 +14297,12 @@ case $0 in #((
  for as_dir in $PATH
  do
    IFS=$as_save_IFS
@@ -9695,7 +9706,7 @@ $NetBSD$
    done
  IFS=$as_save_IFS
  
-@@ -13485,30 +14310,10 @@ if test "x$as_myself" = x; then
+@@ -13485,30 +14314,10 @@ if test "x$as_myself" = x; then
    as_myself=$0
  fi
  if test ! -f "$as_myself"; then
@@ -9727,7 +9738,7 @@ $NetBSD$
  
  
  # as_fn_error STATUS ERROR [LINENO LOG_FD]
-@@ -13521,13 +14326,14 @@ as_fn_error ()
+@@ -13521,13 +14330,14 @@ as_fn_error ()
    as_status=$1; test $as_status -eq 0 && as_status=1
    if test "$4"; then
      as_lineno=${as_lineno-"$3"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
@@ -9744,7 +9755,7 @@ $NetBSD$
  # as_fn_set_status STATUS
  # -----------------------
  # Set $? to STATUS, without forking.
-@@ -13554,18 +14360,20 @@ as_fn_unset ()
+@@ -13554,18 +14364,20 @@ as_fn_unset ()
    { eval $1=; unset $1;}
  }
  as_unset=as_fn_unset
@@ -9767,7 +9778,7 @@ $NetBSD$
    as_fn_append ()
    {
      eval $1=\$$1\$2
-@@ -13577,12 +14385,13 @@ fi # as_fn_append
+@@ -13577,12 +14389,13 @@ fi # as_fn_append
  # Perform arithmetic evaluation on the ARGs, and store the result in the
  # global $as_val. Take advantage of shells that can avoid forks. The arguments
  # must be portable across $(()) and expr.
@@ -9783,7 +9794,7 @@ $NetBSD$
    as_fn_arith ()
    {
      as_val=`expr "$@" || test $? -eq 1`
-@@ -13613,7 +14422,7 @@ as_me=`$as_basename -- "$0" ||
+@@ -13613,7 +14426,7 @@ as_me=`$as_basename -- "$0" ||
  $as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
  	 X"$0" : 'X\(//\)$' \| \
  	 X"$0" : 'X\(/\)' \| . 2>/dev/null ||
@@ -9792,7 +9803,7 @@ $NetBSD$
      sed '/^.*\/\([^/][^/]*\)\/*$/{
  	    s//\1/
  	    q
-@@ -13635,6 +14444,10 @@ as_cr_Letters=$as_cr_letters$as_cr_LETTE
+@@ -13635,6 +14448,10 @@ as_cr_Letters=$as_cr_letters$as_cr_LETTE
  as_cr_digits='0123456789'
  as_cr_alnum=$as_cr_Letters$as_cr_digits
  
@@ -9803,7 +9814,7 @@ $NetBSD$
  ECHO_C= ECHO_N= ECHO_T=
  case `echo -n x` in #(((((
  -n*)
-@@ -13648,6 +14461,12 @@ case `echo -n x` in #(((((
+@@ -13648,6 +14465,12 @@ case `echo -n x` in #(((((
    ECHO_N='-n';;
  esac
  
@@ -9816,7 +9827,7 @@ $NetBSD$
  rm -f conf$$ conf$$.exe conf$$.file
  if test -d conf$$.dir; then
    rm -f conf$$.dir/conf$$.file
-@@ -13689,7 +14508,7 @@ as_fn_mkdir_p ()
+@@ -13689,7 +14512,7 @@ as_fn_mkdir_p ()
      as_dirs=
      while :; do
        case $as_dir in #(
@@ -9825,7 +9836,7 @@ $NetBSD$
        *) as_qdir=$as_dir;;
        esac
        as_dirs="'$as_qdir' $as_dirs"
-@@ -13698,7 +14517,7 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/
+@@ -13698,7 +14521,7 @@ $as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/
  	 X"$as_dir" : 'X\(//\)[^/]' \| \
  	 X"$as_dir" : 'X\(//\)$' \| \
  	 X"$as_dir" : 'X\(/\)' \| . 2>/dev/null ||
@@ -9834,7 +9845,7 @@ $NetBSD$
      sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
  	    s//\1/
  	    q
-@@ -13761,7 +14580,7 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_wri
+@@ -13761,7 +14584,7 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_wri
  # values after options handling.
  ac_log="
  This file was extended by libltdl $as_me 2.4.3a, which was
@@ -9843,7 +9854,7 @@ $NetBSD$
  
    CONFIG_FILES    = $CONFIG_FILES
    CONFIG_HEADERS  = $CONFIG_HEADERS
-@@ -13823,14 +14642,16 @@ $config_commands
+@@ -13823,14 +14646,16 @@ $config_commands
  Report bugs to <bug-libtool@gnu.org>."
  
  _ACEOF
@@ -9863,7 +9874,7 @@ $NetBSD$
  This config.status script is free software; the Free Software Foundation
  gives unlimited permission to copy, distribute and modify it."
  
-@@ -13870,15 +14691,15 @@ do
+@@ -13870,15 +14695,15 @@ do
    -recheck | --recheck | --rechec | --reche | --rech | --rec | --re | --r)
      ac_cs_recheck=: ;;
    --version | --versio | --versi | --vers | --ver | --ve | --v | -V )
@@ -9882,7 +9893,7 @@ $NetBSD$
      '') as_fn_error $? "missing file argument" ;;
      esac
      as_fn_append CONFIG_FILES " '$ac_optarg'"
-@@ -13886,7 +14707,7 @@ do
+@@ -13886,7 +14711,7 @@ do
    --header | --heade | --head | --hea )
      $ac_shift
      case $ac_optarg in
@@ -9891,7 +9902,7 @@ $NetBSD$
      esac
      as_fn_append CONFIG_HEADERS " '$ac_optarg'"
      ac_need_defaults=false;;
-@@ -13895,7 +14716,7 @@ do
+@@ -13895,7 +14720,7 @@ do
      as_fn_error $? "ambiguous option: \`$1'
  Try \`$0 --help' for more information.";;
    --help | --hel | -h )
@@ -9900,7 +9911,7 @@ $NetBSD$
    -q | -quiet | --quiet | --quie | --qui | --qu | --q \
    | -silent | --silent | --silen | --sile | --sil | --si | --s)
      ac_cs_silent=: ;;
-@@ -13923,7 +14744,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+@@ -13923,7 +14748,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
  if \$ac_cs_recheck; then
    set X $SHELL '$0' $ac_configure_args \$ac_configure_extra_args --no-create --no-recursion
    shift
@@ -9909,7 +9920,7 @@ $NetBSD$
    CONFIG_SHELL='$SHELL'
    export CONFIG_SHELL
    exec "\$@"
-@@ -13937,7 +14758,7 @@ exec 5>>config.log
+@@ -13937,7 +14762,7 @@ exec 5>>config.log
    sed 'h;s/./-/g;s/^.../## /;s/...$/ ##/;p;x;p;x' <<_ASBOX
  ## Running $as_me. ##
  _ASBOX
@@ -9918,7 +9929,7 @@ $NetBSD$
  } >&5
  
  _ACEOF
-@@ -13945,7 +14766,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
+@@ -13945,7 +14770,7 @@ cat >>$CONFIG_STATUS <<_ACEOF || ac_writ
  #
  # INIT-COMMANDS
  #
@@ -9927,7 +9938,7 @@ $NetBSD$
  
  
  # The HP-UX ksh and POSIX shell print the target directory to stdout
-@@ -14255,9 +15076,9 @@ done
+@@ -14255,9 +15080,9 @@ done
  # We use the long form for the default assignment because of an extremely
  # bizarre bug on SunOS 4.1.3.
  if $ac_need_defaults; then
@@ -9940,7 +9951,7 @@ $NetBSD$
  fi
  
  # Have a temporary directory for convenience.  Make it in the build tree
-@@ -14593,7 +15414,7 @@ do
+@@ -14593,7 +15418,7 @@ do
  	   esac ||
  	   as_fn_error 1 "cannot find input file: \`$ac_f'" "$LINENO" 5;;
        esac
@@ -9949,7 +9960,7 @@ $NetBSD$
        as_fn_append ac_file_inputs " '$ac_f'"
      done
  
-@@ -14601,17 +15422,17 @@ do
+@@ -14601,17 +15426,17 @@ do
      # use $as_me), people would be surprised to read:
      #    /* config.h.  Generated by config.status.  */
      configure_input='Generated from '`
@@ -9971,7 +9982,7 @@ $NetBSD$
         sed 's/[\\\\&|]/\\\\&/g'`;; #(
      *) ac_sed_conf_input=$configure_input;;
      esac
-@@ -14628,7 +15449,7 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^
+@@ -14628,7 +15453,7 @@ $as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^
  	 X"$ac_file" : 'X\(//\)[^/]' \| \
  	 X"$ac_file" : 'X\(//\)$' \| \
  	 X"$ac_file" : 'X\(/\)' \| . 2>/dev/null ||
@@ -9980,7 +9991,7 @@ $NetBSD$
      sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
  	    s//\1/
  	    q
-@@ -14652,9 +15473,9 @@ $as_echo X"$ac_file" |
+@@ -14652,9 +15477,9 @@ $as_echo X"$ac_file" |
  case "$ac_dir" in
  .) ac_dir_suffix= ac_top_builddir_sub=. ac_top_build_prefix= ;;
  *)
@@ -9992,7 +10003,7 @@ $NetBSD$
    case $ac_top_builddir_sub in
    "") ac_top_builddir_sub=. ac_top_build_prefix= ;;
    *)  ac_top_build_prefix=$ac_top_builddir_sub/ ;;
-@@ -14716,8 +15537,8 @@ ac_sed_dataroot='
+@@ -14716,8 +15541,8 @@ ac_sed_dataroot='
  case `eval "sed -n \"\$ac_sed_dataroot\" $ac_file_inputs"` in
  *datarootdir*) ac_datarootdir_seen=yes;;
  *@datadir@*|*@docdir@*|*@infodir@*|*@localedir@*|*@mandir@*)
@@ -10003,7 +10014,7 @@ $NetBSD$
  _ACEOF
  cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
    ac_datarootdir_hack='
-@@ -14761,9 +15582,9 @@ test -z "$ac_datarootdir_hack$ac_dataroo
+@@ -14761,9 +15586,9 @@ test -z "$ac_datarootdir_hack$ac_dataroo
    { ac_out=`sed -n '/\${datarootdir}/p' "$ac_tmp/out"`; test -n "$ac_out"; } &&
    { ac_out=`sed -n '/^[	 ]*datarootdir[	 ]*:*=/p' \
        "$ac_tmp/out"`; test -z "$ac_out"; } &&
@@ -10015,7 +10026,7 @@ $NetBSD$
  which seems to be undefined.  Please make sure it is defined" >&2;}
  
    rm -f "$ac_tmp/stdin"
-@@ -14779,20 +15600,20 @@ which seems to be undefined.  Please mak
+@@ -14779,20 +15604,20 @@ which seems to be undefined.  Please mak
    #
    if test x"$ac_file" != x-; then
      {
@@ -10040,7 +10051,7 @@ $NetBSD$
        && eval '$AWK -f "$ac_tmp/defines.awk"' "$ac_file_inputs" \
        || as_fn_error $? "could not create -" "$LINENO" 5
    fi
-@@ -14812,7 +15633,7 @@ $as_expr X"$_am_arg" : 'X\(.*[^/]\)//*[^
+@@ -14812,7 +15637,7 @@ $as_expr X"$_am_arg" : 'X\(.*[^/]\)//*[^
  	 X"$_am_arg" : 'X\(//\)[^/]' \| \
  	 X"$_am_arg" : 'X\(//\)$' \| \
  	 X"$_am_arg" : 'X\(/\)' \| . 2>/dev/null ||
@@ -10049,7 +10060,7 @@ $NetBSD$
      sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
  	    s//\1/
  	    q
-@@ -14832,8 +15653,8 @@ $as_echo X"$_am_arg" |
+@@ -14832,8 +15657,8 @@ $as_echo X"$_am_arg" |
  	  s/.*/./; q'`/stamp-h$_am_stamp_count
   ;;
  
@@ -10060,7 +10071,7 @@ $NetBSD$
   ;;
    esac
  
-@@ -14843,29 +15664,35 @@ $as_echo "$as_me: executing $ac_file com
+@@ -14843,29 +15668,35 @@ $as_echo "$as_me: executing $ac_file com
    # Older Autoconf quotes --file arguments for eval, but not when files
    # are listed without --file.  Let's play safe and only enable the eval
    # if we detect the quoting.
@@ -10115,7 +10126,7 @@ $NetBSD$
      sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
  	    s//\1/
  	    q
-@@ -14883,53 +15710,50 @@ $as_echo X"$mf" |
+@@ -14883,53 +15714,50 @@ $as_echo X"$mf" |
  	    q
  	  }
  	  s/.*/./; q'`
@@ -10202,7 +10213,7 @@ $NetBSD$
  }
   ;;
      "libtool":C)
-@@ -15440,7 +16264,10 @@ func_cc_basename ()
+@@ -15440,7 +16268,10 @@ func_cc_basename ()
          *) break;;
        esac
      done
@@ -10214,7 +10225,7 @@ $NetBSD$
  }
  
  
-@@ -15463,6 +16290,7 @@ _LT_EOF
+@@ -15463,6 +16294,7 @@ _LT_EOF
    esac
  
  
@@ -10222,7 +10233,7 @@ $NetBSD$
  ltmain=$ac_aux_dir/ltmain.sh
  
  
-@@ -15512,7 +16340,8 @@ if test "$no_create" != yes; then
+@@ -15512,7 +16344,8 @@ if test "$no_create" != yes; then
    $ac_cs_success || as_fn_exit 1
  fi
  if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then

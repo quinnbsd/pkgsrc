@@ -5,3 +5,5 @@ RMD160 (tint2-v16.7.tar.bz2) = 0e3f14facd7b654282a77b899b35c5b382fe3127
 SHA512 (tint2-v16.7.tar.bz2) = 92d3bb3b26fe356553b711727d86c46ab1530990e972791b10ddde57c7479ce983dda97bacb5dd37be1e846c767b00a0e36388271d5e6618552243c8e2a7fa43
 Size (tint2-v16.7.tar.bz2) = 402712 bytes
 SHA1 (patch-aa) = fdf0fe697ceb576068b0873532ac406b59752370
+SHA1 (patch-src_launcher_apps-common.c) = 76014e777ab55a2f5d6818713f943aa48fcac30e
+SHA1 (patch-src_launcher_icon-theme-common.c) = 94f5db305fc8597f7e88037d721991440422b314

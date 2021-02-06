@@ -18,7 +18,7 @@ USE_LANGUAGES=	# none
 USE_TOOLS+=	pax
 
 do-install:
-	${INSTALL_DATA_DIR} ${DESTDIR}${PREFIX}/share/icons
-	cd ${WRKSRC} && ${PAX} -rw -pm . ${DESTDIR}${PREFIX}/share/icons/
+	${INSTALL_DATA_DIR} ${DESTDIR}${PREFIX}/share/icons/elementary/
+	cd ${WRKSRC} && ${PAX} -rw -pm . ${DESTDIR}${PREFIX}/share/icons/elementary/
 
 .include "../../mk/bsd.pkg.mk"

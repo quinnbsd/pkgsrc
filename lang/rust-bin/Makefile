@@ -16,6 +16,7 @@ CONFLICTS+=	rust-[0-9]*
 ONLY_FOR_PLATFORM+=	Darwin-*-x86_64
 ONLY_FOR_PLATFORM+=	FreeBSD-*-i386
 ONLY_FOR_PLATFORM+=	FreeBSD-*-x86_64
+ONLY_FOR_PLATFORM+=     QuinnBSD-*-x86_64
 ONLY_FOR_PLATFORM+=	NetBSD-*-x86_64
 ONLY_FOR_PLATFORM+=	Linux-*-aarch64
 ONLY_FOR_PLATFORM+=	Linux-*-i386
@@ -47,6 +48,10 @@ DISTFILES:=	${DISTFILES} ${DISTNAME}-${RUST_ARCH}.tar.gz
 .if !empty(MACHINE_PLATFORM:MFreeBSD-*-x86_64) || make(distinfo) || make(makesum) || make(mdi)
 RUST_ARCH:=	x86_64-unknown-freebsd
 DISTFILES:=	${DISTFILES} ${DISTNAME}-${RUST_ARCH}.tar.gz
+.endif
+.if !empty(MACHINE_PLATFORM:MQuinnBSD-*-x86_64) || make(distinfo) || make(makesum) || make(mdi)
+RUST_ARCH:=     x86_64-unknown-freebsd
+DISTFILES:=     ${DISTFILES} ${DISTNAME}-${RUST_ARCH}.tar.gz
 .endif
 .if !empty(MACHINE_PLATFORM:MFreeBSD-*-i386) || make(distinfo) || make(makesum) || make(mdi)
 RUST_ARCH:=	i686-unknown-freebsd

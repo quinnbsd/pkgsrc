@@ -1,0 +1,31 @@
+$NetBSD$
+
+--- pkgs/tdbcsqlite3-1.1.2/configure.orig	2020-12-21 21:40:03.000000000 +0000
++++ pkgs/tdbcsqlite3-1.1.2/configure
+@@ -5577,7 +5577,7 @@ fi
+ 
+ fi
+ 	    ;;
+-	Linux*|GNU*|NetBSD-Debian|DragonFly-*|FreeBSD-*)
++	Linux*|GNU*|NetBSD-Debian|DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 	    SHLIB_CFLAGS="-fPIC"
+ 	    SHLIB_SUFFIX=".so"
+ 
+@@ -5589,7 +5589,7 @@ fi
+ 	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
+ 
+ 	    case $system in
+-	    DragonFly-*|FreeBSD-*)
++	    DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 		if test "${TCL_THREADS}" = "1"; then :
+ 
+ 		    # The -pthread needs to go in the LDFLAGS, not LIBS
+@@ -6312,7 +6312,7 @@ fi
+ 	    BSD/OS*) ;;
+ 	    CYGWIN_*|MINGW32_*|MINGW64_*|MSYS_*) ;;
+ 	    IRIX*) ;;
+-	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*) ;;
++	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*|QuinnBSD-*) ;;
+ 	    Darwin-*) ;;
+ 	    SCO_SV-3.2*) ;;
+ 	    windows) ;;

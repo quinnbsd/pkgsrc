@@ -1,6 +1,4 @@
-$NetBSD: patch-unix_tclUnixInit.c,v 1.5 2021/01/20 20:38:49 adam Exp $
-
-Carried over from TCL 8.4
+$NetBSD$
 
 --- unix/tclUnixInit.c.orig	2020-12-11 17:46:23.000000000 +0000
 +++ unix/tclUnixInit.c
@@ -9,7 +7,7 @@ Carried over from TCL 8.4
  #endif
  #include <sys/resource.h>
 -#if defined(__FreeBSD__) && defined(__GNUC__)
-+#if (defined(__FreeBSD__) || defined(__DragonFly__)) && defined(__GNUC__)
++#if (defined(__FreeBSD__) || defined(__DragonFly__) || defined(__QuinnBSD__)) && defined(__GNUC__) 
  #   include <floatingpoint.h>
  #endif
  #if defined(__bsdi__)
@@ -31,7 +29,7 @@ Carried over from TCL 8.4
  #endif /* SIGPIPE */
  
 -#if defined(__FreeBSD__) && defined(__GNUC__)
-+#if (defined(__FreeBSD__) || defined(__DragonFly__)) && defined(__GNUC__)
++#if (defined(__FreeBSD__) || defined(__DragonFly__) || defined(__QuinnBSD__)) && defined(__GNUC__)
      /*
       * Adjust the rounding mode to be more conventional. Note that FreeBSD
       * only provides the __fpsetreg() used by the following two for the GNU

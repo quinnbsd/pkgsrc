@@ -1,4 +1,4 @@
-$NetBSD: patch-unix_configure,v 1.13 2021/01/20 20:38:49 adam Exp $
+$NetBSD$
 
 --- unix/configure.orig	2020-12-31 01:31:43.000000000 +0000
 +++ unix/configure
@@ -44,6 +44,15 @@ $NetBSD: patch-unix_configure,v 1.13 2021/01/20 20:38:49 adam Exp $
  	    if test $doRpath = yes; then
  
  		CC_SEARCH_FLAGS='"-Wl,-rpath,${LIB_RUNTIME_DIR}"'
+@@ -7507,7 +7507,7 @@ fi
+ fi
+ 
+ 	    ;;
+-	DragonFly-*|FreeBSD-*)
++	DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 	    # This configuration from FreeBSD Ports.
+ 	    SHLIB_CFLAGS="-fPIC"
+ 	    SHLIB_LD="${CC} -shared"
 @@ -7540,7 +7540,6 @@ fi
  	    esac
  	    ;;
@@ -52,6 +61,15 @@ $NetBSD: patch-unix_configure,v 1.13 2021/01/20 20:38:49 adam Exp $
  	    SHLIB_CFLAGS="-fno-common"
  	    # To avoid discrepancies between what headers configure sees during
  	    # preprocessing tests and compiling tests, move any -isysroot and
+@@ -8708,7 +8707,7 @@ fi
+ 	    BSD/OS*) ;;
+ 	    CYGWIN_*|MINGW32_*|MSYS_*) ;;
+ 	    IRIX*) ;;
+-	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*) ;;
++	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*|QuinnBSD-*) ;;
+ 	    Darwin-*) ;;
+ 	    SCO_SV-3.2*) ;;
+ 	    *) SHLIB_CFLAGS="-fPIC" ;;
 @@ -8750,7 +8749,11 @@ fi
  
  else
@@ -174,7 +192,7 @@ $NetBSD: patch-unix_configure,v 1.13 2021/01/20 20:38:49 adam Exp $
  
  
  
-@@ -19669,6 +19643,7 @@ s,@EXTRA_BUILD_HTML@,$EXTRA_BUILD_HTML,;
+@@ -19669,6 +19645,7 @@ s,@EXTRA_BUILD_HTML@,$EXTRA_BUILD_HTML,;
  s,@EXTRA_TCLSH_LIBS@,$EXTRA_TCLSH_LIBS,;t t
  s,@DLTEST_LD@,$DLTEST_LD,;t t
  s,@DLTEST_SUFFIX@,$DLTEST_SUFFIX,;t t

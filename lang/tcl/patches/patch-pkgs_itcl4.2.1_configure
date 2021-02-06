@@ -1,10 +1,25 @@
-$NetBSD: patch-pkgs_itcl4.2.1_configure,v 1.1 2021/01/20 20:38:49 adam Exp $
-
-Honor LDFLAGS on NetBSD.
-https://core.tcl.tk/tcl/tktview/fed5069f8a8e59e97af0a784b534919f5b789b1e
+$NetBSD$
 
 --- pkgs/itcl4.2.1/configure.orig	2020-12-21 21:38:48.000000000 +0000
 +++ pkgs/itcl4.2.1/configure
+@@ -6779,7 +6779,7 @@ fi
+ 
+ fi
+ 	    ;;
+-	Linux*|GNU*|NetBSD-Debian|DragonFly-*|FreeBSD-*)
++	Linux*|GNU*|NetBSD-Debian|DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 	    SHLIB_CFLAGS="-fPIC"
+ 	    SHLIB_SUFFIX=".so"
+ 
+@@ -6791,7 +6791,7 @@ fi
+ 	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"
+ 
+ 	    case $system in
+-	    DragonFly-*|FreeBSD-*)
++	    DragonFly-*|FreeBSD-*|QuinnBSD-*)
+ 		if test "${TCL_THREADS}" = "1"; then :
+ 
+ 		    # The -pthread needs to go in the LDFLAGS, not LIBS
 @@ -6891,20 +6891,18 @@ fi
  fi
  	    LD_SEARCH_FLAGS=${CC_SEARCH_FLAGS}
@@ -28,3 +43,12 @@ https://core.tcl.tk/tcl/tktview/fed5069f8a8e59e97af0a784b534919f5b789b1e
  	    SHLIB_SUFFIX=".so"
  	    LDFLAGS="$LDFLAGS -export-dynamic"
  	    if test $doRpath = yes; then :
+@@ -7514,7 +7512,7 @@ fi
+ 	    BSD/OS*) ;;
+ 	    CYGWIN_*|MINGW32_*|MINGW64_*|MSYS_*) ;;
+ 	    IRIX*) ;;
+-	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*) ;;
++	    NetBSD-*|DragonFly-*|FreeBSD-*|OpenBSD-*|QuinnBSD-*) ;;
+ 	    Darwin-*) ;;
+ 	    SCO_SV-3.2*) ;;
+ 	    windows) ;;

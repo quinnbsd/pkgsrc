@@ -11,6 +11,7 @@ CONFLICTS+=	libtool<=1.3.5nb11 libtool-base<=1.5.10nb4
 
 USE_LIBTOOL=	yes
 
+CONFIGURE_ARGS.QuinnBSD+=	--disable-dependency-tracking
 CONFIGURE_ARGS+=	--enable-ltdl-install
 CONFIGURE_ARGS+=        --disable-dependency-tracking
 CONFIGURE_DIRS=	libltdl

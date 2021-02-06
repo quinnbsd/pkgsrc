@@ -58,7 +58,7 @@ CFLAGS.SunOS+=	${_COMPILER_ABI_FLAG.${ABI}}
 #
 USE_LANGUAGES=		c c++
 CONFIGURE_ARGS+=	--disable-ltdl-install
-CONFIGURE_ARGS+=        --disable-dependency-tracking
+CONFIGURE_ARGS.QuinnBSD+=	--disable-dependency-tracking
 CONFIGURE_ARGS+=	F77=no FC=no
 
 USE_TOOLS+=		echo

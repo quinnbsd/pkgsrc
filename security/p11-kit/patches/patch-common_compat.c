@@ -1,12 +1,8 @@
-$NetBSD: patch-common_compat.c,v 1.4 2019/03/24 18:03:54 ryoon Exp $
+$NetBSD$
 
-- Hide getauxval() symbol because the implementation is incomplete
-  and breaks for example openssl on NetBSD/evbarm
-  https://github.com/p11-glue/p11-kit/issues/192
-
---- common/compat.c.orig	2018-08-10 09:54:46.000000000 +0000
+--- common/compat.c.orig	2020-12-11 15:25:36.000000000 +0000
 +++ common/compat.c
-@@ -791,6 +791,9 @@ mkdtemp (char *template)
+@@ -828,6 +828,9 @@ mkdtemp (char *template)
  #ifndef HAVE_GETAUXVAL
  
  unsigned long
@@ -16,3 +12,12 @@ $NetBSD: patch-common_compat.c,v 1.4 2019/03/24 18:03:54 ryoon Exp $
  getauxval (unsigned long type)
  {
  	static unsigned long secure = 0UL;
+@@ -845,7 +848,7 @@ getauxval (unsigned long type)
+ 		secure = __libc_enable_secure;
+ 
+ #elif defined(HAVE_ISSETUGID) && \
+-	!((defined __APPLE__ && defined __MACH__) || (defined __FreeBSD__))
++	!((defined __APPLE__ && defined __MACH__) || (defined __FreeBSD__) || defined(__QuinnBSD__))
+ 		secure = issetugid ();
+ 
+ #elif defined(OS_UNIX)

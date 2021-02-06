@@ -1,6 +1,10 @@
-$NetBSD$
+$NetBSD: manual-libtool.m4,v 1.48 2018/11/13 21:44:42 sevan Exp $
 
---- m4/libtool.m4.orig	2015-01-20 16:15:19.000000000 +0000
+Support mirbsd, midnightbsd, minix.
+Handle pkgsrc wrappers.
+Fixup output on various OS.
+
+--- m4/libtool.m4.orig	Tue Jan 20 16:15:19 2015
 +++ m4/libtool.m4
 @@ -117,7 +117,10 @@ func_cc_basename ()
          *) break;;
@@ -44,12 +48,12 @@ $NetBSD$
    *)
      lock_old_archive_extraction=no ;;
  esac
-@@ -1714,7 +1720,7 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [d
+@@ -1714,7 +1720,7 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [dnl
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
 -  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
-+  bitrig* | darwin* | dragonfly* | freebsd* | minix* | netbsd* | openbsd* | mirbsd* | quinnbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | minix* | netbsd* | openbsd* | mirbsd*)
      # This has been around since 386BSD, at least.  Likely further.
      if test -x /sbin/sysctl; then
        lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
@@ -66,7 +70,7 @@ $NetBSD$
    esac
    ;;
  
-+dragonfly*|quinnbsd*)
++dragonfly*)
 +  version_type=linux
 +  need_version=no
 +  need_lib_prefix=no
@@ -94,7 +98,7 @@ $NetBSD$
    esac
    need_lib_prefix=no
    need_version=no
-@@ -2887,19 +2899,48 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu 
+@@ -2887,19 +2899,48 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
    dynamic_linker='GNU/Linux ld.so'
    ;;
  
@@ -171,16 +175,7 @@ $NetBSD$
    finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
    shlibpath_var=LD_LIBRARY_PATH
    shlibpath_overrides_runpath=yes
-@@ -3488,7 +3529,7 @@ darwin* | rhapsody*)
-   lt_cv_deplibs_check_method=pass_all
-   ;;
- 
--freebsd* | dragonfly*)
-+freebsd* | dragonfly* | quinnbsd*)
-   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
-     case $host_cpu in
-     i*86 )
-@@ -3546,12 +3587,19 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu 
+@@ -3546,14 +3587,21 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu | gnu*)
    lt_cv_deplibs_check_method=pass_all
    ;;
  
@@ -195,17 +190,19 @@ $NetBSD$
 +  # naming scheme for libraries yet, as the current one is deprecated, and
 +  # the new one in a state of flux especially between mports and MirPorts
 +  lt_cv_deplibs_check_method=pass_all
-+  ;;
-+
+   ;;
+ 
 +mirbsd*)
 +  lt_cv_deplibs_check_method='match_pattern /lib[[^/]]+(\.so\.[[0-9]]+\.[[0-9]]+|\.so|_pic\.a)$'
 +  ;;
 +
 +netbsd* | minix*)
 +  lt_cv_deplibs_check_method='match_pattern /lib[[^/]]+(\.so|_pic\.a)$'
-   ;;
- 
++  ;;
++
  newos6*)
+   lt_cv_deplibs_check_method='file_magic ELF [[0-9]][[0-9]]*-bit [[ML]]SB (executable|dynamic lib)'
+   lt_cv_file_magic_cmd=/usr/bin/file
 @@ -3561,7 +3609,7 @@ newos6*)
    ;;
  
@@ -224,7 +221,7 @@ $NetBSD$
    ;;
  sco3.2v5*)
    symcode='[[DT]]'
-@@ -4236,9 +4284,15 @@ m4_if([$1], [CXX], [
+@@ -4236,10 +4284,16 @@ m4_if([$1], [CXX], [
        esac
        ;;
      darwin* | rhapsody*)
@@ -234,25 +231,24 @@ $NetBSD$
        # Common symbols not allowed in MH_DYLIB files
        _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
 +      _LT_TAGVAR(lt_prog_compiler_static, $1)=''
-+      ;;
+       ;;
 +    *mint*)
 +      # FreeMiNT does not support shared libraries at all
 +      _LT_TAGVAR(lt_prog_compiler_pic, $1)=
-       ;;
++      ;;
      *djgpp*)
        # DJGPP does not support shared libraries at all
-@@ -4317,7 +4371,10 @@ m4_if([$1], [CXX], [
+       _LT_TAGVAR(lt_prog_compiler_pic, $1)=
+@@ -4317,6 +4371,9 @@ m4_if([$1], [CXX], [
  	    ;;
  	esac
  	;;
--      freebsd* | dragonfly*)
 +      mint*)
 +	# FreeMiNT uses GNU C++
 +	;;
-+      freebsd* | dragonfly* | quinnbsd*)
+       freebsd* | dragonfly*)
  	# FreeBSD uses GNU C++
  	;;
-       hpux9* | hpux10* | hpux11*)
 @@ -4424,7 +4481,7 @@ m4_if([$1], [CXX], [
  	    ;;
  	esac
@@ -262,7 +258,7 @@ $NetBSD$
  	;;
        *qnx* | *nto*)
          # QNX uses GNU C++, but need to define -shared option too, otherwise
-@@ -4561,9 +4618,16 @@ m4_if([$1], [CXX], [
+@@ -4561,11 +4618,18 @@ m4_if([$1], [CXX], [
        ;;
  
      darwin* | rhapsody*)
@@ -272,14 +268,16 @@ $NetBSD$
        # Common symbols not allowed in MH_DYLIB files
        _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
 +      _LT_TAGVAR(lt_prog_compiler_static, $1)=''
-+      ;;
-+
+       ;;
+ 
 +    *mint*)
 +      # FreeMiNT does not support shared libraries at all
 +      _LT_TAGVAR(lt_prog_compiler_pic, $1)=
-       ;;
- 
++      ;;
++
      haiku*)
+       # PIC is the default for Haiku.
+       # The "-static" flag exists, but is broken.
 @@ -4591,6 +4655,13 @@ m4_if([$1], [CXX], [
        # Instead, we relocate shared libraries at runtime.
        ;;
@@ -356,15 +354,6 @@ $NetBSD$
      solaris*)
        if $LD -v 2>&1 | $GREP 'BFD 2\.8' > /dev/null; then
  	_LT_TAGVAR(ld_shlibs, $1)=no
-@@ -5650,7 +5746,7 @@ _LT_EOF
-       ;;
- 
-     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
--    freebsd* | dragonfly*)
-+    freebsd* | dragonfly* | quinnbsd*)
-       _LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
-       _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-R$libdir'
-       _LT_TAGVAR(hardcode_direct, $1)=yes
 @@ -5794,15 +5890,28 @@ _LT_EOF
        esac
        ;;
@@ -422,16 +411,7 @@ $NetBSD$
    AC_PROG_CXXCPP
  else
    _lt_caught_CXX_error=yes
-@@ -6760,7 +6872,7 @@ if test yes != "$_lt_caught_CXX_error"; 
-         _LT_TAGVAR(archive_cmds_need_lc, $1)=no
-         ;;
- 
--      freebsd* | dragonfly*)
-+      freebsd* | dragonfly* | quinnbsd*)
-         # FreeBSD 3 and later use GNU C++ and GNU ld with standard ELF
-         # conventions
-         _LT_TAGVAR(ld_shlibs, $1)=yes
-@@ -7079,6 +7191,22 @@ if test yes != "$_lt_caught_CXX_error"; 
+@@ -7079,6 +7191,22 @@ if test yes != "$_lt_caught_CXX_error"; then
          _LT_TAGVAR(ld_shlibs, $1)=no
  	;;
  
@@ -454,7 +434,7 @@ $NetBSD$
        mvs*)
          case $cc_basename in
            cxx*)
-@@ -7092,16 +7220,14 @@ if test yes != "$_lt_caught_CXX_error"; 
+@@ -7092,16 +7220,14 @@ if test yes != "$_lt_caught_CXX_error"; then
  	esac
  	;;
  
@@ -479,7 +459,7 @@ $NetBSD$
  	;;
  
        *nto* | *qnx*)
-@@ -7275,7 +7401,7 @@ if test yes != "$_lt_caught_CXX_error"; 
+@@ -7275,7 +7401,7 @@ if test yes != "$_lt_caught_CXX_error"; then
  	    # GNU C++ compiler with Solaris linker
  	    if test yes,no = "$GXX,$with_gnu_ld"; then
  	      _LT_TAGVAR(no_undefined_flag, $1)=' $wl-z ${wl}defs'

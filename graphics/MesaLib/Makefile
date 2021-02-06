@@ -83,7 +83,7 @@ PLIST.i915=		yes
 PLIST.i965=		yes
 .  endif
 # FreeBSD lacks nouveau support (there are official binaries from Nvidia)
-.  if ${OPSYS} != "FreeBSD"
+.  if ${OPSYS} != "FreeBSD" && ${OPSYS} != "QuinnBSD"
 PLIST.nouveau=		yes
 PLIST.nouveau_dri=	yes
 GALLIUM_DRIVERS+=	nouveau

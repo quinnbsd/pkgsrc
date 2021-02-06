@@ -1,0 +1,68 @@
+$NetBSD$
+
+--- configure.orig	2019-03-02 22:06:22.000000000 +0000
++++ configure
+@@ -5517,7 +5517,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -5928,7 +5928,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -10143,7 +10143,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -11188,7 +11188,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -18890,7 +18890,7 @@ case $host_os in
+ 	lint_name=splint
+ 	lint_options="-badflag"
+ 	;;
+-  *freebsd* | *netbsd*)
++  *freebsd* | *netbsd* | *quinnbsd*)
+ 	lint_name=lint
+ 	lint_options="-u -b"
+ 	;;
+@@ -21977,6 +21977,9 @@ if test -z "$DEF_USER_PATH" ; then
+ 	    freebsd*)
+ 		DEF_USER_PATH="/bin:/usr/bin:/sbin:/usr/sbin:${bindir}:/usr/gnu/bin:/usr/local/bin"
+ 		;;
++            quinnbsd*)
++		DEF_USER_PATH="/bin:/usr/bin:/sbin:/usr/sbin:${bindir}:/usr/gnu/bin:/usr/pkg/bin" 
++		;;
+ 	    netbsd*)
+ 		DEF_USER_PATH="/bin:/usr/bin:/usr/pkg/bin:/usr/local/bin:${bindir}"
+ 		;;
+@@ -22014,7 +22017,7 @@ _ACEOF
+ # old Imake *.cf files for each platform
+ if test -z "$DEF_SYSTEM_PATH" ; then
+ 	case $host_os in
+-	    freebsd*|dragonfly*)
++	    freebsd*|dragonfly*|quinnbsd*)
+ 		DEF_SYSTEM_PATH="/bin:/usr/bin:/sbin:/usr/sbin:${bindir}"
+ 		;;
+ 	    netbsd*|openbsd*|bsdi*)

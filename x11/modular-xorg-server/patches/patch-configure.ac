@@ -1,0 +1,76 @@
+$NetBSD$
+
+--- configure.ac.orig	2020-12-01 16:32:25.000000000 +0000
++++ configure.ac
+@@ -261,7 +261,7 @@ case $host_cpu in
+   alpha*)
+ 	ALPHA_VIDEO=yes
+ 	case $host_os in
+-	        *freebsd*)	SYS_LIBS=-lio ;;
++	        *freebsd* | *quinnbsd*)	SYS_LIBS=-lio ;;
+ 		*netbsd*)	AC_DEFINE(USE_ALPHA_PIO, 1, [NetBSD PIO alpha IO]) ;;
+ 	esac
+ 	GLX_ARCH_DEFINES="-D__GLX_ALIGN64 -mieee"
+@@ -273,7 +273,7 @@ case $host_cpu in
+   i*86)
+ 	I386_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)	AC_DEFINE(USE_DEV_IO) ;;
++		*freebsd*|*quinnbsd*)	AC_DEFINE(USE_DEV_IO) ;;
+ 		*dragonfly*)	AC_DEFINE(USE_DEV_IO) ;;
+ 		*netbsd*)	AC_DEFINE(USE_I386_IOPL)
+ 				SYS_LIBS=-li386
+@@ -286,7 +286,7 @@ case $host_cpu in
+   powerpc*)
+ 	PPC_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)	DEFAULT_INT10=stub ;;
++		*freebsd*|*quinnbsd*)	DEFAULT_INT10=stub ;;
+ 	esac
+ 	;;
+   sparc*)
+@@ -297,7 +297,7 @@ case $host_cpu in
+   x86_64*|amd64*)
+ 	I386_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)	AC_DEFINE(USE_DEV_IO, 1, [BSD /dev/io]) ;;
++		*freebsd*|*quinnbsd*)	AC_DEFINE(USE_DEV_IO, 1, [BSD /dev/io]) ;;
+ 		*dragonfly*)	AC_DEFINE(USE_DEV_IO, 1, [BSD /dev/io]) ;;
+ 		*netbsd*)	AC_DEFINE(USE_I386_IOPL, 1, [BSD i386 iopl])
+ 				SYS_LIBS=-lx86_64
+@@ -327,7 +327,7 @@ AM_CONDITIONAL(SPARC64_VIDEO, [test "x$S
+ DRI=no
+ dnl it would be nice to autodetect these *CONS_SUPPORTs
+ case $host_os in
+-  *freebsd* | *dragonfly*)
++  *freebsd* | *dragonfly* | *quinnbsd*)
+ 	case $host_os in
+ 		kfreebsd*-gnu) ;;
+ 		*) AC_DEFINE(CSRG_BASED, 1, [System is BSD-like]) ;;
+@@ -1129,7 +1129,7 @@ AC_ARG_ENABLE(xtrans-send-fds,	AS_HELP_S
+ case "x$XTRANS_SEND_FDS" in
+ xauto)
+ 	case "$host_os" in
+-	linux*|solaris*|freebsd*|dragonfly*|openbsd*)
++	linux*|solaris*|freebsd*|dragonfly*|openbsd*|quinnbsd*)
+ 		XTRANS_SEND_FDS=yes
+ 		;;
+ 	*)
+@@ -1838,7 +1838,7 @@ if test "x$XORG" = xyes; then
+ 		AC_DEFINE(XSERVER_LIBPCIACCESS, 1, [Use libpciaccess for all pci manipulation])
+ 		AC_DEFINE_DIR(PCI_TXT_IDS_PATH, PCI_TXT_IDS_DIR, [Default PCI text file ID path])
+ 		case $host_os in
+-		  gnu* | freebsd* | kfreebsd*-gnu | netbsd* | openbsd* | solaris* | dragonfly*)
++		  gnu* | freebsd* | kfreebsd*-gnu | netbsd* | openbsd* | solaris* | dragonfly* | quinnbsd*)
+ 			xorg_bus_bsdpci="yes"
+ 			;;
+ 		esac
+@@ -1882,7 +1882,7 @@ if test "x$XORG" = xyes; then
+ 			AC_DEFINE(XF86PM, 1, [Support APM/ACPI power management in the server])
+ 		fi
+ 		;;
+-	  freebsd* | kfreebsd*-gnu | dragonfly*)
++	  freebsd* | kfreebsd*-gnu | dragonfly* | quinnbsd*)
+ 		XORG_OS_SUBDIR="bsd"
+ 		;;
+ 	  netbsd*)

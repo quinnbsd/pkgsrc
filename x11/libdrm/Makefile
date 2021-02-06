@@ -11,7 +11,7 @@ LICENSE=		mit
 
 # Platforms with kernel support for DRM
 ONLY_FOR_PLATFORM=	NetBSD-*-* DragonFly-*-* FreeBSD-*-* OpenBSD-*-* \
-			Linux-*-* SunOS-*-*
+			Linux-*-* SunOS-*-* QuinnBSD-*-*
 
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		gmake pkg-config

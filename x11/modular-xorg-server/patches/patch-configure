@@ -1,13 +1,59 @@
-$NetBSD: patch-configure,v 1.5 2020/02/05 20:18:27 tnn Exp $
+$NetBSD$
 
-Use USE_AMD64_IOPL (actually x86_64_iopl) on NetBSD/amd64.
-(c.f. patch-hw_xfree86_os-support_bsd_i386.c)
-
-for netbsd, force pass pthread configure checks (pthread not needed)
-
---- configure.orig	2020-01-13 22:57:18.000000000 +0000
+--- configure.orig	2020-12-01 16:32:41.000000000 +0000
 +++ configure
-@@ -23146,7 +23146,7 @@ $as_echo "#define USE_ALPHA_PIO 1" >>con
+@@ -13921,7 +13921,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -14329,13 +14329,13 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+       # Not sure whether the presence of OpenBSD here was a mistake.
+       # Let's accept both of them until this is cleared up.
+-      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly)/i[3-9]86 (compact )?demand paged shared library'
++      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly|QuinnBSD)/i[3-9]86 (compact )?demand paged shared library'
+       lt_cv_file_magic_cmd=/usr/bin/file
+       lt_cv_file_magic_test_file=`echo /usr/lib/libc.so.*`
+       ;;
+@@ -18870,7 +18870,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -19915,7 +19915,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -23211,21 +23211,21 @@ case $host_cpu in
+   alpha*)
+ 	ALPHA_VIDEO=yes
+ 	case $host_os in
+-	        *freebsd*)	SYS_LIBS=-lio ;;
++	        *freebsd*|*quinnbsd*)	SYS_LIBS=-lio ;;
+ 		*netbsd*)
+ $as_echo "#define USE_ALPHA_PIO 1" >>confdefs.h
+  ;;
  	esac
  	GLX_ARCH_DEFINES="-D__GLX_ALIGN64 -mieee"
  	;;
@@ -16,7 +62,32 @@ for netbsd, force pass pthread configure checks (pthread not needed)
  	ARM_VIDEO=yes
  	DEFAULT_INT10="stub"
  	;;
-@@ -23188,7 +23188,7 @@ $as_echo "#define USE_DEV_IO 1" >>confde
+   i*86)
+ 	I386_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)	$as_echo "#define USE_DEV_IO 1" >>confdefs.h
++		*freebsd* | *quinnbsd*)	$as_echo "#define USE_DEV_IO 1" >>confdefs.h
+  ;;
+ 		*dragonfly*)	$as_echo "#define USE_DEV_IO 1" >>confdefs.h
+  ;;
+@@ -23242,7 +23242,7 @@ $as_echo "#define USE_ALPHA_PIO 1" >>con
+   powerpc*)
+ 	PPC_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)	DEFAULT_INT10=stub ;;
++		*freebsd*|*quinnbsd*)	DEFAULT_INT10=stub ;;
+ 	esac
+ 	;;
+   sparc*)
+@@ -23253,14 +23253,14 @@ $as_echo "#define USE_ALPHA_PIO 1" >>con
+   x86_64*|amd64*)
+ 	I386_VIDEO=yes
+ 	case $host_os in
+-		*freebsd*)
++		*freebsd* | *quinnbsd*)
+ $as_echo "#define USE_DEV_IO 1" >>confdefs.h
+  ;;
+ 		*dragonfly*)
  $as_echo "#define USE_DEV_IO 1" >>confdefs.h
   ;;
  		*netbsd*)
@@ -25,7 +96,16 @@ for netbsd, force pass pthread configure checks (pthread not needed)
  
  				SYS_LIBS=-lx86_64
  				;;
-@@ -25010,7 +25010,8 @@ case ${host_os} in
+@@ -23324,7 +23324,7 @@ fi
+ 
+ DRI=no
+ case $host_os in
+-  *freebsd* | *dragonfly*)
++  *freebsd* | *dragonfly* | *quinnbsd*)
+ 	case $host_os in
+ 		kfreebsd*-gnu) ;;
+ 		*)
+@@ -25082,7 +25082,8 @@ case ${host_os} in
  	netbsd*)
  	# use libc stubs, don't link against libpthread, to allow
  	# dynamic loading
@@ -35,3 +115,39 @@ for netbsd, force pass pthread configure checks (pthread not needed)
  	;;
  esac
  
+@@ -25278,7 +25279,7 @@ _ACEOF
+ $as_echo_n "checking if more special flags are required for pthreads... " >&6; }
+         flag=no
+         case ${host_os} in
+-            aix* | freebsd* | darwin*) flag="-D_THREAD_SAFE";;
++            aix* | freebsd* | darwin* | quinnbsd*) flag="-D_THREAD_SAFE";;
+             osf* | hpux*) flag="-D_REENTRANT";;
+             solaris*)
+             if test "$GCC" = "yes"; then
+@@ -26582,7 +26583,7 @@ fi
+ case "x$XTRANS_SEND_FDS" in
+ xauto)
+ 	case "$host_os" in
+-	linux*|solaris*|freebsd*|dragonfly*|openbsd*)
++	linux*|solaris*|freebsd*|dragonfly*|openbsd*|quinnbsd*)
+ 		XTRANS_SEND_FDS=yes
+ 		;;
+ 	*)
+@@ -29167,7 +29168,7 @@ _ACEOF
+   test "$exec_prefix_NONE" && exec_prefix=NONE
+ 
+ 		case $host_os in
+-		  gnu* | freebsd* | kfreebsd*-gnu | netbsd* | openbsd* | solaris* | dragonfly*)
++		  gnu* | freebsd* | kfreebsd*-gnu | netbsd* | openbsd* | solaris* | dragonfly* | quinnbsd*)
+ 			xorg_bus_bsdpci="yes"
+ 			;;
+ 		esac
+@@ -29224,7 +29225,7 @@ $as_echo "#define XF86PM 1" >>confdefs.h
+ 
+ 		fi
+ 		;;
+-	  freebsd* | kfreebsd*-gnu | dragonfly*)
++	  freebsd* | kfreebsd*-gnu | dragonfly* | quinnbsd*)
+ 		XORG_OS_SUBDIR="bsd"
+ 		;;
+ 	  netbsd*)

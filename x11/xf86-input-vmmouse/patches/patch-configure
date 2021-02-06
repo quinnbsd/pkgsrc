@@ -95,3 +95,142 @@ iopl patches for NetBSD
  
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for XORG" >&5
+$NetBSD$
+
+--- configure.orig	2015-06-25 10:27:50.000000000 +0000
++++ configure
+@@ -11292,7 +11292,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -11727,7 +11727,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -15568,7 +15568,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -16532,7 +16532,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -18024,13 +18024,13 @@ done
+ $as_echo "#define VMMOUSE_OS_GENERIC 1" >>confdefs.h
+ 
+      ;;
+-     *bsd*)
++     *bsd*|*dragonfly*)
+ 
+ $as_echo "#define VMMOUSE_OS_BSD 1" >>confdefs.h
+ 
+      ;;
+      solaris*)
+-	 if test "x$GCC" == "xyes"; then
++	 if test "x$GCC" = "xyes"; then
+             CC="$save_solaris_cc -fms-extensions"
+ 	 fi
+ 
+@@ -18061,7 +18061,7 @@ esac
+ case $host_cpu in
+      i*86)
+ 	case $host_os in
+-		*freebsd*)	$as_echo "#define USE_DEV_IO 1" >>confdefs.h
++		*freebsd* | *quinnbsd*)	$as_echo "#define USE_DEV_IO 1" >>confdefs.h
+  ;;
+ 		*netbsd*)	$as_echo "#define USE_I386_IOPL 1" >>confdefs.h
+ 
+@@ -18073,13 +18073,13 @@ case $host_cpu in
+ 	;;
+      x86_64*|amd64*)
+ 	case $host_os in
+-		*freebsd*)
++		*freebsd*|*dragonfly*|*quinnbsd*)
+ $as_echo "#define USE_DEV_IO 1" >>confdefs.h
+  ;;
+ 		*netbsd*)
+-$as_echo "#define USE_I386_IOPL 1" >>confdefs.h
++$as_echo "#define USE_X86_64_IOPL 1" >>confdefs.h
+ 
+-				use_i386_iopl=yes ;;
++				use_x86_64_iopl=yes ;;
+ 		*openbsd*)
+ $as_echo "#define USE_AMD64_IOPL 1" >>confdefs.h
+ 
+@@ -18187,6 +18187,56 @@ else
+ fi
+ 
+ fi
++
++if test x$use_x86_64_iopl = xyes; then
++   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for x86_64_iopl in -lx86_64" >&5
++$as_echo_n "checking for x86_64_iopl in -lx86_64... " >&6; }
++if ${ac_cv_lib_x86_64_x86_64_iopl+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lx86_64  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char x86_64_iopl ();
++int
++main ()
++{
++return x86_64_iopl ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_x86_64_x86_64_iopl=yes
++else
++  ac_cv_lib_x86_64_x86_64_iopl=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_x86_64_x86_64_iopl" >&5
++$as_echo "$ac_cv_lib_x86_64_x86_64_iopl" >&6; }
++if test "x$ac_cv_lib_x86_64_x86_64_iopl" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBAMD64 1
++_ACEOF
++
++  LIBS="-lx86_64 $LIBS"
++
++else
++  as_fn_error $? "cannot find library for x86_64_iopl" "$LINENO" 5
++fi
++
++fi
+ 
+ 
+ pkg_failed=no

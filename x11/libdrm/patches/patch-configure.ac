@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.ac.orig	2019-10-16 21:36:48.000000000 +0000
++++ configure.ac
+@@ -355,7 +355,7 @@ AC_CANONICAL_HOST
+ if test "x$LIBKMS" = xauto ; then
+ 	case $host_os in
+ 		linux*)		LIBKMS="yes" ;;
+-		freebsd* | kfreebsd*-gnu)
++		freebsd* | kfreebsd*-gnu | quinnbsd*)
+ 				LIBKMS="yes" ;;
+ 		dragonfly*)	LIBKMS="yes" ;;
+ 		*)		LIBKMS="no" ;;

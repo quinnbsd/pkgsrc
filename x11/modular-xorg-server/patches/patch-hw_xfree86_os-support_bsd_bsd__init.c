@@ -1,10 +1,16 @@
-$NetBSD: patch-hw_xfree86_os-support_bsd_bsd__init.c,v 1.1 2018/10/26 10:20:12 maya Exp $
+$NetBSD$
 
-Don't error when running unprivileged.
-
---- hw/xfree86/os-support/bsd/bsd_init.c.orig	2018-10-25 14:13:21.000000000 +0000
+--- hw/xfree86/os-support/bsd/bsd_init.c.orig	2020-12-01 16:32:25.000000000 +0000
 +++ hw/xfree86/os-support/bsd/bsd_init.c
-@@ -165,10 +165,12 @@ xf86OpenConsole()
+@@ -158,17 +158,19 @@ xf86OpenConsole()
+ #if defined (SYSCONS_SUPPORT) || defined (PCVT_SUPPORT)
+     int result;
+ 
+-#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
++#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__QuinnBSD__)
+     struct utsname uts;
+ #endif
+     vtmode_t vtmode;
  #endif
  
      if (serverGeneration == 1) {
@@ -17,3 +23,12 @@ Don't error when running unprivileged.
  
          if (!KeepTty) {
              /*
+@@ -229,7 +231,7 @@ xf86OpenConsole()
+              * switching anymore. Here we check for FreeBSD 3.1 and up.
+              * Add cases for other *BSD that behave the same.
+              */
+-#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
++#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__QuinnBSD__)
+             uname(&uts);
+             i = atof(uts.release) * 100;
+             if (i >= 310)

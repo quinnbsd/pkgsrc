@@ -1,11 +1,4 @@
-$NetBSD: patch-src_bsd__KbdMap.c,v 1.2 2020/09/19 13:52:14 taca Exp $
-
-PR191459: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=191459
-Fix a segmentation fault due to the use of Unicode codepoints in vt(4) which is
-the default console driver from FreeBSD 11.
-
-xsrc/54784: Cannot input some keys in JP keyboard on Xorg server when
-specify wskbd Protocol.
+$NetBSD$
 
 --- src/bsd_KbdMap.c.orig	2015-08-07 03:16:08.000000000 +0000
 +++ src/bsd_KbdMap.c
@@ -13,7 +6,7 @@ specify wskbd Protocol.
  #include "bsd_kbd.h"
  
  #if (defined(SYSCONS_SUPPORT) || defined(PCVT_SUPPORT)) && defined(GIO_KEYMAP)
-+#if !(defined(__FreeBSD__) && __FreeBSD__ >= 11)
++#if !((defined(__FreeBSD__) && __FreeBSD__ >= 11) || defined(__QuinnBSD__))
  #define KD_GET_ENTRY(i,n) \
    eascii_to_x[((keymap.key[i].spcl << (n+1)) & 0x100) + keymap.key[i].map[n]]
  
@@ -55,7 +48,7 @@ specify wskbd Protocol.
    KeySym        *k;
    int           i;
  
-+#if !(defined(__FreeBSD__) && __FreeBSD__ >= 11)
++#if !((defined(__FreeBSD__) && __FreeBSD__ >= 11) || defined(__QuinnBSD__))
  #ifndef __bsdi__
    switch (pKbd->consType) {
  

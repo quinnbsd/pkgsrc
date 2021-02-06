@@ -6,4 +6,4 @@ SHA512 (xf86-video-intel-5ca3ac1a90af177eb111a965e9b4dd8a27cc58fc.tar.bz2) = 29f
 Size (xf86-video-intel-5ca3ac1a90af177eb111a965e9b4dd8a27cc58fc.tar.bz2) = 1250303 bytes
 SHA1 (patch-src_intel__device.c) = e9a4420e11244b9ec552adb603c8e75cd28a8f57
 SHA1 (patch-src_legacy_i810_i810__dri.c) = fb963b994d51c9db48457106048226214a2d986c
-SHA1 (patch-src_sna_sna__video.c) = 2771938849a475fc8c346dce0251000932add3de
+SHA1 (patch-src_sna_sna__video.c) = 9055d243bb086aeaa3df6089102fdadf9437b8f1

@@ -4,5 +4,6 @@ SHA1 (xf86-input-keyboard-1.9.0.tar.bz2) = 24b5d84d221a75650f390ff63315912bf9a94
 RMD160 (xf86-input-keyboard-1.9.0.tar.bz2) = 1b6d2d6fc538f7d57a0b452173184248e22d87d0
 SHA512 (xf86-input-keyboard-1.9.0.tar.bz2) = d1a52d10039096d0d5e09750b6a8c2388345748331615af93e5be499646c3bc5fbbfc897fcebdeada5efaafff94f26a2ab84d6e35f01a875b8b9956a42015df9
 Size (xf86-input-keyboard-1.9.0.tar.bz2) = 341693 bytes
-SHA1 (patch-src_bsd__KbdMap.c) = b1e9d22a086332ded43e0448307c45d36ce9c159
+SHA1 (patch-configure) = faeb4b9d96f5507828dd71a3788b5680caa63b35
+SHA1 (patch-src_bsd__KbdMap.c) = f00e9e1ce3bab635cc7e71fd8d7e0783c52f6185
 SHA1 (patch-src_sun__kbd.c) = 21da7cb7110ae8b08f9245de1d1678965ba7a0c8

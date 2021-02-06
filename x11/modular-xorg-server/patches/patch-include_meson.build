@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- include/meson.build.orig	2020-12-01 16:32:25.000000000 +0000
++++ include/meson.build
+@@ -231,7 +231,7 @@ supports_syscons = false
+ supports_wscons = false
+ csrg_based = false
+ 
+-if host_machine.system() == 'freebsd' or host_machine.system() == 'dragonflybsd'
++if host_machine.system() == 'freebsd' or host_machine.system() == 'dragonflybsd' or host_machine.system() == 'quinnbsd'
+   supports_pccons = true
+   supports_pcvt = true
+   supports_syscons = true
+@@ -323,7 +323,7 @@ xorg_data.set('XSERVER_PLATFORM_BUS', bu
+ xorg_data.set('WSCONS_SUPPORT', host_machine.system() == 'netbsd' or host_machine.system() == 'openbsd')
+ xorg_data.set('XF86PM', build_apm or build_acpi)
+ 
+-if host_machine.system() == 'freebsd' or host_machine.system() == 'dragonflybsd'
++if host_machine.system() == 'freebsd' or host_machine.system() == 'dragonflybsd' or host_machine.system() == 'quinnbsd'
+     if host_machine.cpu_family() == 'x86' or host_machine.cpu_family() == 'x86_64'
+         xorg_data.set('USE_DEV_IO', true)
+     endif

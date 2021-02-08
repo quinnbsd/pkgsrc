@@ -4,4 +4,6 @@ SHA1 (netsurf-all-3.10.tar.gz) = d1404abcc8ba526dc425d8fda81a5a495082de19
 RMD160 (netsurf-all-3.10.tar.gz) = 2ba50fcb148d1b229e48b80f2a2c24daf2948783
 SHA512 (netsurf-all-3.10.tar.gz) = fc4c300eef07c540a7e07f8034db25b7e5fb731b5956029af2220f8638802aa38c055ad54b5683c14501aef9c22fb781b96613c16ae9a6996c3833ceede6f9bf
 Size (netsurf-all-3.10.tar.gz) = 8537919 bytes
+SHA1 (patch-libnsfb_src_plot.h) = 0722e0a4a361a6af7f1bd3fc7d143cffc3dcc003
+SHA1 (patch-nersurf_content_handlers_javascript_duktape_duk__config.h) = d6b22688339036fcf56f1b1796a71d6681e775fc
 SHA1 (patch-nsgenbind_src_Makefile) = 9024fe193c532fefec83b86a8cf85f1bcffb614e

@@ -34,7 +34,8 @@ DEPENDS+=	xf86-video-ast-[0-9]*:../../x11/xf86-video-ast
 .if !empty(MACHINE_PLATFORM:MNetBSD-[789].*-i386) ||	\
     !empty(MACHINE_PLATFORM:MNetBSD-[789].*-x86_64) ||	\
     ${OPSYS} == "Linux" || ${OPSYS} == "FreeBSD" ||	\
-    ${OPSYS} == "DragonFly" || ${OPSYS} == "SunOS"
+    ${OPSYS} == "DragonFly" || ${OPSYS} == "SunOS" ||   \
+    ${OPSYS} == "QuinnBSD"
 DEPENDS+=	xf86-video-ati-[0-9]*:../../x11/xf86-video-ati
 .else
 DEPENDS+=	xf86-video-ati6-[0-9]*:../../x11/xf86-video-ati6

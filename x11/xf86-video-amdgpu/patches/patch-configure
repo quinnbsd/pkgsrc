@@ -1,9 +1,52 @@
-$NetBSD: patch-configure,v 1.1 2018/05/20 07:15:21 wiz Exp $
+$NetBSD$
 
-Avoid redefinition of bswap macros.
-
---- configure.orig	2018-03-15 15:40:33.000000000 +0000
+--- configure.orig	2019-10-11 15:21:05.000000000 +0000
 +++ configure
+@@ -11782,7 +11782,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -12193,7 +12193,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -16427,7 +16427,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -17473,7 +17473,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -18637,7 +18637,7 @@ $as_echo "yes" >&6; }
+       { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }
+       ;;
+-    freebsd*)
++    freebsd* | quinnbsd*)
+       if $STRIP -V 2>&1 | $GREP "elftoolchain" >/dev/null; then
+         old_striplib="$STRIP --strip-debug"
+         striplib="$STRIP --strip-unneeded"
 @@ -20049,20 +20049,6 @@ $as_echo "$SYS_ENDIAN_BSWAP" >&6; }
  $as_echo "#define USE_SYS_ENDIAN_H 1" >>confdefs.h
  

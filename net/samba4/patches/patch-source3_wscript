@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- source3/wscript.orig	2020-12-15 07:53:45.000000000 +0000
++++ source3/wscript
+@@ -499,7 +499,7 @@ vsyslog
+         conf.DEFINE('DARWINOS', 1)
+         conf.ADD_CFLAGS('-fno-common')
+         conf.DEFINE('STAT_ST_BLOCKSIZE', '512')
+-    elif (host_os.rfind('freebsd') > -1):
++    elif (host_os.rfind('freebsd') > -1) or (host_os.rfind('quinnbsd') > -1):
+         conf.DEFINE('FREEBSD', 1)
+         if conf.CHECK_HEADERS('sunacl.h'):
+             conf.DEFINE('HAVE_FREEBSD_SUNACL_H', '1')
+@@ -1445,7 +1445,7 @@ main() {
+             if conf.CONFIG_SET('_HAVE_SENDFILE'):
+                 conf.DEFINE('HAVE_SENDFILE', '1')
+                 conf.DEFINE('LINUX_SENDFILE_API', '1')
+-        elif (host_os.rfind('freebsd') > -1) or (host_os.rfind('dragonfly') > -1):
++        elif (host_os.rfind('freebsd') > -1) or (host_os.rfind('dragonfly') > -1) or (host_os.rfind('quinnbsd') > -1):
+             conf.CHECK_CODE('''
+                             #include <sys/types.h>
+                             #include <unistd.h>

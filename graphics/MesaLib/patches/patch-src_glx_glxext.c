@@ -27,7 +27,7 @@ $NetBSD$
     if (glx_direct && glx_accel) {
  #if defined(HAVE_DRI3)
 -      if (!env_var_as_boolean("LIBGL_DRI3_DISABLE", false))
-+#if ((defined(__freeBSD__) || defined(__FreeBSD_kernel__)) && !defined(__DRM_NEXT__)) || defined(__DragonFly__) || defined(__NetBSD__)
++#if ((defined(__freeBSD__) || defined(__FreeBSD_kernel__)) && !defined(__DRM_NEXT__)) || defined(__DragonFly__) || defined(__NetBSD__) || defined(__QuinnBSD__)
 +      if (env_var_as_boolean("LIBGL_DRI3_ENABLE", false))
 +#endif
 +      if (!env_var_as_boolean("LIBGL_DRI3_DISABLE", false)) {

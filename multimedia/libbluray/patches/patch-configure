@@ -1,0 +1,58 @@
+$NetBSD$
+
+--- configure.orig	2020-10-24 13:39:12.000000000 +0000
++++ configure
+@@ -3320,7 +3320,7 @@ $as_echo "#define _WIN32_IE 0x0501" >>co
+     SYS=netbsd
+     CFLAGS="${CFLAGS} -D_NETBSD_SOURCE"
+     ;;
+-  freebsd*)
++  freebsd*|quinnbsd*)
+     SYS=freebsd
+     CFLAGS="${CFLAGS} -D_XOPEN_SOURCE=700"
+     ;;
+@@ -5412,7 +5412,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -5823,7 +5823,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*) 
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -10343,7 +10343,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -11389,7 +11389,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -13982,7 +13982,7 @@ case $host_os in
+      linux*)   java_os=linux ;;
+      win*)     java_os=win32 ;;
+      mingw*)   java_os=win32 ;;
+-     freebsd*) java_os=freebsd ;;
++     freebsd*|quinnbsd*) java_os=freebsd ;;
+      solaris*) java_os=solaris ;;
+      darwin*)  java_os=darwin ;;
+      netbsd*)  java_os=netbsd ;;

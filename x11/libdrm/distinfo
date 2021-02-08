@@ -15,5 +15,5 @@ SHA1 (patch-m4_libtool.m4) = 6bfa9833bd28b11e179b52cc11c38f476a9f6603
 SHA1 (patch-meson.build) = 18974d22e81e1d4bcbc77e907d3db85f8d2ca832
 SHA1 (patch-nouveau_private.h) = fe347abfaed3b37ef8fee645a388e19ca1e97552
 SHA1 (patch-xf86drm.c) = 330f3777ef3ebdce453f02b09347d3a0052ea9b8
-SHA1 (patch-xf86drmMode.c) = 5f66d45a63b0915f22d0abe115aace13c53823a8
+SHA1 (patch-xf86drmMode.c) = ea3e3539d7250e11146a438ee467004d02007b69
 SHA1 (patch-xf86drmMode.h) = a28b02887389be8670193c119f711901af61a6b2

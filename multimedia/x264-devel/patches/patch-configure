@@ -1,15 +1,13 @@
-$NetBSD: patch-configure,v 1.4 2019/03/13 17:40:26 adam Exp $
+$NetBSD$
 
-Add support for DragonFly.
-Use 'amd64' as a synonym for 'x86_64'.
-Avoid endian test failure for -flto.
-Do not force compiler optimisations.
-If we fail an assembly test, continue as if --disable-asm
-was passed.
-
---- configure.orig	2019-03-12 21:45:03.000000000 +0000
+--- configure.orig	2019-12-17 21:45:04.000000000 +0000
 +++ configure
-@@ -630,6 +630,10 @@ case $host_os in
+@@ -626,10 +626,14 @@ case $host_os in
+             cc_check "" -mdynamic-no-pic && CFLAGS="$CFLAGS -mdynamic-no-pic"
+         fi
+         ;;
+-    freebsd*)
++    freebsd*|quinnbsd*)
          SYS="FREEBSD"
          libm="-lm"
          ;;
@@ -57,7 +55,7 @@ was passed.
      fi
  fi
  
-@@ -957,8 +962,8 @@ if [ $asm = auto -a $ARCH = AARCH64 ] ; 
+@@ -957,8 +962,8 @@ if [ $asm = auto -a $ARCH = AARCH64 ] ;
          ASFLAGS="$ASFLAGS -c"
      else
          echo "no NEON support, try adding -mfpu=neon to CFLAGS"

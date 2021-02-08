@@ -1,15 +1,12 @@
-$NetBSD: patch-nspr_pr_src_pthreads_ptsynch.c,v 1.1 2020/02/05 03:26:52 ryoon Exp $
+$NetBSD$
 
-* Do not use pthread_equal() for non-valid thread pointers.
-  From kamin@ on source-changes-d@NetBSD.org.
-  https://mail-index.netbsd.org/source-changes-d/2020/02/03/msg012143.html
-
---- nspr/pr/src/pthreads/ptsynch.c.orig	2020-01-31 20:37:50.000000000 +0000
+--- nspr/pr/src/pthreads/ptsynch.c.orig	2020-09-17 15:01:34.000000000 +0000
 +++ nspr/pr/src/pthreads/ptsynch.c
-@@ -25,6 +25,13 @@ static pthread_condattr_t _pt_cvar_attr;
+@@ -25,7 +25,14 @@ static pthread_condattr_t _pt_cvar_attr;
  extern PTDebug pt_debug;  /* this is shared between several modules */
  #endif  /* defined(DEBUG) */
  
+-#if defined(FREEBSD)
 +/* XXX, pthread_equal() is misused to compare non-valid thread pointers */
 +static int
 +pt_pthread_equal(pthread_t t1, pthread_t t2)
@@ -17,10 +14,11 @@ $NetBSD: patch-nspr_pr_src_pthreads_ptsynch.c,v 1.1 2020/02/05 03:26:52 ryoon Ex
 +	return t1 == t2;
 +}
 +
- #if defined(FREEBSD)
++#if defined(FREEBSD) || defined(__QuinnBSD__)
  /*
   * On older versions of FreeBSD, pthread_mutex_trylock returns EDEADLK.
-@@ -197,9 +204,9 @@ PR_IMPLEMENT(PRStatus) PR_Unlock(PRLock 
+  * Newer versions return EBUSY.  We still need to support both.
+@@ -197,9 +204,9 @@ PR_IMPLEMENT(PRStatus) PR_Unlock(PRLock
      PR_ASSERT(lock != NULL);
      PR_ASSERT(_PT_PTHREAD_MUTEX_IS_LOCKED(lock->mutex));
      PR_ASSERT(PR_TRUE == lock->locked);
@@ -106,3 +104,12 @@ $NetBSD: patch-nspr_pr_src_pthreads_ptsynch.c,v 1.1 2020/02/05 03:26:52 ryoon Ex
  
      /* tuck these away 'till later */
      saved_entries = mon->entryCount;
+@@ -951,7 +958,7 @@ PR_IMPLEMENT(PRStatus) PR_DeleteSemaphor
+  * From the semctl(2) man page in glibc 2.0
+  */
+ #if (defined(__GNU_LIBRARY__) && !defined(_SEM_SEMUN_UNDEFINED)) \
+-    || (defined(FREEBSD) && __FreeBSD_version < 1200059) \
++    || (defined(FREEBSD) && __FreeBSD_version < 1200059 && !defined(__QuinnBSD__)) \
+     || defined(OPENBSD) || defined(BSDI) \
+     || defined(DARWIN)
+ /* union semun is defined by including <sys/sem.h> */

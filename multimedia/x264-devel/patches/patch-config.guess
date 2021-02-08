@@ -1,0 +1,20 @@
+$NetBSD$
+
+--- config.guess.orig	2019-12-17 21:45:04.000000000 +0000
++++ config.guess
+@@ -1319,6 +1319,15 @@ EOF
+     *:DragonFly:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-dragonfly`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'`
+ 	exit ;;
++    *:QuinnBSD:*:*)
++	UNAME_PROCESSOR=`/usr/bin/uname -p`
++        case ${UNAME_PROCESSOR} in
++           amd64)
++        	echo x86_64-unknown-quinnbsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
++           *)
++                echo ${UNAME_PROCESSOR}-unknown-quinnbsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
++        esac
++        exit ;;  
+     *:*VMS:*:*)
+ 	UNAME_MACHINE=`(uname -p) 2>/dev/null`
+ 	case "${UNAME_MACHINE}" in

@@ -1,8 +1,6 @@
-$NetBSD: patch-xf86drmMode.c,v 1.5 2019/01/19 13:21:29 tnn Exp $
+$NetBSD$
 
-FreeBSD/DragonFly/NetBSD support. From FreeBSD ports and NetBSD xsrc
-
---- xf86drmMode.c.orig	2018-10-16 14:49:03.000000000 +0000
+--- xf86drmMode.c.orig	2019-10-16 21:36:48.000000000 +0000
 +++ xf86drmMode.c
 @@ -43,6 +43,7 @@
  #include <stdlib.h>
@@ -22,7 +20,7 @@ FreeBSD/DragonFly/NetBSD support. From FreeBSD ports and NetBSD xsrc
 -	int domain, bus, dev, func;
 -	int i, modesetting, ret;
 -	size_t len;
-+#elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined (__DragonFly__)
++#elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined (__DragonFly__) || defined(__QuinnBSD__)
 +	#define bus_fmt "pci:%04x:%02x:%02x.%u"
 +	#define name_fmt "%*s %*s " bus_fmt
 +	unsigned int d1 = 0, b1 = 0, s1 = 0, f1 = 0;

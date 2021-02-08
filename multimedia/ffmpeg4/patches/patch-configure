@@ -1,15 +1,6 @@
-$NetBSD: patch-configure,v 1.6 2020/06/26 21:02:27 nia Exp $
+$NetBSD$
 
-Sun audio support.
-
-Enable PIC and section_data_rel_ro on NetBSD, even on i386,
-to avoid text relocations.
-
-Do not use 'rsync'.
-
-Portability fixes.
-
---- configure.orig	2020-06-15 18:54:23.000000000 +0000
+--- configure.orig	2020-07-11 10:39:30.000000000 +0000
 +++ configure
 @@ -2131,6 +2131,7 @@ HEADERS_LIST="
      sys_resource_h
@@ -57,6 +48,15 @@ Portability fixes.
          oss_indev_extralibs="-lossaudio"
          oss_outdev_extralibs="-lossaudio"
          enabled gcc || check_ldflags -Wl,-zmuldefs
+@@ -5347,7 +5351,7 @@ case $target_os in
+     dragonfly)
+         disable symver
+         ;;
+-    freebsd)
++    freebsd|quinnbsd)
+         ;;
+     bsd/os)
+         add_extralibs -lpoll -lgnugetopt
 @@ -5728,10 +5732,13 @@ done
  check_cc pragma_deprecated "" '_Pragma("GCC diagnostic ignored \"-Wdeprecated-declarations\"")'
  

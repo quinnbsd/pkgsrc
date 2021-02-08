@@ -1,8 +1,8 @@
-$NetBSD: patch-ae,v 1.8 2019/12/03 14:28:26 ryoon Exp $
+$NetBSD$
 
---- nspr/pr/src/misc/prnetdb.c.orig	2019-10-15 14:21:38.000000000 +0000
+--- nspr/pr/src/misc/prnetdb.c.orig	2020-09-17 15:01:34.000000000 +0000
 +++ nspr/pr/src/misc/prnetdb.c
-@@ -68,7 +68,7 @@ PRLock *_pr_dnsLock = NULL;
+@@ -68,12 +68,17 @@ PRLock *_pr_dnsLock = NULL;
  #if defined(AIX4_3_PLUS) || (defined(AIX) && defined(_THREAD_SAFE)) \
      || (defined(HPUX10_10) && defined(_REENTRANT)) \
          || (defined(HPUX10_20) && defined(_REENTRANT)) \
@@ -11,28 +11,27 @@ $NetBSD: patch-ae,v 1.8 2019/12/03 14:28:26 ryoon Exp $
  #define _PR_HAVE_GETPROTO_R
  #define _PR_HAVE_GETPROTO_R_INT
  #endif
-@@ -78,6 +78,11 @@ PRLock *_pr_dnsLock = NULL;
- #define _PR_HAVE_5_ARG_GETPROTO_R
- #endif
  
-+#if __DragonFly_version >= 200202
+-#if __FreeBSD_version >= 602000
++#if __FreeBSD_version >= 602000 || defined(__QuinnBSD__)
 +#define _PR_HAVE_GETPROTO_R
 +#define _PR_HAVE_5_ARG_GETPROTO_R
 +#endif
 +
- /* BeOS has glibc but not the glibc-style getprotobyxxx_r functions. */
- #if (defined(__GLIBC__) && __GLIBC__ >= 2)
++#if __DragonFly_version >= 200202
  #define _PR_HAVE_GETPROTO_R
-@@ -304,7 +309,7 @@ _pr_QueryNetIfs(void)
+ #define _PR_HAVE_5_ARG_GETPROTO_R
+ #endif
+@@ -302,7 +307,7 @@ _pr_QueryNetIfs(void)
  }
  
  #elif (defined(DARWIN) && defined(HAVE_GETIFADDRS)) || defined(FREEBSD) \
 -    || defined(NETBSD) || defined(OPENBSD)
-+    || defined(NETBSD) || defined(OPENBSD) || defined(DRAGONFLY)
++    || defined(NETBSD) || defined(OPENBSD) || defined(DRAGONFLY) || defined(__QuinnBSD__)
  
  /*
   * Use the BSD getifaddrs function.
-@@ -2163,6 +2168,11 @@ PR_IMPLEMENT(PRAddrInfo *) PR_GetAddrInf
+@@ -2161,6 +2166,11 @@ PR_IMPLEMENT(PRAddrInfo *) PR_GetAddrInf
           */
          hints.ai_socktype = SOCK_STREAM;
  

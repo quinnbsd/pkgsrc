@@ -1,15 +1,13 @@
-$NetBSD: patch-libavutil_common.h,v 1.1 2018/04/26 07:56:57 adam Exp $
+$NetBSD$
 
-Add required int includes on various opensource platforms.
-
---- libavutil/common.h.orig	2016-01-15 16:58:36.000000000 +0000
+--- libavutil/common.h.orig	2020-07-11 10:39:32.000000000 +0000
 +++ libavutil/common.h
-@@ -43,6 +43,22 @@
+@@ -44,6 +44,22 @@
  #include "version.h"
  #include "libavutil/avconfig.h"
  
 +#if defined(__cplusplus)
-+#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__linux__)
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__linux__) || defined(__QuinnBSD__)
 +#undef _STDINT_H_
 +#undef _SYS_STDINT_H_
 +#undef _STDINT_H

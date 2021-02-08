@@ -4,3 +4,6 @@ SHA1 (xorgproto-2020.1.tar.bz2) = 1cdab4e9ab796760ddb9582071328469a8eca08a
 RMD160 (xorgproto-2020.1.tar.bz2) = 6fa77728e461be0cf83a1f5626a55ecee1795390
 SHA512 (xorgproto-2020.1.tar.bz2) = 2d10533e54987f293e1c8578aa742c38cf2fac8551db1d317cf5ee4a6a9600eced50f59c57c38b35dd210fe02d350294c967512f04cb9876d6c0c1f7e89cb199
 Size (xorgproto-2020.1.tar.bz2) = 848072 bytes
+SHA1 (patch-include_X11_Xfuncproto.h) = 1787073669622dd14f342dc1cb39f05250728724
+SHA1 (patch-include_X11_Xos_r.h) = 238614af1123e9a86b8635d6a58499b94b17a58c
+SHA1 (patch-include_X11_Xosdefs.h) = 8f6d581cac9a4ebac1c6068ffb0d96c8fa3ab991

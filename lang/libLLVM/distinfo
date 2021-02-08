@@ -29,4 +29,5 @@ SHA1 (patch-tools_llvm-objcopy_CopyConfig.cpp) = d2cc18b1470a061135753b20973da62
 SHA1 (patch-tools_llvm-shlib_CMakeLists.txt) = 5892d83e4b8f1c30eefb9b8560fed43cb1a226e9
 SHA1 (patch-unittests_Support_Path.cpp) = 06d749d1904d3ce421945b9f783e6aef43acc0f0
 SHA1 (patch-utils_benchmark_src_internal__macros.h) = 861b2a9c8ba43c878e89ff410ffe894660a89b24
+SHA1 (patch-utils_lit_lit_llvm_config.py) = 8cb0305d68ee65b6a6021f616356630f8137095a
 SHA1 (patch-utils_unittest_googletest_include_gtest_internal_gtest-port-arch.h) = 6fde2b674e26ac911177e3d8754bf70609303b0a

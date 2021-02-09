@@ -21,8 +21,8 @@ SUBST_CLASSES+=		includes
 SUBST_MESSAGE.includes=	Fixing include paths for ncurses headers.
 SUBST_STAGE.includes=	post-build
 SUBST_FILES.includes=	include/curses.h
-SUBST_SED.includes=	-e 's,<ncurses_dll\.h>,<ncurses/ncurses_dll\.h>,'
-SUBST_SED.includes+=	-e 's,<unctrl\.h>,<ncurses/unctrl\.h>,'
+SUBST_SED.includes=	-e 's,<ncurses_dll\.h>,<ncursesw/ncurses_dll\.h>,'
+SUBST_SED.includes+=	-e 's,<unctrl\.h>,<ncursesw/unctrl\.h>,'
 
 post-build:
 	cd ${WRKSRC}/misc && ${SH} gen-pkgconfig

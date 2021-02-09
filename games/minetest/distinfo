@@ -15,4 +15,4 @@ SHA1 (patch-src_porting.cpp) = c6322a6acc663346526f7f4afe0bedb0d0d5238e
 SHA1 (patch-src_porting.h) = a7340baedbba30921a043a9ebf9b9b887c2acb19
 SHA1 (patch-src_threading_thread.cpp) = 8553e9dd7022a13cca69e021da27e57074b0a8d7
 SHA1 (patch-src_util_serialize.h) = dc4a5e1a4206efca10accbffc4145b3cb1008cea
-SHA1 (patch-src_util_string.cpp) = 30ec075a593c5af66da39fdc4e3b5a5a61e2d171
+SHA1 (patch-src_util_string.cpp) = eea621e3c06a081f5594d28c9df31379754a6782

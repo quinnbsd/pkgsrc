@@ -1,11 +1,8 @@
-$NetBSD: patch-src_util_string.cpp,v 1.3 2020/12/01 13:16:26 nia Exp $
-
-NetBSD does not support iconv("UTF-8", "WCHAR_T"), so use UTF-32, as
-on Android.
+$NetBSD$
 
 --- src/util/string.cpp.orig	2020-07-09 20:04:20.000000000 +0000
 +++ src/util/string.cpp
-@@ -38,9 +38,11 @@ with this program; if not, write to the 
+@@ -38,9 +38,11 @@ with this program; if not, write to the
  	#include <windows.h>
  #endif
  
@@ -20,11 +17,11 @@ on Android.
  #endif
  
  static bool parseHexColorString(const std::string &value, video::SColor &color,
-@@ -82,6 +84,13 @@ bool convert(const char *to, const char 
+@@ -82,6 +84,13 @@ bool convert(const char *to, const char
  #ifdef __ANDROID__
  // Android need manual caring to support the full character set possible with wchar_t
  const char *DEFAULT_ENCODING = "UTF-32LE";
-+#elif defined(__NetBSD__)
++#elif defined(__NetBSD__) || defined(__QuinnBSD__)
 +#include <sys/endian.h>
 +#  if BYTE_ORDER == LITTLE_ENDIAN
 +const char *DEFAULT_ENCODING = "UTF-32LE";
@@ -39,7 +36,7 @@ on Android.
  	memset(outbuf, 0, outbuf_size);
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) || defined(__NetBSD__)
++#if defined(__ANDROID__) || defined(__NetBSD__) || defined(__QuinnBSD__)
  	// Android need manual caring to support the full character set possible with wchar_t
  	SANITY_CHECK(sizeof(wchar_t) == 4);
  #endif
@@ -48,7 +45,7 @@ on Android.
  
  std::wstring narrow_to_wide(const std::string &mbs) {
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) || defined(__NetBSD__)
++#if defined(__ANDROID__) || defined(__NetBSD__) || defined(__QuinnBSD__)
  	return utf8_to_wide(mbs);
  #else
  	size_t wcl = mbs.size();
@@ -57,7 +54,7 @@ on Android.
  std::string wide_to_narrow(const std::wstring &wcs)
  {
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) || defined(__NetBSD__)
++#if defined(__ANDROID__) || defined(__NetBSD__) || defined(__QuinnBSD__)
  	return wide_to_utf8(wcs);
  #else
  	size_t mbl = wcs.size() * 4;

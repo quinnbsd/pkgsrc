@@ -5,9 +5,9 @@ BUILDLINK_TREE+=	libdrm-quinn
 .if !defined(LIBDRM_BUILDLINK3_MK)
 LIBDRM_BUILDLINK3_MK:=
 
-BUILDLINK_API_DEPENDS.libdrm+=	libdrm-quinn>=2.4.104
-BUILDLINK_PKGSRCDIR.libdrm?=	../../x11/libdrm-quinn
-BUILDLINK_INCDIRS.libdrm?=	include/libdrm
+BUILDLINK_API_DEPENDS.libdrm-quinn+=	libdrm-quinn>=2.4.104
+BUILDLINK_PKGSRCDIR.libdrm-quinn?=	../../x11/libdrm-quinn
+BUILDLINK_INCDIRS.libdrm-quinn?=	include/libdrm
 .endif # LIBDRM_BUILDLINK3_MK
 
 BUILDLINK_TREE+=	-libdrm-quinn

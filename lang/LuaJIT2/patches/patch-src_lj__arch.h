@@ -1,12 +1,16 @@
-$NetBSD: patch-src_lj__arch.h,v 1.1 2018/06/02 20:01:21 he Exp $
-
-Fix the test for endianness so that NetBSD/powerpc isn't
-mis-categorized as little-endian only because _LITTLE_ENDIAN
-is defined -- what matters on NetBSD is the value of _BYTE_ORDER.
+$NetBSD$
 
 --- src/lj_arch.h.orig	2017-05-01 18:11:00.000000000 +0000
 +++ src/lj_arch.h
-@@ -339,12 +339,21 @@
+@@ -68,6 +68,7 @@
+ #define LUAJIT_OS	LUAJIT_OS_OSX
+ #elif (defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || \
+        defined(__NetBSD__) || defined(__OpenBSD__) || \
++       defined(__QuinnBSD__) || \
+        defined(__DragonFly__)) && !defined(__ORBIS__)
+ #define LUAJIT_OS	LUAJIT_OS_BSD
+ #elif (defined(__sun__) && defined(__svr4__))
+@@ -339,12 +340,21 @@
  #if defined(_SOFT_FLOAT) || defined(_SOFT_DOUBLE)
  #error "No support for PowerPC CPUs without double-precision FPU"
  #endif

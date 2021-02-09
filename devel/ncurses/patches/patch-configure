@@ -1,11 +1,53 @@
-$NetBSD: patch-configure,v 1.3 2020/03/09 06:16:13 wiz Exp $
-
-Rename form/menu/panel to gnu*.
-TODO: use --with-xxx-libname=libnxxx in ncurses 6.3+ instead
+$NetBSD$
 
 --- configure.orig	2020-02-08 21:06:19.000000000 +0000
 +++ configure
-@@ -25656,8 +25652,17 @@ EOF
+@@ -1521,7 +1521,7 @@ echo $ECHO_N "checking for prefix... $EC
+ if test "x$prefix" = "xNONE" ; then
+ 	case "$cf_cv_system_name" in
+ 		# non-vendor systems don't have a conflict
+-	(openbsd*|freebsd*|mirbsd*|linux*|cygwin*|msys*|k*bsd*-gnu|mingw*)
++	(openbsd*|freebsd*|mirbsd*|linux*|cygwin*|msys*|k*bsd*-gnu|mingw*|quinnbsd*)
+ 		prefix=/usr
+ 		;;
+ 	(*)	prefix=$ac_default_prefix
+@@ -2856,7 +2856,7 @@ if test "$cross_compiling" = yes ; then
+ 	LDCONFIG=:
+ else
+ 	case "$cf_cv_system_name" in
+-	(dragonfly*|mirbsd*|freebsd*)
++	(dragonfly*|mirbsd*|freebsd*|quinnbsd*)
+ 		test -z "$LDCONFIG" && LDCONFIG="/sbin/ldconfig -R"
+ 		;;
+ 	(*) LDPATH=$PATH:/sbin:/usr/sbin
+@@ -5595,7 +5595,7 @@ echo $ECHO_N "checking for an rpath opti
+ 			LD_RPATH_OPT="-rpath "
+ 		fi
+ 		;;
+-	(linux*|gnu*|k*bsd*-gnu|freebsd*)
++	(linux*|gnu*|k*bsd*-gnu|freebsd*|quinnbsd*)
+ 		LD_RPATH_OPT="-Wl,-rpath,"
+ 		;;
+ 	(openbsd[2-9].*|mirbsd*)
+@@ -6012,7 +6012,7 @@ CF_EOF
+ 		MK_SHARED_LIB='${LD} ${LDFLAGS} -Bshareable -o $@'
+ 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+ 		;;
+-	(dragonfly*|freebsd*)
++	(dragonfly*|freebsd*|quinnbsd*)
+ 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
+ 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_enable_rpath" = yes ; then
+ 			LOCAL_LDFLAGS="${cf_ld_rpath_opt}\$(LOCAL_LIBDIR)"
+@@ -9257,7 +9257,7 @@ case $host_os in
+ 	cf_xopen_source="-D_DARWIN_C_SOURCE"
+ 	cf_XOPEN_SOURCE=
+ 	;;
+-(freebsd*|dragonfly*|midnightbsd*)
++(freebsd*|dragonfly*|midnightbsd*|quinnbsd*)
+ 	# 5.x headers associate
+ 	#	_XOPEN_SOURCE=600 with _POSIX_C_SOURCE=200112L
+ 	#	_XOPEN_SOURCE=500 with _POSIX_C_SOURCE=199506L
+@@ -25656,8 +25656,17 @@ EOF
  #define HAVE_LIB${cf_have_include} 1
  EOF
  
@@ -25,7 +67,7 @@ TODO: use --with-xxx-libname=libnxxx in ncurses 6.3+ instead
  			if test "$DFT_LWR_MODEL" = "libtool"; then
  				TEST_ARGS="${TEST_DEPS}"
  				TEST_ARG2="${TEST_DEP2}"
-@@ -25914,9 +25919,9 @@ fi
+@@ -25914,9 +25923,9 @@ fi
  ADAHTML_DIR=../../doc/html/ada
  
  # these could be configurable, but are not currently
@@ -38,7 +80,7 @@ TODO: use --with-xxx-libname=libnxxx in ncurses 6.3+ instead
  CXX_NAME=ncurses++
  
  # workaround for OS/2 (20151017)
-@@ -27440,7 +27445,15 @@ CF_EOF
+@@ -27440,7 +27449,15 @@ CF_EOF
  		cf_depsuf="${LIB_SUFFIX}${EXTRA_SUFFIX}${cf_depsuf}"
  	fi
  

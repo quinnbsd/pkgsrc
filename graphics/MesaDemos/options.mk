@@ -15,7 +15,11 @@ PLIST_VARS+=	wayland x11
 
 .if !empty(PKG_OPTIONS:Mlibdrm)
 CONFIGURE_ARGS+=	--enable-libdrm
+.if ${OPSYS} == "QuinnBSD"
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .else
 CONFIGURE_ARGS+=	--disable-libdrm
 .endif

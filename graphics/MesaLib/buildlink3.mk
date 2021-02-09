@@ -34,7 +34,11 @@ pkgbase:= MesaLib
 .endif
 
 .if ${MESALIB_SUPPORTS_DRI} == "yes"
+.if ${OPSYS} == "QuinnBSD"
+.  include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 .  include "../../x11/libdrm/buildlink3.mk"
+.endif
 .endif
 
 .include "../../mk/pthread.buildlink3.mk"

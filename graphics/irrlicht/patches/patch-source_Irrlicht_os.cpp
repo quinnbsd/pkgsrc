@@ -1,15 +1,13 @@
-$NetBSD: patch-source_Irrlicht_os.cpp,v 1.1 2019/06/30 22:13:14 nia Exp $
+$NetBSD$
 
-Support NetBSD.
-
---- source/Irrlicht/os.cpp.orig	Sun Jan  6 13:20:50 2013
+--- source/Irrlicht/os.cpp.orig	2013-06-17 10:09:20.000000000 +0000
 +++ source/Irrlicht/os.cpp
 @@ -22,10 +22,14 @@
  	#include <libkern/OSByteOrder.h>
  	#define bswap_16(X) OSReadSwapInt16(&X,0)
  	#define bswap_32(X) OSReadSwapInt32(&X,0)
 -#elif defined(__FreeBSD__) || defined(__OpenBSD__)
-+#elif defined(__FreeBSD__) || defined(__NetBSD__)
++#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__QuinnBSD__)
  	#include <sys/endian.h>
  	#define bswap_16(X) bswap16(X)
  	#define bswap_32(X) bswap32(X)

@@ -1,8 +1,6 @@
-$NetBSD: patch-source_Irrlicht_COSOperator.cpp,v 1.1 2019/06/30 22:13:14 nia Exp $
+$NetBSD$
 
-Add missing include.
-
---- source/Irrlicht/COSOperator.cpp.orig	Sun Jan  6 13:20:50 2013
+--- source/Irrlicht/COSOperator.cpp.orig	2012-11-03 18:07:52.000000000 +0000
 +++ source/Irrlicht/COSOperator.cpp
 @@ -12,6 +12,7 @@
  #include <string.h>
@@ -12,3 +10,12 @@ Add missing include.
  #include <sys/types.h>
  #include <sys/sysctl.h>
  #endif
+@@ -183,7 +184,7 @@ bool COSOperator::getSystemMemory(u32* T
+ 	_IRR_IMPLEMENT_MANAGED_MARSHALLING_BUGFIX;
+ 	return true;
+ 
+-#elif defined(_IRR_POSIX_API_) && !defined(__FreeBSD__)
++#elif defined(_IRR_POSIX_API_) && !defined(__FreeBSD__) && !defined(__QuinnBSD__)
+ #if defined(_SC_PHYS_PAGES) && defined(_SC_AVPHYS_PAGES)
+         long ps = sysconf(_SC_PAGESIZE);
+         long pp = sysconf(_SC_PHYS_PAGES);

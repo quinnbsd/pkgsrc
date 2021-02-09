@@ -26,11 +26,11 @@ USE_TOOLS+=	pkg-config automake autoconf autoreconf
 ONLY_FOR_PLATFORM+=	*-*-i386 *-*-x86_64
 
 CONFIGURE_ENV.SunOS+=	DRIVER_MAN_SUFFIX=4
-
+.include "../../mk/bsd.prefs.mk"
 .if ${OPSYS} == "QuinnBSD"
-BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.7
-.else
 BUILDLINK_API_DEPENDS.libdrm-quinn+=  libdrm-quinn>=2.4.104
+.else
+BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.7
 .endif
 pre-configure:
 	cd ${WRKSRC} && autoreconf -vif

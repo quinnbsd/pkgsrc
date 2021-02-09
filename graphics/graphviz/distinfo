@@ -6,6 +6,7 @@ SHA512 (graphviz-2.44.1.tar.gz) = 42e6137c7cce18daf6f17e6fcbbdfe8e0a531de1bdd3ac
 Size (graphviz-2.44.1.tar.gz) = 34079677 bytes
 SHA1 (patch-cmd_gvmap_gvmap.sh) = a6047ffe825cf13271b556ba8c4f3c866d04f5c3
 SHA1 (patch-cmd_lefty_os_unix_io.c) = 48f91c79b97928b54ae24af59a9fea173f34dfe5
+SHA1 (patch-config_config.rpath) = 183b29ff357a0475d900746a4ae7b5535748b803
 SHA1 (patch-config_config__perl.pl) = 85d535282a819c1055386244f7b520387d0ddbb1
 SHA1 (patch-configure) = a193b67fdd457262d2615b1c84860047353260fa
 SHA1 (patch-iffe) = f32c6be65209e57a92c215dee25c5c8334142c03

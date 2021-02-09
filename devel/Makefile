@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.3330 2021/02/04 07:12:58 jnemeth Exp $
+# $NetBSD: Makefile,v 1.3332 2021/02/08 08:26:33 adam Exp $
 #
 
 COMMENT=	Development utilities
@@ -2203,6 +2203,7 @@ SUBDIR+=	py-bcolz
 SUBDIR+=	py-behave
 SUBDIR+=	py-binaryornot
 SUBDIR+=	py-bintrees
+SUBDIR+=	py-bitarray
 SUBDIR+=	py-bitstring
 SUBDIR+=	py-blessings
 SUBDIR+=	py-blinker
@@ -2345,6 +2346,7 @@ SUBDIR+=	py-guppy3
 SUBDIR+=	py-h5py
 SUBDIR+=	py-hamcrest
 SUBDIR+=	py-hash
+SUBDIR+=	py-hexbytes
 SUBDIR+=	py-hg-evolve
 SUBDIR+=	py-hg-fastimport
 SUBDIR+=	py-hg-git

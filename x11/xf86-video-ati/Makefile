@@ -27,7 +27,12 @@ BUILDLINK_API_DEPENDS.modular-xorg-server+=	modular-xorg-server>=1.18.1
 .include "../../x11/modular-xorg-server/buildlink3.mk"
 
 .include "../../devel/zlib/buildlink3.mk"
+.if ${OPSYS} == "QuinnBSD"
+BUILDLINK_API_DEPENDS.libdrm-quinn+=  libdrm-quinn>=2.4.104
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.58
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .include "../../x11/xorgproto/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

@@ -1,0 +1,23 @@
+TODO: Adjust the following lines from README
+
+Project description
+-------------------
+
+Currently the project provides only a pkg-config [.pc] file, pthread-stubs.pc.
+The latter contains the Cflags/Libs flags applicable to programs/libraries
+that use only lightweight pthread API. See the next sections for the reasoning
+and implementation details.
+
+Historically this project used to provide either:
+ - a .pc file, when the C runtime was providing the pthread symbols
+or
+ - a .pc file and a library which implements weak stubs for the pthread symbols,
+which are not available in the C runtime.
+
+Since then, the latter case was found to have a fundamental design issue.
+
+
+Design
+------
+
+...

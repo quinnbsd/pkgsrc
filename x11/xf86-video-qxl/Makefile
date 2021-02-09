@@ -21,8 +21,13 @@ CPPFLAGS.SunOS+=	-D__EXTENSIONS__
 CONFIGURE_ENV.SunOS+=	DRIVER_MAN_SUFFIX=4
 
 .include "../../x11/libXext/buildlink3.mk"
-BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.46
+.if ${OPSYS} == "QuinnBSD"
+BUILDLINK_API_DEPENDS.libdrm-quinn+=  libdrm-quinn>=2.4.104
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
+BUILDLINK_API_DEPENDS.libdrm+=  libdrm>=2.4.46
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .include "../../sysutils/libpciaccess/buildlink3.mk"
 .include "../../sysutils/spice-protocol/buildlink3.mk"
 .include "../../x11/xorgproto/buildlink3.mk"

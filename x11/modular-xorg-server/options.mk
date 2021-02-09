@@ -13,7 +13,11 @@ PLIST_VARS+=		dri dtrace
 BUILDLINK_API_DEPENDS.MesaLib+=	MesaLib>=11
 .include "../../graphics/MesaLib/buildlink3.mk"
 .include "../../x11/xorgproto/buildlink3.mk"
+.if ${OPSYS} == "QuinnBSD"
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .include "../../x11/libxshmfence/buildlink3.mk"
 PLIST.dri=		yes
 CONFIGURE_ARGS+=	--enable-dri

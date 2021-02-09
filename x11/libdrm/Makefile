@@ -8,10 +8,10 @@ MAINTAINER=		joerg@NetBSD.org
 HOMEPAGE=		https://dri.freedesktop.org/wiki/DRM
 COMMENT=		Userspace interface to kernel DRM services
 LICENSE=		mit
-
+CONFLICTS+=     	libdrm-quinn-[0-9]*
 # Platforms with kernel support for DRM
 ONLY_FOR_PLATFORM=	NetBSD-*-* DragonFly-*-* FreeBSD-*-* OpenBSD-*-* \
-			Linux-*-* SunOS-*-* QuinnBSD-*-*
+			Linux-*-* SunOS-*-* 
 
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		gmake pkg-config

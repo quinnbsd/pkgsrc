@@ -27,14 +27,21 @@ ONLY_FOR_PLATFORM+=	*-*-i386 *-*-x86_64
 
 CONFIGURE_ENV.SunOS+=	DRIVER_MAN_SUFFIX=4
 
+.if ${OPSYS} == "QuinnBSD"
 BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.7
-
+.else
+BUILDLINK_API_DEPENDS.libdrm-quinn+=  libdrm-quinn>=2.4.104
+.endif
 pre-configure:
 	cd ${WRKSRC} && autoreconf -vif
 
 .include "../../devel/xorg-util-macros/buildlink3.mk"
 .include "../../x11/modular-xorg-server/buildlink3.mk"
+.if ${OPSYS} == "QuinnBSD"
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .include "../../x11/libXvMC/buildlink3.mk"
 .include "../../x11/xcb-util/buildlink3.mk"
 .include "../../x11/xorgproto/buildlink3.mk"

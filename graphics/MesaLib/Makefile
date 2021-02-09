@@ -47,8 +47,13 @@ PLIST_VARS+=		r300 svga nouveau vc4 lima panfrost
 PLIST_VARS+=		kms vaapi
 
 .if ${MESALIB_SUPPORTS_DRI} == "yes"
+.if ${OPSYS} == "QuinnBSD"
+BUILDLINK_API_DEPENDS.libdrm-quinn+= libdrm-quinn>=2.4.104
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 BUILDLINK_API_DEPENDS.libdrm+=	libdrm>=2.4.100
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 MESA_PLATFORMS+=	drm surfaceless
 MESON_ARGS+=		-Degl=true
 MESON_ARGS+=		-Dgbm=true

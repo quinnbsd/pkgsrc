@@ -21,6 +21,10 @@ CPPFLAGS.SunOS+=	-D__EXTENSIONS__
 CONFIGURE_ENV.SunOS+=	DRIVER_MAN_SUFFIX=4
 
 .include "../../x11/modular-xorg-server/buildlink3.mk"
+.if ${OPSYS} == "QuinnBSD"
+.include "../../x11/libdrm-quinn/buildlink3.mk"
+.else
 .include "../../x11/libdrm/buildlink3.mk"
+.endif
 .include "../../x11/xorgproto/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

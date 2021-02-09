@@ -4,5 +4,5 @@ SHA1 (xf86-video-amdgpu-19.1.0.tar.bz2) = 044a97ea2f36dd3d2d4844bb503dd4e2b2854d
 RMD160 (xf86-video-amdgpu-19.1.0.tar.bz2) = 2bc788f9a9415e13df27c18672fedec05861d01e
 SHA512 (xf86-video-amdgpu-19.1.0.tar.bz2) = ccdaa2378492da1a2f3d18fedacd1318c4708da534a8a959276a82730d5420619d83ad1ec8d7835c55655fe56123cd9bffb44e6223c5a97033c01f598af4a173
 Size (xf86-video-amdgpu-19.1.0.tar.bz2) = 441746 bytes
-SHA1 (patch-amdgpu_probe.c) = d93ca014956847287e4140cfa2fc57b30f6789aa
+SHA1 (patch-amdgpu_probe.c) = f72e0c950edc1dd818b7ec7940bd1c23d4b2a70c
 SHA1 (patch-configure) = dab8ff9d3c7b3d0f4b59143a4007b96bd6332f1b

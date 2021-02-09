@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.5 2020/07/31 14:41:37 maya Exp $
+@comment $NetBSD$
 lib/libI810XvMC.la
 lib/libIntelXvMC.la
 lib/xorg/modules/drivers/intel_drv.la

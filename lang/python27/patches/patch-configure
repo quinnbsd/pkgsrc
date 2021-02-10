@@ -1,12 +1,6 @@
-$NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
+$NetBSD$
 
-- recognize MirBSD, Interix
-- remove special-case library version hack for FreeBSD
-- don't set Mac OS X target version: stick to the current one
-- honor pkgsrc LDFLAGS
-- other stuff not previously commented (XXX)
-
---- configure.orig	2018-04-29 22:47:33.000000000 +0000
+--- configure.orig	2020-04-19 21:13:39.000000000 +0000
 +++ configure
 @@ -3356,7 +3356,7 @@ case $ac_sys_system/$ac_sys_release in
    # Reconfirmed for OpenBSD 3.3 by Zachary Hamm, for 3.4 by Jason Ish.
@@ -22,7 +16,7 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  	  INSTSONAME="$LDLIBRARY".$SOVERSION
            ;;
 -    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*)
-+    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|Interix*|MirBSD*)
++    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|Interix*|MirBSD*|QuinnBSD*)
  	  LDLIBRARY='libpython$(VERSION).so'
  	  BLDLIBRARY='-L. -lpython$(VERSION)'
  	  RUNSHARED=LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -57,7 +51,7 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
          then
              # OS X 10.3 through 10.5
              cur_target=10.3
-@@ -8617,9 +8615,9 @@ then
+@@ -8624,9 +8622,9 @@ then
  			LDCXXSHARED="$LDCXXSHARED "'$(PYTHONFRAMEWORKPREFIX)/$(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
  		else
  			# No framework, use the Python app as bundle-loader
@@ -70,7 +64,7 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  		fi ;;
  	Darwin/*)
  		# Use -undefined dynamic_lookup whenever possible (10.3 and later).
-@@ -8642,9 +8640,9 @@ then
+@@ -8649,9 +8647,9 @@ then
  				LDCXXSHARED="$LDCXXSHARED "'$(PYTHONFRAMEWORKPREFIX)/$(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
  			else
  				# No framework, use the Python app as bundle-loader
@@ -83,7 +77,7 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  			fi
  		else
  			# building for OS X 10.3 and later
-@@ -8655,7 +8653,7 @@ then
+@@ -8662,11 +8660,11 @@ then
  		;;
  	Linux*|GNU*|QNX*)
  		LDSHARED='$(CC) -shared'
@@ -92,7 +86,12 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  	BSD/OS*/4*)
  		LDSHARED="gcc -shared"
  		LDCXXSHARED="g++ -shared";;
-@@ -8683,6 +8681,9 @@ then
+-	FreeBSD*)
++	FreeBSD*|QuinnBSD*)
+ 		if [ "`$CC -dM -E - </dev/null | grep __ELF__`" != "" ]
+ 		then
+ 			LDSHARED='$(CC) -shared'
+@@ -8690,6 +8688,9 @@ then
  				   ;;
  				esac
  		fi;;
@@ -102,22 +101,22 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  	NetBSD*|DragonFly*)
  		LDSHARED='$(CC) -shared'
  		LDCXXSHARED='$(CXX) -shared';;
-@@ -8729,7 +8730,8 @@ then
+@@ -8736,7 +8737,8 @@ then
  		 fi;;
  	Linux*|GNU*) CCSHARED="-fPIC";;
  	BSD/OS*/4*) CCSHARED="-fpic";;
 -	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*) CCSHARED="-fPIC";;
-+	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*) CCSHARED="-fPIC";;
++	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*|QuinnBSD*) CCSHARED="-fPIC";;
 +	Interix*) CCSHARED="";;
  	OpenUNIX*|UnixWare*)
  		if test "$GCC" = "yes"
  		then CCSHARED="-fPIC"
-@@ -8781,11 +8783,12 @@ then
+@@ -8788,11 +8790,12 @@ then
  	OpenUNIX*|UnixWare*) LINKFORSHARED="-Wl,-Bexport";;
  	SCO_SV*) LINKFORSHARED="-Wl,-Bexport";;
  	ReliantUNIX*) LINKFORSHARED="-W1 -Blargedynsym";;
 -	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*)
-+	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*)
++	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*|QuinnBSD*)
  		if [ "`$CC -dM -E - </dev/null | grep __ELF__`" != "" ]
  		then
  			LINKFORSHARED="-Wl,--export-dynamic"
@@ -126,7 +125,7 @@ $NetBSD: patch-configure,v 1.1 2018/06/17 19:21:21 adam Exp $
  	SunOS/5*) case $CC in
  		  *gcc*)
  		    if $CC -Xlinker --help 2>&1 | grep export-dynamic >/dev/null
-@@ -10798,6 +10801,10 @@ int
+@@ -10883,6 +10886,10 @@ int
  main ()
  {
  int x=kqueue()

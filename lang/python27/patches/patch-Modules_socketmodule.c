@@ -16,7 +16,7 @@ $NetBSD$
  #if (defined(HAVE_BLUETOOTH_H) || defined(HAVE_BLUETOOTH_BLUETOOTH_H)) && !defined(__NetBSD__) && !defined(__DragonFly__)
  #define USE_BLUETOOTH 1
 -#if defined(__FreeBSD__)
-+#if defined(__FreeBSD__) || defined(__QuinnBSD__)/
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
  #define BTPROTO_L2CAP BLUETOOTH_PROTO_L2CAP
  #define BTPROTO_RFCOMM BLUETOOTH_PROTO_RFCOMM
  #define BTPROTO_HCI BLUETOOTH_PROTO_HCI

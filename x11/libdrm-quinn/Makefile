@@ -28,6 +28,7 @@ PKGCONFIG_OVERRIDE+=	radeon/libdrm_radeon.pc.in
 PKGCONFIG_OVERRIDE+=	tegra/libdrm_tegra.pc.in
 PKGCONFIG_OVERRIDE+=	vc4/libdrm_vc4.pc.in
 
+.include "../../devel/libatomic_ops/buildlink3.mk"
 .include "../../sysutils/libpciaccess/buildlink3.mk"
 .include "../../devel/meson/build.mk"
 .include "../../mk/bsd.pkg.mk"

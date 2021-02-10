@@ -8,3 +8,4 @@ SHA1 (patch-libkms_vmwgfx.c) = 86cfb92c3c806504fdd40ea8eb5af85500f7234e
 SHA1 (patch-meson.build) = ff2fea94beed6a704e1f4c67d659aa8a7908730a
 SHA1 (patch-tests_nouveau_threaded.c) = 4ea141061ebd2091579a5490083fd3237f2d01a8
 SHA1 (patch-xf86drm.c) = a094f5871487f4f1e389d0b47a36d065c8bb672f
+SHA1 (patch-xf86drmMode.c) = 57c7bbfeb016bda38f413c431887c3906f1f91fe

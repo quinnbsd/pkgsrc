@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- deps/v8/BUILD.gn.orig	2021-01-04 13:59:33.000000000 +0000
++++ deps/v8/BUILD.gn
+@@ -3257,7 +3257,7 @@ v8_source_set("v8_base_without_compiler"
+ 
+     # iOS Xcode simulator builds run on an x64 target. iOS and macOS are both
+     # based on Darwin and thus POSIX-compliant to a similar degree.
+-    if (is_linux || is_mac || is_ios || target_os == "freebsd") {
++    if (is_linux || is_mac || is_ios || target_os == "freebsd" || target_os == "quinnbsd") {
+       sources += [
+         "src/trap-handler/handler-inside-posix.cc",
+         "src/trap-handler/handler-inside-posix.h",

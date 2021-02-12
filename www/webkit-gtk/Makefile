@@ -17,6 +17,8 @@ NOT_FOR_PLATFORM=	NetBSD-[1-6].*-*
 TOOL_DEPENDS+=	gettext-tools>=0.18:../../devel/gettext-tools
 TOOL_DEPENDS+=	${PYPKGPREFIX}-expat-[0-9]*:../../textproc/py-expat
 
+.include "../../mk/bsd.prefs.mk"
+
 USE_CMAKE=	yes
 USE_LANGUAGES=	c c++11
 USE_TOOLS+=	automake bash bison flex gmake perl pkg-config msgfmt
@@ -127,6 +129,9 @@ NOT_PAX_MPROTECT_SAFE+=	libexec/webkit2gtk-4.0/jsc
 .include "options.mk"
 
 BUILDLINK_API_DEPENDS.glib2+= glib2>=2.32.1
+.if ${OPSYS} == "QuinnBSD"
+.include "../../devel/libsysinfo/buildlink3.mk"
+.endif
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../databases/sqlite3/buildlink3.mk"

@@ -1,9 +1,16 @@
-$NetBSD: patch-tools_v8_gypfiles_v8.gyp,v 1.1 2020/10/17 21:48:41 mrg Exp $
+$NetBSD$
 
-Add -larm on netbsd arm platforms.
-
---- tools/v8_gypfiles/v8.gyp.orig	2020-10-07 10:47:43.000000000 -0700
-+++ tools/v8_gypfiles/v8.gyp	2020-10-17 13:16:57.485883322 -0700
+--- tools/v8_gypfiles/v8.gyp.orig	2021-01-04 13:59:36.000000000 +0000
++++ tools/v8_gypfiles/v8.gyp
+@@ -782,7 +782,7 @@
+           'conditions': [
+             # iOS Xcode simulator builds run on an x64 target. iOS and macOS are both
+             # based on Darwin and thus POSIX-compliant to a similar degree.
+-            ['OS=="linux" or OS=="mac" or OS=="ios" or OS=="freebsd"', {
++            ['OS=="linux" or OS=="mac" or OS=="ios" or OS=="freebsd" or OS=="quinnbsd"', {
+               'sources': [
+                 '<!@pymod_do_main(GN-scraper "<(V8_ROOT)/BUILD.gn"  "\\"v8_base_without_compiler.*?is_linux.*?sources \+= ")',
+               ],
 @@ -903,6 +903,12 @@
          }],
          # Platforms that don't have Compare-And-Swap (CAS) support need to link atomic library
@@ -17,3 +24,12 @@ Add -larm on netbsd arm platforms.
          ['v8_current_cpu in ["mips", "mipsel", "mips64", "mips64el", "ppc", "arm"]', {
            'link_settings': {
              'libraries': ['-latomic', ],
+@@ -1179,7 +1185,7 @@
+           ],
+         },
+          ],
+-        ['OS=="freebsd"', {
++        ['OS=="freebsd" or OS=="quinnbsd"', {
+           'link_settings': {
+             'libraries': [
+               '-L/usr/local/lib -lexecinfo',

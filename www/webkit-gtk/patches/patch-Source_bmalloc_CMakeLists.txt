@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Source/bmalloc/CMakeLists.txt.orig	2020-08-12 09:17:57.000000000 +0000
++++ Source/bmalloc/CMakeLists.txt
+@@ -142,7 +142,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+ endif ()
+ 
+ set(bmalloc_LIBRARIES
+-    ${CMAKE_DL_LIBS}
++    ${CMAKE_DL_LIBS} -lsysinfo -lkvm
+ )
+ 
+ set(bmalloc_INTERFACE_LIBRARIES bmalloc)

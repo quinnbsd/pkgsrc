@@ -1,10 +1,15 @@
-$NetBSD: patch-lib_Frontend_InitHeaderSearch.cpp,v 1.2 2018/12/09 20:04:38 adam Exp $
+$NetBSD$
 
-Don't add /usr/local/include by default on Solaris.
-
---- lib/Frontend/InitHeaderSearch.cpp.orig	2018-06-28 23:23:45.000000000 +0000
-+++ lib/Frontend/InitHeaderSearch.cpp
-@@ -221,6 +221,7 @@ void InitHeaderSearch::AddDefaultCInclud
+--- ./lib/Frontend/InitHeaderSearch.cpp.orig	2020-07-07 16:21:37.000000000 +0000
++++ ./lib/Frontend/InitHeaderSearch.cpp
+@@ -225,12 +225,14 @@ void InitHeaderSearch::AddDefaultCInclud
+     switch (os) {
+     case llvm::Triple::CloudABI:
+     case llvm::Triple::FreeBSD:
++    case llvm::Triple::QuinnBSD:
+     case llvm::Triple::NetBSD:
+     case llvm::Triple::OpenBSD:
+     case llvm::Triple::NaCl:
      case llvm::Triple::PS4:
      case llvm::Triple::ELFIAMCU:
      case llvm::Triple::Fuchsia:

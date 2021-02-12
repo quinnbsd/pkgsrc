@@ -1,10 +1,8 @@
-$NetBSD: patch-configure,v 1.1 2018/11/05 12:19:23 jperkin Exp $
-
-Pretend NetBSD is Linux.
+$NetBSD$
 
 --- configure.orig	2018-04-10 13:43:15.000000000 +0000
 +++ configure
-@@ -4523,7 +4523,7 @@ $as_echo "$ac_cv_safe_to_define___extens
+@@ -4523,10 +4523,10 @@ $as_echo "$ac_cv_safe_to_define___extens
  # Checks for platform.
  # ----------------------------------------------------------------------
  case "$target_os" in
@@ -12,4 +10,8 @@ Pretend NetBSD is Linux.
 +linux*|gnu*|*netbsd*)
     my_htop_platform=linux
     ;;
- freebsd*|kfreebsd*)
+-freebsd*|kfreebsd*)
++freebsd*|kfreebsd*|quinnbsd*)
+    my_htop_platform=freebsd
+    ;;
+ openbsd*)

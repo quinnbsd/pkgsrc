@@ -1,11 +1,17 @@
-$NetBSD: patch-lib_Driver_ToolChain.cpp,v 1.1 2019/11/03 11:55:53 kamil Exp $
+$NetBSD$
 
-[LLD] Add NetBSD support as a new flavor of LLD (nb.lld)
-https://reviews.llvm.org/D69755
-
---- lib/Driver/ToolChain.cpp.orig	2019-07-11 19:06:38.000000000 +0000
-+++ lib/Driver/ToolChain.cpp
-@@ -506,6 +506,8 @@ std::string ToolChain::GetLinkerPath() c
+--- ./lib/Driver/ToolChain.cpp.orig	2020-07-07 16:21:37.000000000 +0000
++++ ./lib/Driver/ToolChain.cpp
+@@ -373,6 +373,8 @@ StringRef ToolChain::getOSLibName() cons
+     return "openbsd";
+   case llvm::Triple::Solaris:
+     return "sunos";
++  case llvm::Triple::QuinnBSD:
++    return "quinnbsd";
+   default:
+     return getOS();
+   }
+@@ -534,6 +536,8 @@ std::string ToolChain::GetLinkerPath() c
      llvm::SmallString<8> LinkerName;
      if (Triple.isOSDarwin())
        LinkerName.append("ld64.");

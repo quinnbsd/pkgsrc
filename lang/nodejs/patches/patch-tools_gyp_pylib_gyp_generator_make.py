@@ -1,9 +1,6 @@
-$NetBSD: patch-tools_gyp_pylib_gyp_generator_make.py,v 1.4 2020/10/08 10:58:35 adam Exp $
+$NetBSD$
 
-Use the system libtool on Darwin.
-Add support for NetBSD and DragonFly.
-
---- tools/gyp/pylib/gyp/generator/make.py.orig	2020-10-07 17:47:43.000000000 +0000
+--- tools/gyp/pylib/gyp/generator/make.py.orig	2021-01-04 13:59:35.000000000 +0000
 +++ tools/gyp/pylib/gyp/generator/make.py
 @@ -180,7 +180,7 @@ cmd_solink_module = $(LINK.$(TOOLSET)) -
  
@@ -19,7 +16,7 @@ Add support for NetBSD and DragonFly.
              }
          )
 -    elif flavor == "freebsd":
-+    elif flavor == "freebsd" or flavor == 'dragonflybsd' or flavor == 'netbsd':
++    elif flavor == "freebsd" or flavor == 'dragonflybsd' or flavor == 'netbsd' or flavor=='quinnbsd':
          # Note: OpenBSD has sysutils/flock. lockf seems to be FreeBSD specific.
          header_params.update({"flock": "lockf"})
      elif flavor == "openbsd":

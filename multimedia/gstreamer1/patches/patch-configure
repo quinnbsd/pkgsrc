@@ -1,0 +1,85 @@
+$NetBSD$
+
+--- configure.orig	2019-12-03 10:52:25.000000000 +0000
++++ configure
+@@ -5950,7 +5950,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -6358,7 +6358,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -11190,7 +11190,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -12236,7 +12236,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -16630,7 +16630,7 @@ fi
+ 
+ 
+     ;;
+-  linux*|darwin*|solaris*|netbsd*|freebsd*|openbsd*|kfreebsd*|dragonfly*|gnu*)
++  linux*|darwin*|solaris*|netbsd*|freebsd*|openbsd*|kfreebsd*|dragonfly*|gnu*|quinnbsd*)
+     HAVE_PTP=yes
+     ;;
+   *)
+@@ -20125,7 +20125,7 @@ fi
+         archive_cmds_need_lc_CXX=no
+         ;;
+ 
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+         # FreeBSD 3 and later use GNU C++ and GNU ld with standard ELF
+         # conventions
+         ld_shlibs_CXX=yes
+@@ -21065,7 +21065,7 @@ lt_prog_compiler_static_CXX=
+ 	    ;;
+ 	esac
+ 	;;
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+ 	# FreeBSD uses GNU C++
+ 	;;
+       hpux9* | hpux10* | hpux11*)
+@@ -21992,7 +21992,7 @@ dgux*)
+   shlibpath_var=LD_LIBRARY_PATH
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -24028,7 +24028,7 @@ ax_pthread_flags="pthreads none -Kthread
+ 
+ case $host_os in
+ 
+-        freebsd*)
++        freebsd* | quinnbsd*)
+ 
+         # -kthread: FreeBSD kernel threads (preferred to -pthread since SMP-able)
+         # lthread: LinuxThreads port on FreeBSD (also preferred to -pthread)

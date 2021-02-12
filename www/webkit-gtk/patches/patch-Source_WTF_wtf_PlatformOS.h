@@ -1,9 +1,16 @@
-$NetBSD: patch-Source_WTF_wtf_PlatformOS.h,v 1.1 2020/03/10 18:14:04 leot Exp $
+$NetBSD$
 
-Add OS(SOLARIS) definition and add them to Unix systems.
-
---- Source/WTF/wtf/PlatformOS.h.orig	2020-02-04 10:24:07.000000000 +0000
-+++ Source/WTF/wtf/PlatformOS.h
+--- ./Source/WTF/wtf/PlatformOS.h.orig	2020-08-12 09:17:54.000000000 +0000
++++ ./Source/WTF/wtf/PlatformOS.h
+@@ -85,7 +85,7 @@
+ #endif
+ 
+ /* OS(FREEBSD) - FreeBSD */
+-#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__FreeBSD_kernel__)
++#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__FreeBSD_kernel__) || defined(__QuinnBSD__)
+ #define WTF_OS_FREEBSD 1
+ #endif
+ 
 @@ -114,6 +114,11 @@
  #define WTF_OS_OPENBSD 1
  #endif

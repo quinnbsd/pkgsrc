@@ -1,13 +1,25 @@
-$NetBSD: patch-deps_v8_src_base_platform_platform-posix.cc,v 1.6 2020/08/05 21:49:18 maya Exp $
+$NetBSD$
 
-Use sysconf(_SC_THREAD_STACK_MIN) instead of PTHREAD_STACK_MIN.
-Cast explicitly.
-
-Avoid using a random hint, some low numbers cause spurious ENOMEM on netbsd
-(PR port-arm/55533)
-
---- deps/v8/src/base/platform/platform-posix.cc.orig	2020-07-20 22:18:45.000000000 +0000
+--- deps/v8/src/base/platform/platform-posix.cc.orig	2021-01-04 13:59:33.000000000 +0000
 +++ deps/v8/src/base/platform/platform-posix.cc
+@@ -9,7 +9,7 @@
+ #include <errno.h>
+ #include <limits.h>
+ #include <pthread.h>
+-#if defined(__DragonFly__) || defined(__FreeBSD__) || defined(__OpenBSD__)
++#if defined(__DragonFly__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__QuinnBSD__)
+ #include <pthread_np.h>  // for pthread_set_name_np
+ #endif
+ #include <sched.h>  // for sched_yield
+@@ -22,7 +22,7 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #if defined(__APPLE__) || defined(__DragonFly__) || defined(__FreeBSD__) || \
+-    defined(__NetBSD__) || defined(__OpenBSD__)
++    defined(__NetBSD__) || defined(__OpenBSD__) || defined(__QuinnBSD__)
+ #include <sys/sysctl.h>  // NOLINT, for sysctl
+ #endif
+ 
 @@ -323,6 +323,10 @@ void* OS::GetRandomMmapAddr() {
  #endif
  #endif

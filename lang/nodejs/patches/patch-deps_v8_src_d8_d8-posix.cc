@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- deps/v8/src/d8/d8-posix.cc.orig	2021-01-04 13:59:33.000000000 +0000
++++ deps/v8/src/d8/d8-posix.cc
+@@ -334,7 +334,7 @@ static Local<Value> GetStdout(Isolate* i
+ // See http://code.google.com/p/v8/issues/detail?id=401.
+ #if defined(WNOWAIT) && !defined(ANDROID) && !defined(__APPLE__) && \
+     !defined(__NetBSD__) && !defined(__Fuchsia__)
+-#if !defined(__FreeBSD__)
++#if !defined(__FreeBSD__) && !defined(__QuinnBSD__)
+ #define HAS_WAITID 1
+ #endif
+ #endif

@@ -3,7 +3,7 @@
 DISTNAME=	spidermonkey78-78.6.0_1
 PKGNAME=	mozjs78-bin-78.6.0
 CATEGORIES=	lang
-MASTER_SITES=	https://pkg.freebsd.org/FreeBSD:13:amd64/latest/All/
+MASTER_SITES=	http://ftp.quinnbsd.org/pub/QuinnBSD/packages/distfiles/
 EXTRACT_SUFX=	.txz
 
 MAINTAINER=	apamment@yandex.com

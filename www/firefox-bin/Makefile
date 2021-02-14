@@ -3,7 +3,7 @@
 DISTNAME=	firefox-85.0.2,2
 PKGNAME=	firefox-85.0.2
 CATEGORIES=	lang
-MASTER_SITES=	https://pkg.freebsd.org/FreeBSD:13:amd64/latest/All/
+MASTER_SITES=	http://ftp.quinnbsd.org/pub/QuinnBSD/packages/distfiles/
 EXTRACT_SUFX=	.txz
 PKGREVISION=	2
 

@@ -59,8 +59,8 @@ CONFIGURE_ARGS+=	--disable-libass
 # av1 option
 .if !empty(PKG_OPTIONS:Mav1)
 CONFIGURE_ARGS+=	--enable-libaom
-BUILDLINK_API_DEPENDS.libaom+=	libaom>=1.0.0nb1
-.include "../../multimedia/libaom/buildlink3.mk"
+BUILDLINK_API_DEPENDS.libaom2+=	libaom2>=2.0.2
+.include "../../multimedia/libaom2/buildlink3.mk"
 .else
 CONFIGURE_ARGS+=	--disable-libaom
 .endif

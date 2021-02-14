@@ -38,5 +38,8 @@ SUBST_MESSAGE.rpathfix=	Adding rpath to libpng-config
 SUBST_SED.rpathfix=	-e 's/-L$${libdir}/${COMPILER_RPATH_FLAG}$${libdir} -L$${libdir}/g'
 SUBST_STAGE.rpathfix=	pre-configure
 
+pre-configure:
+	cd ${WRKDIR}/libpng-1.6.37 && patch -p1 < ${FILESDIR}/libpng-1.6.37-apng.patch
+
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

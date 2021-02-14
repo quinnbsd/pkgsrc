@@ -4,3 +4,7 @@ SHA1 (gc-8.0.4.tar.gz) = 4b8b24534f469b64ff4bc2332a9bdf8bef8bf1d4
 RMD160 (gc-8.0.4.tar.gz) = 928ea053416021fdf70150a7863e1ef27d8cae94
 SHA512 (gc-8.0.4.tar.gz) = 57ccca15c6e50048d306a30de06c1a844f36103a84c2d1c17cbccbbc0001e17915488baec79737449982da99ce5d14ce527176afae9ae153cbbb5a19d986366e
 Size (gc-8.0.4.tar.gz) = 1160528 bytes
+SHA1 (patch-configure) = d5981ebd24cd6af9d93ce981acdac6952690bdba
+SHA1 (patch-dyn__load.c) = cb604092c4d34615e936c142f55701a522336ca2
+SHA1 (patch-include_gc__config__macros.h) = 05d9fcb1b4892884ebbc0ad71e20122b315fb2e9
+SHA1 (patch-include_private_gcconfig.h) = ed46c5094a377f577122b62f9d8a4b5b385ba3eb

@@ -61,6 +61,10 @@ USE_GNU_ICONV=		yes	# FIXME: something doesn't work on NetBSD
 BROKEN_GETTEXT_DETECTION= yes
 .endif
 
+.if ${OPSYS} == "QuinnBSD"
+USE_GNU_ICONV= yes
+.endif
+
 # Debugging
 #CONFIGURE_ARGS+=	-vvv
 #CONFIGURE_ARGS+=	--enable-developer

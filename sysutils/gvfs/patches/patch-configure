@@ -1,0 +1,78 @@
+$NetBSD$
+
+--- configure.orig	2011-03-21 16:02:39.000000000 +0000
++++ configure
+@@ -5948,7 +5948,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -6378,7 +6378,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -10293,7 +10293,7 @@ fi
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -11267,7 +11267,7 @@ freebsd1*)
+   dynamic_linker=no
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -15633,8 +15633,8 @@ fi
+ 
+ msg_gconf_gio=no
+ if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gio-2.0 <= 2.27.1\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gio-2.0 <= 2.27.1") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gio-2.0\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "gio-2.0") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+@@ -16561,7 +16561,7 @@ fi
+ 
+   # Need OS tweaks in hal volume monitor backend
+   case "$host" in
+-    *-linux* | *-freebsd* | *-kfreebsd*-gnu)
++    *-linux* | *-freebsd* | *-kfreebsd*-gnu | *-quinnbsd*)
+       use_gphoto2=yes
+       ;;
+     *)
+@@ -16928,7 +16928,7 @@ $as_echo "#define HAVE_SAMBA /**/" >>con
+ 
+ 		msg_samba="yes"
+                 if test x$with_samba_libs != x/usr/lib; then
+-                        SAMBA_LIBS="-L$with_samba_libs -lsmbclient"
++                        SAMBA_LIBS="-L$with_samba_libs -lsmbclient -Wl,-R$with_samba_libs"
+                 else
+                 	SAMBA_LIBS="-lsmbclient"
+                 fi
+@@ -17376,7 +17376,7 @@ _ACEOF
+ fi
+ 
+ 
+-if test "$ac_cv_func_statfs" = yes ; then
++if test "$ac_cv_func_statvfs" != yes -a "$ac_cv_func_statfs" = yes ; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking number of arguments to statfs()" >&5
+ $as_echo_n "checking number of arguments to statfs()... " >&6; }
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext

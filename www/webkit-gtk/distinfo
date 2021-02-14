@@ -11,6 +11,7 @@ SHA1 (patch-Source_JavaScriptCore_assembler_ARM64Assembler.h) = 79c282ca90d0ba2e
 SHA1 (patch-Source_JavaScriptCore_assembler_ARMv7Assembler.h) = 70975aac175ec4131a4ed26a54dfe51e16ffb7cd
 SHA1 (patch-Source_JavaScriptCore_heap_MarkedSpace.cpp) = 709e5dcf4cdb834617c2ef542686bb2aa4aa37b3
 SHA1 (patch-Source_JavaScriptCore_jit_ExecutableAllocator.cpp) = 7f6c0c57d46478e83c4ff21dae2415f44085ba32
+SHA1 (patch-Source_JavaScriptCore_jsc.cpp) = 72d68fc81cb8f2faae38ec9a9740975419313f32
 SHA1 (patch-Source_JavaScriptCore_offlineasm_arm64.rb) = 8c05dafa317667bbf55504d05eeb8ae06fba4e93
 SHA1 (patch-Source_JavaScriptCore_runtime_MachineContext.h) = 23bc86a389f8009ec829c3ee0fe3effe3f20b012
 SHA1 (patch-Source_ThirdParty_ANGLE_adjust-angle-include-paths.sh) = b6506b0f273a81f2a16a19abc604c3402f57f259

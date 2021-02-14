@@ -72,8 +72,12 @@ SUBST_FILES.paths+=	docs/man/pkexec.xml
 SUBST_FILES.paths+=	src/examples/org.freedesktop.policykit.examples.pkexec.policy.in
 SUBST_SED.paths+=	-e 's,/usr/bin/,${PREFIX}/bin/,g'
 
-
+.if ${OPSYS} == "QuinnBSD"
+.include "../../lang/mozjs78-bin/buildlink3.mk"
+.include "../../devel/nspr/buildlink3.mk"
+.else
 .include "../../lang/mozjs78/buildlink3.mk"
+.endif
 .include "../../devel/gettext-lib/buildlink3.mk"
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../textproc/expat/buildlink3.mk"

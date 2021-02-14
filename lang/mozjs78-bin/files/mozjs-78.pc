@@ -1,0 +1,14 @@
+prefix=/usr/pkg
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: SpiderMonkey 78.6.0
+Description: The Mozilla library for JavaScript
+Version: 78.6.0
+Requires.private: nspr >= 4.10
+Libs: -L${libdir} -lmozjs-78
+# Use -isystem for includes rather than -I, to mark them as "system headers"
+# that don't generate warning diagnostics. For justification, see
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1539036
+Cflags: -include ${includedir}/mozjs-78/js/RequiredDefines.h -isystem ${includedir}/mozjs-78

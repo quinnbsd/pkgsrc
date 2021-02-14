@@ -1,0 +1,24 @@
+$NetBSD$
+
+--- lib/configure.orig	2020-01-25 19:22:27.000000000 +0000
++++ lib/configure
+@@ -31,6 +31,10 @@ if [ -z "$HOST" ] ; then
+ 	then
+ 		sys=freebsd
+ 	fi
++	if [ "$sys" = "QuinnBSD" ]
++	then
++		sys=freebsd
++	fi
+ 	if [ "$sys" = "CYGWIN_NT-5.1" -o "$sys" = "CYGWIN_NT-6.0" ]
+ 	then
+ 		sys=cygwin
+@@ -268,7 +272,7 @@ else
+ 		echo >>$m 'SONAME=-Wl,-soname,$(LIBNAME).$(LIBEXT)$(ABI_VERSION)'
+ 	fi
+ fi
+-echo >>$m 'PCILIBPC=$(LIBNAME).pc'
++echo >>$m 'PCILIBPC=libpci.pc'
+ 
+ echo >>$c "#define PCILIB_VERSION \"$VERSION\""
+ sed '/"/{s/^#define \([^ ]*\) "\(.*\)"$/\1=\2/;p;d;};s/^#define \(.*\)/\1=1/' <$c >>$m

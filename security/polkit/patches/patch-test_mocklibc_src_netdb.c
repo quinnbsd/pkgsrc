@@ -1,15 +1,12 @@
-$NetBSD: patch-test_mocklib_src_netdb.c,v 1.3 2016/12/03 01:58:50 marino Exp $
+$NetBSD$
 
-Darwin has setnetgrent.
-SunOS has endnetgrent.
-
---- test/mocklibc/src/netdb.c.orig	2014-01-14 22:42:25.000000000 +0000
+--- test/mocklibc/src/netdb.c.orig	2020-08-26 09:27:17.000000000 +0000
 +++ test/mocklibc/src/netdb.c
 @@ -36,6 +36,7 @@ static struct netgroup_iter global_iter;
  
  // REMEMBER: 1 means success, 0 means failure for netgroup methods
  
-+#if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__DragonFly__)
++#if !defined(__APPLE__) && !defined(__FreeBSD__) && !defined(__DragonFly__) && !defined(__QuinnBSD__)
  int setnetgrent(const char *netgroup) {
    if (!global_netgroup_head)
      global_netgroup_head = netgroup_parse_all();

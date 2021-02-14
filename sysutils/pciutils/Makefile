@@ -12,7 +12,9 @@ LICENSE=	gnu-gpl-v2
 
 MAKE_JOBS_SAFE=		no
 ONLY_FOR_PLATFORM=	AIX-*-* Darwin-*-* FreeBSD-*-* Linux-*-* NetBSD-*-*
-ONLY_FOR_PLATFORM+=	DragonFly-*-* OpenBSD-*-* SunOS-5.11-* Haiku-*-*
+ONLY_FOR_PLATFORM+=	DragonFly-*-* OpenBSD-*-* SunOS-5.11-* Haiku-*-* QuinnBSD-*-*
+
+CFLAGS+=		-fPIC
 
 MAKE_FLAGS+=		CFLAGS=${CFLAGS:Q}
 MAKE_FLAGS+=		LDFLAGS=${LDFLAGS:Q}
@@ -40,5 +42,12 @@ SUBST_MESSAGE.dns=	Disabling DNS support on Solaris
 SUBST_STAGE.dns=	pre-configure
 SUBST_FILES.dns=	Makefile
 SUBST_SED.dns=		-e 's/^DNS=/DNS=no/'
+
+post-build:
+	@cd ${WRKSRC}/lib/ && ${CC} ${CFLAGS} -Wl,-soname=libpci.so.3 -shared *.o -lz -o libpci.so.3
+	${LN} -fs libpci.so.3 ${WRKSRC}/lib/libpci.so
+post-install:
+	cp ${WRKSRC}/lib/libpci.so.3 ${DESTDIR}${PREFIX}/lib
+	${LN} -fs libpci.so.3 ${DESTDIR}${PREFIX}/lib/libpci.so
 
 .include "../../mk/bsd.pkg.mk"

@@ -1,0 +1,47 @@
+# $NetBSD: Makefile,v 1.10 2020/12/23 15:03:09 gdt Exp $
+DISTNAME=	libaom2-2.0.2
+PKGNAME=	libaom2-2.0.2
+CATEGORIES=	multimedia
+MASTER_SITES=	${MASTER_SITE_GITHUB:=jbeich/}
+GITHUB_TAG=	cb1d48da8da2061e72018761788a18b8fa8013bb
+GITHUB_PROJECT=	aom
+
+MAINTAINER=	pkgsrc-users@NetBSD.org
+HOMEPAGE=	https://aomedia.googlesource.com/aom/+archive/
+COMMENT=	Library for using AV1, video coding format
+LICENSE=	2-clause-bsd
+
+WRKSRC=		${WRKDIR}
+USE_CMAKE=	yes
+USE_LANGUAGES=	c c++
+USE_TOOLS+=	perl
+
+CONFIGURE_DIRS= build
+CMAKE_ARG_PATH= ../${GITHUB_PROJECT}-${GITHUB_TAG}
+CMAKE_ARGS+=	-DBUILD_SHARED_LIBS:BOOL=ON
+CMAKE_ARGS+=	-DCMAKE_COLOR_MAKEFILE:BOOL=ON
+CMAKE_ARGS+=	-DENABLE_DECODE_PERF_TESTS:BOOL=OFF
+CMAKE_ARGS+=	-DENABLE_EXAMPLES:BOOL=ON
+CMAKE_ARGS+=	-DENABLE_DOCS:BOOL=OFF
+CMAKE_ARGS+=	-DENABLE_GOMA:BOOL=OFF
+CMAKE_ARGS+=	-DENABLE_NASM:BOOL=ON
+CMAKE_ARGS+=	-DENABLE_TESTS:BOOL=OFF
+CMAKE_ARGS+=	-DENABLE_TOOLS:BOOL=OFF
+CMAKE_ARGS+=	-DENABLE_WERROR:BOOL=OFF
+
+.include "../../mk/bsd.prefs.mk"
+
+.if !empty(MACHINE_PLATFORM:MNetBSD-*-*arm*) \
+  || !empty(MACHINE_PLATFORM:MNetBSD-*-aarch64) \
+  || !empty(MACHINE_PLATFORM:MDarwin-*-aarch64)
+CMAKE_ARGS+=	-DCONFIG_RUNTIME_CPU_DETECT=0
+.endif
+
+.if ${MACHINE_ARCH} == x86_64 || ${MACHINE_ARCH} == i386
+BUILD_DEPENDS+=	nasm>=2.13:../../devel/nasm
+.endif
+
+pre-configure:
+	mkdir ${WRKSRC}/build
+
+.include "../../mk/bsd.pkg.mk"

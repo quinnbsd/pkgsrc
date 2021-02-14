@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.ac.orig	2020-12-07 11:27:30.000000000 +0000
++++ configure.ac
+@@ -197,7 +197,7 @@ case "$host" in
+                 KVM_LIBS="-lkvm"
+         fi
+         ;;
+-        *-*-freebsd* | *-*-kfreebsd*-gnu )
++        *-*-freebsd* | *-*-kfreebsd*-gnu | *-*-quinnbsd*)
+         CK_BACKEND="freebsd"
+         AC_CHECK_LIB(kvm, kvm_openfiles, have_kvm=yes,
+                 AC_MSG_ERROR([Unable to find libkvm which is needed on FreeBSD/DragonflyBSD]))

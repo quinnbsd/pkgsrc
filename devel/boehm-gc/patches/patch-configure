@@ -1,8 +1,8 @@
 $NetBSD$
 
---- configure.orig	2019-11-23 13:59:04.000000000 +0000
+--- configure.orig	2019-03-02 08:55:46.000000000 +0000
 +++ configure
-@@ -5829,7 +5829,7 @@ else
+@@ -5616,7 +5616,7 @@ else
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
@@ -11,7 +11,7 @@ $NetBSD$
      # This has been around since 386BSD, at least.  Likely further.
      if test -x /sbin/sysctl; then
        lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
-@@ -6240,13 +6240,13 @@ darwin* | rhapsody*)
+@@ -6027,7 +6027,7 @@ darwin* | rhapsody*)
    lt_cv_deplibs_check_method=pass_all
    ;;
  
@@ -20,14 +20,7 @@ $NetBSD$
    if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
      case $host_cpu in
      i*86 )
-       # Not sure whether the presence of OpenBSD here was a mistake.
-       # Let's accept both of them until this is cleared up.
--      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly)/i[3-9]86 (compact )?demand paged shared library'
-+      lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly|QuinnBSD)/i[3-9]86 (compact )?demand paged shared library'
-       lt_cv_file_magic_cmd=/usr/bin/file
-       lt_cv_file_magic_test_file=`echo /usr/lib/libc.so.*`
-       ;;
-@@ -10766,7 +10766,7 @@ fi
+@@ -10552,7 +10552,7 @@ fi
        ;;
  
      # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
@@ -36,7 +29,7 @@ $NetBSD$
        archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
        hardcode_libdir_flag_spec='-R$libdir'
        hardcode_direct=yes
-@@ -11811,7 +11811,7 @@ dgux*)
+@@ -11597,7 +11597,7 @@ dgux*)
    shlibpath_var=LD_LIBRARY_PATH
    ;;
  
@@ -45,7 +38,7 @@ $NetBSD$
    # DragonFly does not have aout.  When/if they implement a new
    # versioning mechanism, adjust this.
    if test -x /usr/bin/objformat; then
-@@ -13912,7 +13912,7 @@ fi
+@@ -13695,7 +13695,7 @@ fi
          archive_cmds_need_lc_CXX=no
          ;;
  
@@ -54,7 +47,7 @@ $NetBSD$
          # FreeBSD 3 and later use GNU C++ and GNU ld with standard ELF
          # conventions
          ld_shlibs_CXX=yes
-@@ -14852,7 +14852,7 @@ lt_prog_compiler_static_CXX=
+@@ -14635,7 +14635,7 @@ lt_prog_compiler_static_CXX=
  	    ;;
  	esac
  	;;
@@ -63,7 +56,7 @@ $NetBSD$
  	# FreeBSD uses GNU C++
  	;;
        hpux9* | hpux10* | hpux11*)
-@@ -15776,7 +15776,7 @@ dgux*)
+@@ -15559,7 +15559,7 @@ dgux*)
    shlibpath_var=LD_LIBRARY_PATH
    ;;
  
@@ -72,12 +65,30 @@ $NetBSD$
    # DragonFly does not have aout.  When/if they implement a new
    # versioning mechanism, adjust this.
    if test -x /usr/bin/objformat; then
-@@ -18483,7 +18483,7 @@ case "$target" in
- $as_echo "#define FFI_EXEC_TRAMPOLINE_TABLE 1" >>confdefs.h
+@@ -16361,7 +16361,7 @@ case "$THREADS" in
+     # Common defines for most POSIX platforms.
+     case "$host" in
+       *-*-aix* | *-*-android* | *-*-cygwin* | *-*-darwin* | *-*-dragonfly* | \
+-      *-*-freebsd* | *-*-haiku* | *-*-hpux11* | *-*-irix* | \
++      *-*-freebsd* | *-*-quinnbsd* | *-*-haiku* | *-*-hpux11* | *-*-irix* | \
+       *-*-kfreebsd*-gnu | *-*-gnu* | *-*-*linux* | *-*-nacl* | \
+       *-*-netbsd* | *-*-openbsd* | *-*-osf* | *-*-solaris*)
+         $as_echo "#define GC_THREADS 1" >>confdefs.h
+@@ -16429,7 +16429,7 @@ $as_echo "$as_me: WARNING: \"Only HP/UX
+         AM_CFLAGS="$AM_CFLAGS -pthread"
+         THREADDLLIBS=-pthread
+         ;;
+-      *-*-freebsd*)
++      *-*-freebsd* | *-*-quinnbsd*)
+         AM_CFLAGS="$AM_CFLAGS -pthread"
+         ;;
+       *-*-kfreebsd*-gnu)
+@@ -17889,7 +17889,7 @@ elif test "${enable_handle_fork}" != man
  
-      ;;
--     *-apple-* | *-*-freebsd* | *-*-kfreebsd* | *-*-openbsd* | *-pc-solaris* | *-linux-android*)
-+     *-apple-* | *-*-freebsd* | *-*-kfreebsd* | *-*-netbsd* |  *-*-openbsd* | *-pc-solaris* | *-linux-android* | *-*-quinnbsd*)
- 
- $as_echo "#define FFI_MMAP_EXEC_WRIT 1" >>confdefs.h
- 
+         fi
+         ;;
+-      *-*-aix* | *-*-cygwin* | *-*-freebsd* | *-*-haiku* | \
++      *-*-aix* | *-*-cygwin* | *-*-freebsd* | *-*-quinnbsd* | *-*-haiku* | \
+       *-*-hpux11* | *-*-irix* | *-*-kfreebsd*-gnu | \
+       *-*-*linux* | *-*-netbsd* | *-*-openbsd* | *-*-osf* | *-*-solaris*)
+         $as_echo "#define HANDLE_FORK 1" >>confdefs.h

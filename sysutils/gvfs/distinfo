@@ -10,4 +10,6 @@ SHA1 (patch-ad) = 45e7d172fe4839018b64babdca2f8c60c7eeec70
 SHA1 (patch-ae) = 07b631786e89f38f831a1cc926818c15520fcd3b
 SHA1 (patch-ag) = 8474aed53e07f2c3899bafc278d886c41ccd04a5
 SHA1 (patch-ai) = 2246232efe91c36be8c577c1db16e80ebb45a515
+SHA1 (patch-configure) = 4bcc11436cbdfba786ca5b60e6957a8a260d7431
+SHA1 (patch-metadata_meta-get-tree.c) = 329c49a1eec4b4e3405f47f4ef7ee4c9174a14d2
 SHA1 (patch-metadata_metatree.c) = 952352af28299c92403932ef38d281611427b654

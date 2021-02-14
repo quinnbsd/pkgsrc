@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.355 2021/01/30 14:33:22 ryoon Exp $
+# $NetBSD: Makefile,v 1.357 2021/02/14 02:15:09 markd Exp $
 #
 
 COMMENT=	Fonts
@@ -238,6 +238,8 @@ SUBDIR+=	tex-adobemapping
 SUBDIR+=	tex-ae
 SUBDIR+=	tex-ae-doc
 SUBDIR+=	tex-afm2pl
+SUBDIR+=	tex-albatross
+SUBDIR+=	tex-albatross-doc
 SUBDIR+=	tex-alegreya
 SUBDIR+=	tex-alegreya-doc
 SUBDIR+=	tex-allrunes
@@ -761,6 +763,8 @@ SUBDIR+=	tex-staves
 SUBDIR+=	tex-staves-doc
 SUBDIR+=	tex-stix
 SUBDIR+=	tex-stix-doc
+SUBDIR+=	tex-stix2-otf
+SUBDIR+=	tex-stix2-otf-doc
 SUBDIR+=	tex-stmaryrd
 SUBDIR+=	tex-stmaryrd-doc
 SUBDIR+=	tex-superiors

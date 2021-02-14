@@ -60,7 +60,7 @@ USE_LANGUAGES=		c c++
 CONFIGURE_ARGS+=	--disable-ltdl-install
 CONFIGURE_ARGS.QuinnBSD+=	--disable-dependency-tracking
 CONFIGURE_ARGS+=	F77=no FC=no
-
+MAKE_FLAGS+=		MAKEINFO=true
 USE_TOOLS+=		echo
 
 .PHONY: fix-libtool
@@ -79,9 +79,10 @@ post-build:
 	@${SED}	-e "s|@PREFIX@|"${PREFIX:Q}"|g"				\
 		-e "s|@SH@|"${SH:Q}"|g"					\
 		${FILESDIR}/shlibtool.in > ${WRKSRC}/shlibtool
-
+	
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/shlibtool ${DESTDIR}${PREFIX}/bin/shlibtool
+	rm -rf ${DESTDIR}${PREFIX}/share/info
 
 BUILDLINK_DEPMETHOD.dlcompat=	build
 

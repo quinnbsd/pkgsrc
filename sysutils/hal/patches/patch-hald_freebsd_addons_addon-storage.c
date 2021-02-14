@@ -1,14 +1,12 @@
-$NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryoon Exp $
+$NetBSD$
 
-* From FreeBSD ports repository to fix build on FreeBSD 9.0 RELEASE.
-
---- hald/freebsd/addons/addon-storage.c.orig	2009-08-24 12:42:29.000000000 +0000
-+++ hald/freebsd/addons/addon-storage.c
+--- ./hald/freebsd/addons/addon-storage.c.orig	2009-08-24 12:42:29.000000000 +0000
++++ ./hald/freebsd/addons/addon-storage.c
 @@ -107,8 +107,12 @@ hf_addon_storage_update (void)
  
  	  if (hf_addon_storage_cdrom_eject_pressed(cdrom))
  	    {
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +	      libhal_device_emit_condition(hfp_ctx, hfp_udi, "EjectPressed", "", NULL);
 +#else
  	      libhal_device_emit_condition(hfp_ctx, hfp_udi, "EjectPressed", "", &hfp_error);
@@ -21,7 +19,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
                                                           "block.storage_device",
  							 hfp_udi,
  							 &num_volumes,
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +							 NULL)) != NULL)
 +#else
  							 &hfp_error)) != NULL)
@@ -29,7 +27,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
      {
        int i;
  
-+#if !defined(__FreeBSD__)
++#if !defined(__FreeBSD__) && !defined(__QuinnBSD__)
        dbus_error_free(&hfp_error);
 +#endif
  
@@ -39,7 +37,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
  
  	  vol_udi = volumes[i];
  
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +	  if (libhal_device_get_property_bool(hfp_ctx, vol_udi, "volume.is_mounted", NULL))
 +#else
  	  if (libhal_device_get_property_bool(hfp_ctx, vol_udi, "volume.is_mounted", &hfp_error))
@@ -51,7 +49,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
  	      char **options = NULL;
  	      char *devfile;
  
-+#if !defined(__FreeBSD__)
++#if !defined(__FreeBSD__) && !defined(__QuinnBSD__)
  	      dbus_error_free(&hfp_error);
 +#endif
                hfp_info("Forcing unmount of volume '%s'", vol_udi);
@@ -61,14 +59,14 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
        check_lock_state = FALSE;
  
        hfp_info("Checking whether device %s is locked by HAL", addon.device_file);
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +      if (libhal_device_is_locked_by_others(hfp_ctx, hfp_udi, "org.freedesktop.Hal.Device.Storage", NULL))
 +#else
        if (libhal_device_is_locked_by_others(hfp_ctx, hfp_udi, "org.freedesktop.Hal.Device.Storage", &hfp_error))
 +#endif
          {
            hfp_info("... device %s is locked by HAL", addon.device_file);
-+#if !defined(__FreeBSD__)
++#if !defined(__FreeBSD__) && !defined(__QuinnBSD__)
  	  dbus_error_free(&hfp_error);
 +#endif
  	  is_locked_by_hal = TRUE;
@@ -78,7 +76,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
            hfp_info("... device %s is not locked by HAL", addon.device_file);
  	  is_locked_by_hal = FALSE;
  	}
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +      should_poll = libhal_device_get_property_bool(hfp_ctx, hfp_udi, "storage.media_check_enabled", NULL);
 +#else
        dbus_error_free(&hfp_error);
@@ -92,7 +90,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
        unmount_volumes();
  #endif
  
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +      libhal_device_rescan(hfp_ctx, hfp_udi, NULL);
 +#else
        libhal_device_rescan(hfp_ctx, hfp_udi, &hfp_error);
@@ -105,7 +103,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
      ! strcmp(driver, "cd")))) && ! strcmp(removable, "true");
    addon.had_media = poll_for_media(TRUE, FALSE);
  
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +  if (! libhal_device_addon_is_ready(hfp_ctx, hfp_udi, NULL))
 +    goto end;
 +
@@ -125,7 +123,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
  				      "    <method name=\"CheckForMedia\">\n"
  				      "      <arg name=\"call_had_sideeffect\" direction=\"out\" type=\"b\"/>\n"
  				      "    </method>\n",
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +				      NULL))
 +#else
  				      &hfp_error))
@@ -134,7 +132,7 @@ $NetBSD: patch-hald_freebsd_addons_addon-storage.c,v 1.1 2012/03/31 16:06:56 ryo
        hfp_critical("Cannot claim interface 'org.freedesktop.Hal.Device.Storage.Removable'");
        goto end;
      }
-+#if !defined(__FreeBSD__)
++#if !defined(__FreeBSD__) && !defined(__QuinnBSD__)
    dbus_error_free(&hfp_error);
 +#endif
  

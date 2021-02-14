@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.26 2020/11/22 21:26:50 nia Exp $
+@comment $NetBSD$
 bin/gnome-keyring
 bin/gnome-keyring-3
 bin/gnome-keyring-daemon
@@ -6,8 +6,8 @@ lib/gnome-keyring/devel/gkm-gnome2-store-standalone.la
 lib/gnome-keyring/devel/gkm-secret-store-standalone.la
 lib/gnome-keyring/devel/gkm-ssh-store-standalone.la
 lib/gnome-keyring/devel/gkm-xdg-store-standalone.la
+lib/pam_gnome_keyring.la
 lib/pkcs11/gnome-keyring-pkcs11.la
-lib/security/pam_gnome_keyring.la
 man/man1/gnome-keyring-3.1
 man/man1/gnome-keyring-daemon.1
 man/man1/gnome-keyring.1

@@ -1,12 +1,12 @@
-$NetBSD: patch-as,v 1.1 2011/01/08 13:00:13 obache Exp $
+$NetBSD$
 
---- hald/freebsd/addons/addon-mouse.c.orig	2009-08-24 12:42:29.000000000 +0000
-+++ hald/freebsd/addons/addon-mouse.c
+--- ./hald/freebsd/addons/addon-mouse.c.orig	2009-08-24 12:42:29.000000000 +0000
++++ ./hald/freebsd/addons/addon-mouse.c
 @@ -29,7 +29,9 @@
  #include <sys/types.h>
  #include <sys/event.h>
  #include <sys/time.h>
-+#ifdef __FreeBSD__
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
  #include <sys/proc.h>
 +#endif
  #if __FreeBSD_version >= 800058

@@ -1,13 +1,13 @@
-$NetBSD: patch-ac,v 1.3 2008/12/20 21:11:05 jmcneill Exp $
+$NetBSD$
 
---- tools/hal-storage-unmount.c.orig	2008-05-08 02:24:17 +0300
-+++ tools/hal-storage-unmount.c	2008-11-23 13:40:23 +0200
+--- ./tools/hal-storage-unmount.c.orig	2008-08-10 13:50:10.000000000 +0000
++++ ./tools/hal-storage-unmount.c
 @@ -31,13 +31,17 @@
  #include <string.h>
  #include <glib.h>
  #include <glib/gstdio.h>
 -#ifdef __FreeBSD__
-+#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__APPLE__)
++#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__APPLE__) || defined(__QuinnBSD__)
  #include <fstab.h>
  #include <sys/param.h>
  #include <sys/ucred.h>

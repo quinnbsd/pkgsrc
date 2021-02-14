@@ -1,7 +1,7 @@
-$NetBSD: patch-ak,v 1.4 2012/03/31 16:06:56 ryoon Exp $
+$NetBSD$
 
---- hald/freebsd/probing/probe-volume.c.orig	2009-09-17 13:45:09.000000000 +0000
-+++ hald/freebsd/probing/probe-volume.c
+--- ./hald/freebsd/probing/probe-volume.c.orig	2009-09-17 13:45:09.000000000 +0000
++++ ./hald/freebsd/probing/probe-volume.c
 @@ -33,7 +33,11 @@
  #include <fcntl.h>
  #include <unistd.h>
@@ -89,7 +89,7 @@ $NetBSD: patch-ak,v 1.4 2012/03/31 16:06:56 ryoon Exp $
  	  dbus_error_free(&hfp_error);
  	  for (i = 0; i < num_udis; i++)
              {
-+#if defined(__FreeBSD__)
++#if defined(__FreeBSD__) || defined(__QuinnBSD__)
 +	      if (ufs_devs[i] != NULL && strcmp(ufs_devs[i], hfp_udi))
 +#else
                if (ufs_devs[i] != NULL)

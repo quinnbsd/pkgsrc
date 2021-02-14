@@ -16,6 +16,12 @@ USE_PKGLOCALEDIR=	YES
 USE_TOOLS+=		gmake pkg-config
 USE_TOOLS+=		msgfmt msgmerge xgettext
 
+CONFIGURE_ARGS+=	--with-pam-dir="${PREFIX}/lib"
+CONFIGURE_ARGS+=	--enable-debug
+CFLAGS+=	-glldb --debug
+
+INSTALL_UNSTRIPPED=	yes
+
 TOOL_DEPENDS+=	libxslt-[0-9]*:../../textproc/libxslt
 TOOL_DEPENDS+=	docbook-xsl-[0-9]*:../../textproc/docbook-xsl
 
@@ -35,5 +41,5 @@ CONF_FILES+=	${XDG_EGDIR}/gnome-keyring-ssh.desktop \
 .include "../../security/gcr/buildlink3.mk"
 .include "../../security/libgcrypt/buildlink3.mk"
 .include "../../x11/gtk3/buildlink3.mk"
-.include "../../mk/pam.buildlink3.mk"
+#.include "../../mk/pam.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

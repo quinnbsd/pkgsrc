@@ -33,8 +33,6 @@ BUILDLINK_TRANSFORM+=	rm:-Werror=char-subscripts
 
 EGDIR=			${PREFIX}/share/examples/hal
 
-CONF_FILES=		${EGDIR}/hal.conf ${PKG_SYSCONFBASE}/dbus-1/system.d/hal.conf
-
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASE}
 CONFIGURE_ARGS+=	--localstatedir=${VARBASE}
 CONFIGURE_ARGS+=	--with-pci-ids=${PREFIX}/share/pciids
@@ -54,6 +52,12 @@ PLIST_SRC=		PLIST.DragonFly PLIST
 CONFIGURE_ARGS+=	--with-eject=/usr/sbin/cdcontrol
 CONFIGURE_ARGS+=	--with-backend=freebsd
 PLIST_SRC=		PLIST.FreeBSD PLIST
+
+.elif ${OPSYS} == "QuinnBSD"
+.include "../../devel/libvolume_id/buildlink3.mk"
+CONFIGURE_ARGS+=        --with-eject=/usr/sbin/cdcontrol
+CONFIGURE_ARGS+=        --with-backend=freebsd
+PLIST_SRC=              PLIST.QuinnBSD PLIST
 
 .elif ${OPSYS} == "NetBSD"
 .include "../../devel/libvolume_id/buildlink3.mk"
@@ -124,9 +128,6 @@ TEST_TARGET=		check
 post-extract:
 	${CP} -r ${FILESDIR}/hald-netbsd ${WRKSRC}/hald/netbsd
 	${CP} -r ${FILESDIR}/tools-netbsd ${WRKSRC}/tools/netbsd
-
-pre-configure:
-	cd ${WRKSRC} && autoreconf -vi ${AUTORECONF_ARGS}
 
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../misc/usbids/buildlink3.mk"

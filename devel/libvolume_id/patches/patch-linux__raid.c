@@ -1,4 +1,4 @@
-$NetBSD: patch-ab,v 1.6 2014/05/05 21:13:16 ryoon Exp $
+$NetBSD$
 
 --- linux_raid.c.orig	2007-12-27 01:03:43.000000000 +0000
 +++ linux_raid.c
@@ -7,7 +7,7 @@ $NetBSD: patch-ab,v 1.6 2014/05/05 21:13:16 ryoon Exp $
  #include <errno.h>
  #include <ctype.h>
 -#ifdef __FreeBSD__
-+#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__MirBSD__) || defined(__OpenBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__MirBSD__) || defined(__OpenBSD__) || defined(__QuinnBSD__)
  #include <sys/endian.h>
 -#else
 +#elif !defined(__APPLE__) && !defined(__sun)

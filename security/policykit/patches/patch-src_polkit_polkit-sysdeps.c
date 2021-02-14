@@ -1,13 +1,13 @@
-$NetBSD: patch-af,v 1.4 2015/07/25 14:36:12 bsiegert Exp $
+$NetBSD$
 
---- src/polkit/polkit-sysdeps.c.orig	2008-11-21 22:17:08.000000000 -0500
-+++ src/polkit/polkit-sysdeps.c
+--- ./src/polkit/polkit-sysdeps.c.orig	2008-05-30 21:24:44.000000000 +0000
++++ ./src/polkit/polkit-sysdeps.c
 @@ -106,7 +106,7 @@ polkit_sysdeps_get_start_time_for_pid (p
          }
          start_time = (unsigned long long) (info.pr_start.tv_sec);
  #else
 -#ifdef __FreeBSD__
-+#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__OpenBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__OpenBSD__) || defined(__QuinnBSD__)
  	filename = kit_strdup_printf ("/proc/%d/status", pid);
  #else
          filename = kit_strdup_printf ("/proc/%d/stat", pid);
@@ -16,7 +16,7 @@ $NetBSD: patch-af,v 1.4 2015/07/25 14:36:12 bsiegert Exp $
          }
  
 -#ifdef __FreeBSD__
-+#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__OpenBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__OpenBSD__) || defined(__QuinnBSD__)
          tokens = kit_strsplit (contents, ' ', &num_tokens);
          if (tokens == NULL)
                  goto out;
@@ -25,7 +25,7 @@ $NetBSD: patch-af,v 1.4 2015/07/25 14:36:12 bsiegert Exp $
          strncpy (out_buf, info.pr_psargs, ret);
  #else
 -#ifdef __FreeBSD__
-+#if defined(__FreeBSD__) || defined(__DragonFly__)
++#if defined(__FreeBSD__) || defined(__DragonFly__) || defined(__QuinnBSD__)
  	snprintf (proc_name, sizeof (proc_name), "/proc/%d/file", pid);
  #else
          snprintf (proc_name, sizeof (proc_name), "/proc/%d/exe", pid);

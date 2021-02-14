@@ -1,17 +1,17 @@
 $NetBSD$
 
---- configure.orig	2021-01-29 09:58:31.000000000 +0000
+--- configure.orig	2020-03-11 04:41:32.000000000 +0000
 +++ configure
-@@ -5955,7 +5955,7 @@ else
+@@ -6420,7 +6420,7 @@ else
      lt_cv_sys_max_cmd_len=8192;
      ;;
  
--  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
-+  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | quinnbsd*)
+-  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd*)
++  bitrig* | darwin* | dragonfly* | freebsd* | netbsd* | openbsd* | quinnbsd*)
      # This has been around since 386BSD, at least.  Likely further.
      if test -x /sbin/sysctl; then
        lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
-@@ -6387,7 +6387,7 @@ darwin* | rhapsody*)
+@@ -6831,7 +6831,7 @@ darwin* | rhapsody*)
    lt_cv_deplibs_check_method=pass_all
    ;;
  
@@ -20,7 +20,7 @@ $NetBSD$
    if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
      case $host_cpu in
      i*86 )
-@@ -10566,7 +10566,7 @@ fi
+@@ -11048,7 +11048,7 @@ fi
        ;;
  
      # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
@@ -29,7 +29,7 @@ $NetBSD$
        archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
        hardcode_libdir_flag_spec='-R$libdir'
        hardcode_direct=yes
-@@ -11530,7 +11530,7 @@ dgux*)
+@@ -12093,7 +12093,7 @@ dgux*)
    shlibpath_var=LD_LIBRARY_PATH
    ;;
  
@@ -38,12 +38,3 @@ $NetBSD$
    # DragonFly does not have aout.  When/if they implement a new
    # versioning mechanism, adjust this.
    if test -x /usr/bin/objformat; then
-@@ -17460,7 +17460,7 @@ CFLAGS="$CFLAGS -maltivec -mvsx -mcrypto
- 
- if test "$gcry_cv_cc_ppc_altivec" = "no" &&
-     test "$mpi_cpu_arch" = "ppc" &&
--    test "$try_asm_modules" == "yes" ; then
-+    test "$try_asm_modules" = "yes" ; then
-   { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether compiler supports PowerPC AltiVec/VSX/crypto intrinsics with extra GCC flags" >&5
- $as_echo_n "checking whether compiler supports PowerPC AltiVec/VSX/crypto intrinsics with extra GCC flags... " >&6; }
- if ${gcry_cv_cc_ppc_altivec_cflags+:} false; then :

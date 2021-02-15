@@ -75,6 +75,7 @@ SUBST_SED.paths+=	-e 's,/usr/bin/,${PREFIX}/bin/,g'
 .if ${OPSYS} == "QuinnBSD"
 .include "../../lang/mozjs78-bin/buildlink3.mk"
 .include "../../devel/nspr/buildlink3.mk"
+.include "../../textproc/icu/buildlink3.mk"
 .else
 .include "../../lang/mozjs78/buildlink3.mk"
 .endif

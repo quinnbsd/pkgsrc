@@ -20,6 +20,8 @@ DEPENDS+=	nss>=3.60:../../devel/nss
 DEPENDS+=	libwebp-[0-9]*:../../graphics/libwebp
 DEPENDS+=	dav1d>=0.8.1:../../multimedia/dav1d
 DEPENDS+=	pciutils-[0-9]*:../../sysutils/pciutils
+DEPENDS+=	graphite2-[0-9]*:../../graphics/graphite2
+DEPENDS+=	multimedia-[0-9]*:../../multimedia/libvpx
 
 TOOL_DEPENDS+=	patchelf-[0-9]*:../../devel/patchelf
 

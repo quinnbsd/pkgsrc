@@ -113,6 +113,9 @@ BUILD_TARGET=	# none
 post-extract:
 	${CP} ${FILESDIR}/strip_fPIC.sh ${WRKSRC}
 
+post-install:
+	${LN} -s libvpx.so.1.0.9 ${DESTDIR}${PREFIX}/lib/libvpx.so.6
+
 PKGCONFIG_OVERRIDE+=		vpx.pc
 PKGCONFIG_OVERRIDE_STAGE=	post-build
 

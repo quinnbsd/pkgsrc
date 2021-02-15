@@ -24,6 +24,7 @@ DEPENDS+=	xfce4-wm>=4.14.0:../../wm/xfce4-wm
 DEPENDS+=	xfce4-wm-themes>=4.10.0:../../wm/xfce4-wm-themes
 DEPENDS+=	xfce4-xarchiver>=0.5.4:../../sysutils/xfce4-xarchiver
 DEPENDS+=	elementary-xfce-icon-theme>=0.5:../../graphics/elementary-xfce-icon-theme
+DEPENDS+=	greybird-theme>=3.22.14:../../graphics/greybird-theme
 DEPENDS+=	xdg-utils-[0-9]*:../../misc/xdg-utils
 
 pre-extract:

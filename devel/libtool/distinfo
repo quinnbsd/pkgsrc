@@ -10,4 +10,3 @@ SHA1 (patch-build-aux_ltmain.in) = 79536e201a978caa26ffeb3abeddc6ab6aa1f402
 SHA1 (patch-build-aux_ltmain.sh) = 4f2e988703aff2d37ca983f9f92fd5668979de39
 SHA1 (patch-configure) = 2b4ef7d6d8a8df401b13790782b2caa99070a50f
 SHA1 (patch-libltdl_configure) = 9c95c2a9c516ef20a0c94976457867fb45d91a77
-SHA1 (patch-m4_libtool.m4) = e9a8e7850806bc3c3adeff6471a72120ef0ea35a

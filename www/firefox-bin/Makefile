@@ -21,7 +21,7 @@ DEPENDS+=	libwebp-[0-9]*:../../graphics/libwebp
 DEPENDS+=	dav1d>=0.8.1:../../multimedia/dav1d
 DEPENDS+=	pciutils-[0-9]*:../../sysutils/pciutils
 DEPENDS+=	graphite2-[0-9]*:../../graphics/graphite2
-DEPENDS+=	multimedia-[0-9]*:../../multimedia/libvpx
+DEPENDS+=	libvpx-[0-9]*:../../multimedia/libvpx
 
 TOOL_DEPENDS+=	patchelf-[0-9]*:../../devel/patchelf
 
@@ -34,6 +34,7 @@ do-extract:
 do-build:
 	patchelf --set-rpath /usr/pkg/lib:/usr/pkg/lib/nspr:/usr/pkg/lib/nss ${WRKSRC}/usr/local/lib/firefox/libxul.so
 	patchelf --set-rpath /usr/pkg/lib ${WRKSRC}/usr/local/lib/firefox/libmozgtk.so
+	patchelf --set-rpath /usr/pkg/lib:/usr/pkg/lib/ffmpeg4 ${WRKSRC}/usr/local/lib/firefox/firefox
 
 do-install:
 	rm ${WRKSRC}/usr/local/bin/firefox

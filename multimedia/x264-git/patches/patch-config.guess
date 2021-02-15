@@ -1,0 +1,20 @@
+$NetBSD$
+
+--- config.guess.orig	2021-01-24 14:04:39.000000000 +0000
++++ config.guess
+@@ -802,6 +802,15 @@ EOF
+ 		echo ${UNAME_PROCESSOR}-unknown-freebsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
+ 	esac
+ 	exit ;;
++    *:QuinnBSD:*:*)
++        UNAME_PROCESSOR=`/usr/bin/uname -p`
++        case ${UNAME_PROCESSOR} in
++            amd64)
++                echo x86_64-unknown-quinnbsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
++            *)
++                echo ${UNAME_PROCESSOR}-unknown-quinnbsd`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'` ;;
++        esac
++        exit ;;
+     i*:CYGWIN*:*)
+ 	echo ${UNAME_MACHINE}-pc-cygwin
+ 	exit ;;

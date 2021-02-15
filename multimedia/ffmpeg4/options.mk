@@ -212,7 +212,7 @@ CONFIGURE_ARGS+=	--enable-libxvid
 # ABI change between 20090326 and 20100201
 BUILDLINK_API_DEPENDS.x264-devel+=	x264-devel>=20111207
 CONFIGURE_ARGS+=	--enable-libx264
-.include "../../multimedia/x264-devel/buildlink3.mk"
+.include "../../multimedia/x264-git/buildlink3.mk"
 .else
 CONFIGURE_ARGS+=	--disable-libx264
 .endif

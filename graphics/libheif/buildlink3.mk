@@ -9,7 +9,7 @@ BUILDLINK_API_DEPENDS.libheif+=	libheif>=1.8.0
 BUILDLINK_PKGSRCDIR.libheif?=	../../graphics/libheif
 
 .include "../../graphics/png/buildlink3.mk"
-.include "../../multimedia/libaom/buildlink3.mk"
+.include "../../multimedia/libaom2/buildlink3.mk"
 .include "../../multimedia/libde265/buildlink3.mk"
 .include "../../multimedia/x265/buildlink3.mk"
 .endif	# LIBHEIF_BUILDLINK3_MK

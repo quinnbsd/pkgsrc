@@ -24,7 +24,7 @@ PKGCONFIG_OVERRIDE+=	libheif.pc.in
 
 .include "../../mk/jpeg.buildlink3.mk"
 .include "../../graphics/png/buildlink3.mk"
-.include "../../multimedia/libaom/buildlink3.mk"
+.include "../../multimedia/libaom2/buildlink3.mk"
 .include "../../multimedia/libde265/buildlink3.mk"
 .include "../../multimedia/x265/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

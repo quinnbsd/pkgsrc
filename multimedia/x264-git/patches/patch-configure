@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.orig	2021-01-24 14:04:39.000000000 +0000
++++ configure
+@@ -659,7 +659,7 @@ case $host_os in
+             cc_check "" -mdynamic-no-pic && CFLAGS="$CFLAGS -mdynamic-no-pic"
+         fi
+         ;;
+-    freebsd*)
++    freebsd*|quinnbsd*)
+         SYS="FREEBSD"
+         libm="-lm"
+         ;;

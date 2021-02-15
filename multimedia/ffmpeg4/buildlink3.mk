@@ -35,7 +35,7 @@ pkgbase := ffmpeg4
 .endif
 
 .if !empty(PKG_BUILD_OPTIONS.ffmpeg4:Mx264)
-.  include "../../multimedia/x264-devel/buildlink3.mk"
+.  include "../../multimedia/x264-git/buildlink3.mk"
 .endif
 
 .if !empty(PKG_BUILD_OPTIONS.ffmpeg4:Mlibvpx)

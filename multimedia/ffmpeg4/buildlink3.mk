@@ -15,7 +15,7 @@ pkgbase := ffmpeg4
 .include "../../mk/bsd.fast.prefs.mk"
 
 .if !empty(PKG_BUILD_OPTIONS.ffmpeg4:Mav1)
-.  include "../../multimedia/libaom/buildlink3.mk"
+.  include "../../multimedia/libaom2/buildlink3.mk"
 .endif
 
 .if !empty(PKG_BUILD_OPTIONS.ffmpeg4:Mfreetype)

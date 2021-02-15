@@ -1,0 +1,31 @@
+$NetBSD$
+
+--- CMakeLists.txt.orig	2020-11-20 09:21:06.000000000 +0000
++++ CMakeLists.txt
+@@ -6,6 +6,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}
+ if ( CMAKE_SYSTEM_NAME MATCHES "NetBSD" )
+ 	SET(CMAKE_INSTALL_RPATH "/usr/pkg/lib;/usr/X11R7/lib")
+ endif()
++
++if ( CMAKE_SYSTEM_NAME MATCHES "QuinnBSD" )
++        SET(CMAKE_INSTALL_RPATH "/usr/pkg/lib")
++endif()
++
+ if (WIN32)
+ 	add_executable(${PROJECT_NAME} WIN32 main.cpp Terminal.cpp dialdirectory.cpp filechooser.cpp inih/ini.c sexyz/zmodem.c sexyz/crc16.c sexyz/crc32.c url-parser-c/url_parser.c MagiTerm.rc)
+ elseif(APPLE)
+@@ -65,6 +70,14 @@ elseif ( CMAKE_SYSTEM_NAME MATCHES "NetB
+ 	install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+ 	install(FILES resources/MagiTerm.png DESTINATION share/pixmaps)
+ 	install(FILES resources/MagiTerm.desktop DESTINATION share/applications)
++elseif ( CMAKE_SYSTEM_NAME MATCHES "QuinnBSD" )
++        find_package(LibSecret REQUIRED)
++        INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIR} ${LIBSSH_INCLUDE_DIR} ${LIBSECRET_INCLUDE_DIRS})
++        TARGET_LINK_LIBRARIES(${PROJECT_NAME} -L/usr/pkg/lib ${SDL2_LIBRARY} ${LIBSSH_LIBRARIES} ${LIBSECRET_LIBRARIES} -lutil -lX11)
++        install(TARGETS ${PROJECT_NAME} DESTINATION bin)
++        install(FILES resources/MagiTerm.png DESTINATION share/pixmaps)
++        install(FILES resources/MagiTerm.desktop DESTINATION share/applications)
++
+ elseif ( CMAKE_SYSTEM_NAME MATCHES "Haiku" )
+ 	INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIR} ${LIBSSH_INCLUDE_DIR})
+ 	TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARY} ${LIBSSH_LIBRARIES} -lnetwork -lssp)

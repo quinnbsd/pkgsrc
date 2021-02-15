@@ -1,0 +1,9 @@
+$NetBSD$
+
+SHA1 (MagiTerm-1.1.2.tar.gz) = 3767013f6276c644dcff6fd8078b6f747f1f134b
+RMD160 (MagiTerm-1.1.2.tar.gz) = f92cba4f2e3d4d67d39a29247dc478f87fa86213
+SHA512 (MagiTerm-1.1.2.tar.gz) = a2c5758d11d4c2d39c9a227e30211350e03f6219da4a71ebf99b2dea5bd6bec643c824d15fd9456f703396ee089ae7fadf4ebfcfa9963ec95957a06782acaa4b
+Size (MagiTerm-1.1.2.tar.gz) = 2228757 bytes
+SHA1 (patch-CMakeLists.txt) = 7af9c0a395251896169770c480ba0edc1f1435a3
+SHA1 (patch-Terminal.cpp) = 9021b5fabeaa479818adb9bd3db5df179cd40e86
+SHA1 (patch-sexyz_zmodem.c) = c09eda92308535020b1e2b72fecc6f03b71e5e97

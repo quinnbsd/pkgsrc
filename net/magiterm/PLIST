@@ -1,0 +1,4 @@
+@comment $NetBSD$
+bin/MagiTerm
+share/applications/MagiTerm.desktop
+share/pixmaps/MagiTerm.png

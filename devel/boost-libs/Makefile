@@ -43,7 +43,7 @@ PLIST.log=		yes
 
 # FIXME: other systems might also not support 'long double'
 # see patch-boost_math_tools_config.hpp
-.if ${OPSYS} != "FreeBSD" && ${OPSYS} != "NetBSD"
+.if ${OPSYS} != "FreeBSD" && ${OPSYS} != "NetBSD" && ${OPSYS} != "QuinnBSD"
 PLIST.longdbl=		yes
 .endif
 
@@ -69,6 +69,9 @@ MAKE_ENV+=	ZLIB_LIBPATH=${BUILDLINK_PREFIX.zlib}/lib
 do-build: bjam-build
 
 do-install: boost-install-libs
+
+post-install:
+	rm ${DESTDIR}${PREFIX}/lib/*.rsp
 
 .include "../../archivers/bzip2/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"

@@ -1,0 +1,8 @@
+$NetBSD$
+
+SHA1 (mlogind/v1.3.8.tar.gz) = 8b991078c284e78a040578390a7118b6392770c0
+RMD160 (mlogind/v1.3.8.tar.gz) = 28bad030b3aa0c49c25bcce0b45aabfc705004a8
+SHA512 (mlogind/v1.3.8.tar.gz) = 55563e7c24e421dc5252c416c21c4b858de5e0c5c978bd770cf87e44aa80ea136a96b2d100540ad5125abcbbb96832acfa01a23a5622f688ea0ea581ac0049ce
+Size (mlogind/v1.3.8.tar.gz) = 2115839 bytes
+SHA1 (patch-CMakeLists.txt) = 3cab4409bff7042ee51b7716a52a6493806e3a6f
+SHA1 (patch-cfg.cpp) = b989cd4f84d21e5304a3fd4640d98e6c39964f6a

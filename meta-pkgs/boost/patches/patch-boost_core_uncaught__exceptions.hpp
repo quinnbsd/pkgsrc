@@ -1,14 +1,17 @@
-$NetBSD: patch-boost_core_uncaught__exceptions.hpp,v 1.1 2019/08/22 21:05:27 tnn Exp $
+$NetBSD$
 
-match prototype for __cxa_get_globals() from libc++
-
-./boost/core/uncaught_exceptions.hpp:75:30: error: exception specification in declaration does not match previous declaration
-/usr/include/c++/cxxabi.h:190:19: note: previous declaration is here
-__cxa_eh_globals *__cxa_get_globals(void);
-
---- boost/core/uncaught_exceptions.hpp.orig	2019-08-22 20:44:08.783902992 +0000
-+++ boost/core/uncaught_exceptions.hpp
-@@ -69,7 +69,7 @@
+--- ./boost/core/uncaught_exceptions.hpp.orig	2020-12-03 05:01:17.000000000 +0000
++++ ./boost/core/uncaught_exceptions.hpp
+@@ -79,7 +79,7 @@
+ // command line arguments (-V and/or -Y; http://www.qnx.com/developers/docs/7.0.0/#com.qnx.doc.neutrino.utilities/topic/q/qcc.html). The LLVM libc++abi is missing the declaration
+ // of __cxa_get_globals but it is also patched by QNX developers to not define _LIBCPPABI_VERSION. Older QNX SDP versions, up to and including 6.6, don't provide LLVM and libc++abi.
+ // See https://github.com/boostorg/core/issues/59.
+-#if !defined(__FreeBSD__) && \
++#if !(defined(__FreeBSD__) || defined(__QuinnBSD__)) && \
+     ( \
+         (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__) < 407) || \
+         defined(__OpenBSD__) || \
+@@ -88,7 +88,7 @@
      )
  namespace __cxxabiv1 {
  struct __cxa_eh_globals;

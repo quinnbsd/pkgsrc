@@ -1,7 +1,16 @@
-$NetBSD: patch-boost_test_impl_execution__monitor.ipp,v 1.4 2020/01/12 10:10:04 adam Exp $
+$NetBSD$
 
---- boost/test/impl/execution_monitor.ipp.orig	2019-12-10 00:20:00.000000000 +0000
-+++ boost/test/impl/execution_monitor.ipp
+--- ./boost/test/impl/execution_monitor.ipp.orig	2020-12-03 05:02:32.000000000 +0000
++++ ./boost/test/impl/execution_monitor.ipp
+@@ -137,7 +137,7 @@ namespace { void _set_se_translator( voi
+ #  include <signal.h>
+ #  include <setjmp.h>
+ 
+-#  if defined(__FreeBSD__)
++#  if defined(__FreeBSD__) || defined(__QuinnBSD__)
+ 
+ #    include <osreldate.h>
+ 
 @@ -171,7 +171,8 @@ namespace { void _set_se_translator( voi
  #  if defined(SIGPOLL) && !defined(__CYGWIN__)                              && \
        !(defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__))  && \

@@ -12,6 +12,8 @@ COMMENT=	Binary verision of mozjs48
 LICENSE=	mpl-1.1
 PKG_CONFIG=	yes
 
+TOOL_DEPENDS+=  patchelf-[0-9]*:../../devel/patchelf
+
 WRKSRC=		${WRKDIR}
 USE_LANGUAGES=	# none
 
@@ -22,6 +24,7 @@ do-build:
 	rm -rf ${WRKSRC}/usr/local/libdata
 	mkdir ${WRKSRC}/usr/local/lib/pkgconfig
 	cp ${FILESDIR}/mozjs-78.pc ${WRKSRC}/usr/local/lib/pkgconfig
+	patchelf --set-rpath /usr/pkg/lib:/usr/pkg/lib/nspr ${WORKSRC}/usr/local/lib/libmozjs-78.so
 
 do-install:
 	cp -a ${WRKSRC}/usr/local/* ${DESTDIR}${PREFIX}

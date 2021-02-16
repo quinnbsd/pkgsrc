@@ -1,0 +1,6 @@
+mlogind is a graphical login manager for X11.
+It aims to be simple, fast and independent from the various
+desktop environments.
+
+mlogind is based on latest stable release of Login.app by Per Liden
+and SLiM 1.3.6.

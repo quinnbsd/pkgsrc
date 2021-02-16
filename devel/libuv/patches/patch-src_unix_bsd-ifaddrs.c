@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/unix/bsd-ifaddrs.c.orig	2020-09-25 00:34:43.000000000 +0000
+--- src/unix/bsd-ifaddrs.c.orig	2021-02-13 17:57:24.000000000 +0000
 +++ src/unix/bsd-ifaddrs.c
 @@ -50,7 +50,7 @@ static int uv__ifaddr_exclude(struct ifa
      return (ent->ifa_addr->sa_family != AF_LINK);
@@ -10,4 +10,4 @@ $NetBSD$
 +    defined(__HAIKU__) || defined(__QuinnBSD__)
    /*
     * On BSD getifaddrs returns information related to the raw underlying
-    * devices.  We're not interested in this information.
+    * devices. We're not interested in this information.

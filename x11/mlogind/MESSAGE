@@ -1,0 +1,10 @@
+======================================================
+mlogind installation
+
+Please copy: 
+
+        /usr/pkg/share/mlogind/mlogind.pam.conf 
+
+to 
+        /etc/pam.d/mlogind
+======================================================

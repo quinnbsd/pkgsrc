@@ -71,7 +71,7 @@ MANCOMPRESSED=	yes
 .include "options.mk"
 
 .include "../../mk/bsd.prefs.mk"
-.if ${OPSYS} == "Darwin"
+.if ${OPSYS} == "Darwin" || ${OPSYS} == "QuinnBSD"
 CMAKE_ARGS+=	-DIntl_INCLUDE_DIR=${BUILDLINK_PREFIX.gettext}/include
 .endif
 

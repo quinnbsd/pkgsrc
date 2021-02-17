@@ -9,3 +9,5 @@ SHA1 (patch-config_Makefile.freebsd) = dcfdf2a6bde59529412bff2529d976df6c9bf6a4
 SHA1 (patch-config_Makefile.linux) = 49ae0366211065225c944cd0088af6e591f12aa9
 SHA1 (patch-config_Makefile.netbsd) = b7df2081f77ec7df0a6e7727c3ddcb68129e7e9c
 SHA1 (patch-config_Makefile.openbsd) = 838a0205c7f93eee35d2655926685d6bbc0a559e
+SHA1 (patch-config_Makefile.quinnbsd) = 0e24ba7d8a109b5eee8a29316e7197b692531131
+SHA1 (patch-config_config.guess) = a6385dc980d4af83f1841f54b60ca97681b80703

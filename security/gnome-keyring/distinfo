@@ -6,6 +6,7 @@ SHA512 (gnome-keyring-3.36.0.tar.xz) = e5aed36ad109cbd2dcb534843f8565829366acc95
 Size (gnome-keyring-3.36.0.tar.xz) = 1345360 bytes
 SHA1 (patch-Makefile.in) = 0bb5c9ff7de52fb932741fdc2246048a2392e6bb
 SHA1 (patch-configure) = 4cc1b1b72ca6446345c47db4dcb1041b8a6c687c
+SHA1 (patch-daemon_ssh-agent_gkd-ssh-agent-interaction.h) = e2077ccbf06698638cfc37f936c38c87eaf558ba
 SHA1 (patch-egg_egg-armor.c) = 4e57b2f8d4434ad4f0e28230af0ba7e3a79d9851
 SHA1 (patch-egg_egg-unix-credentials.c) = b0b1af47319743154fa6b68a74829ed1b7533975
 SHA1 (patch-pam_gkr-pam-client.c) = c153b480d71dd87539eec4b30d1fcc47632a3788

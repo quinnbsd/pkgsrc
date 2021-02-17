@@ -53,6 +53,8 @@ CFLAGS+=		-fheinous-gnu-extensions
 #.  endif
 #.endif
 
+CONFIGURE_ARGS+=	--disable-drng-support --enable-static=yes
+
 SUBST_CLASSES+=		rpath
 SUBST_FILES.rpath=	src/libgcrypt-config.in
 SUBST_STAGE.rpath=	pre-configure

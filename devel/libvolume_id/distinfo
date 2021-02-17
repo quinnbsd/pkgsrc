@@ -6,6 +6,6 @@ SHA512 (libvolume_id-0.81.1.tar.bz2) = a30c08fcdb020e8b7d0e5350d996d7007040d72e3
 Size (libvolume_id-0.81.1.tar.bz2) = 23399 bytes
 SHA1 (patch-ae) = 9382586dab03ed7691d26b029d930940dc3e7302
 SHA1 (patch-ddf__raid.c) = d6ed4470961faaa861bd87a9dcba073b2367dda1
-SHA1 (patch-linux__raid.c) = 7672ebe61a9c81e26a32f94be1dcbb8382dd1b9f
+SHA1 (patch-linux__raid.c) = bb8ac216181aa83694975c1cb3af7a6baaa7fe27
 SHA1 (patch-util.c) = ee00d873f910920e57d113ebc904f248e2f99a31
 SHA1 (patch-util.h) = d68eb0ef06a25eb9cbd7219904848b1f305282b2

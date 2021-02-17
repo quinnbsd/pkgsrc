@@ -24,7 +24,7 @@ do-build:
 	rm -rf ${WRKSRC}/usr/local/libdata
 	mkdir ${WRKSRC}/usr/local/lib/pkgconfig
 	cp ${FILESDIR}/mozjs-78.pc ${WRKSRC}/usr/local/lib/pkgconfig
-	patchelf --set-rpath /usr/pkg/lib:/usr/pkg/lib/nspr ${WORKSRC}/usr/local/lib/libmozjs-78.so
+	patchelf --set-rpath /usr/pkg/lib:/usr/pkg/lib/nspr ${WRKSRC}/usr/local/lib/libmozjs-78.so
 
 do-install:
 	cp -a ${WRKSRC}/usr/local/* ${DESTDIR}${PREFIX}

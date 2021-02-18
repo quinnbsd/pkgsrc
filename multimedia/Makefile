@@ -208,6 +208,7 @@ SUBDIR+=	ushare
 SUBDIR+=	vlc
 SUBDIR+=	win32-codecs
 SUBDIR+=	x264-devel
+SUBDIR+=	x264-git
 SUBDIR+=	x265
 SUBDIR+=	xawtv
 SUBDIR+=	xfce4-mpc-plugin

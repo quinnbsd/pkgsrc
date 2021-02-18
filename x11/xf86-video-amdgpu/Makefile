@@ -15,7 +15,7 @@ GNU_CONFIGURE=	yes
 USE_TOOLS+=	gmake pkg-config
 
 CONFIGURE_ENV.SunOS+=	DRIVER_MAN_SUFFIX=4
-
+.include "../../mk/bsd.prefs.mk"
 .if ${OPSYS} == "QuinnBSD"
 .include "../../x11/libdrm-quinn/buildlink3.mk"
 .else

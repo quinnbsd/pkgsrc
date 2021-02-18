@@ -229,6 +229,7 @@ SUBDIR+=	libXxf86dga
 SUBDIR+=	libXxf86vm
 SUBDIR+=	libdesktop-agnostic
 SUBDIR+=	libdrm
+SUBDIR+=	libdrm-quinn
 SUBDIR+=	libfakekey
 SUBDIR+=	libfm-qt
 SUBDIR+=	libgnomekbd

@@ -231,6 +231,7 @@ SUBDIR+=	graphene
 SUBDIR+=	graphite2
 SUBDIR+=	graphviz
 SUBDIR+=	graphviz-dot-mode
+SUBDIR+=	greybird-theme
 SUBDIR+=	gri
 SUBDIR+=	gst-plugins0.10-cairo
 SUBDIR+=	gst-plugins0.10-jpeg

@@ -167,6 +167,7 @@ SUBDIR+=	mimp
 SUBDIR+=	mini_sendmail
 SUBDIR+=	minimalist
 SUBDIR+=	mlmmj
+SUBDIR+=	mmail
 SUBDIR+=	mopher
 SUBDIR+=	mpop
 SUBDIR+=	msmtp

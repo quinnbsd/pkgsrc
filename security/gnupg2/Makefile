@@ -36,6 +36,7 @@ TEST_TARGET=		check
 LDFLAGS.NetBSD+=	-lintl
 LDFLAGS.Darwin+=	-lintl -lresolv
 LDFLAGS.FreeBSD+=	-lintl
+LDFLAGS.QuinnBSD+=	-lintl
 LDFLAGS.SunOS+=		-lintl -lsocket
 LDFLAGS.Linux+=		-lrt
 

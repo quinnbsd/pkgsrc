@@ -102,6 +102,7 @@ SUBDIR+=	kmplayer
 SUBDIR+=	kscd
 SUBDIR+=	libaacs
 SUBDIR+=	libaom
+SUBDIR+=	libaom2
 SUBDIR+=	libass
 SUBDIR+=	libassetml
 SUBDIR+=	libbdplus

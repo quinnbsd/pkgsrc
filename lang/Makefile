@@ -167,6 +167,7 @@ SUBDIR+=	mono-basic
 SUBDIR+=	mono6
 SUBDIR+=	moscow_ml
 SUBDIR+=	mozjs78
+SUBDIR+=	mozjs78-bin
 SUBDIR+=	mpd
 SUBDIR+=	nawk
 SUBDIR+=	neko

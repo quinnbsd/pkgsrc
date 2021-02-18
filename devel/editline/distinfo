@@ -8,5 +8,7 @@ SHA1 (patch-Makefile.am) = c9c49476fcff0da3363874795fcf4b6ebd0f59de
 SHA1 (patch-ab) = 18297f76965ecd56834c94f6c9f780d3e05a44d8
 SHA1 (patch-ac) = 666403d5ef03fea39081d7a657aefaa91746f788
 SHA1 (patch-libedit.pc.in) = c2c810ab2c9c7b9d1862abc7bdca53fda5732119
+SHA1 (patch-src_chartype.h) = 7819cfaa6947df0cec138702a13597e2ea1af565
 SHA1 (patch-src_sys.h) = 3c1f69b520b382e3a0308e7f8ffaddca65d91a8d
 SHA1 (patch-src_terminal.h) = 5d658f7b7c3b88c0c3122a1be740f3a72d7d2370
+SHA1 (patch-src_vis.c) = 614837b9d0d7c129096aabe959ccb65b104d6298

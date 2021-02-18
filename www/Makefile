@@ -107,6 +107,7 @@ SUBDIR+=	felinks
 SUBDIR+=	fengoffice
 SUBDIR+=	ffproxy
 SUBDIR+=	firefox
+SUBDIR+=	firefox-bin
 SUBDIR+=	firefox-esr
 SUBDIR+=	firefox-l10n
 SUBDIR+=	firefox52

@@ -356,6 +356,7 @@ SUBDIR+=	lua-copas
 SUBDIR+=	lua-socket
 SUBDIR+=	mDNSResponder
 SUBDIR+=	mDNSResponder-nss
+SUBDIR+=	magiterm
 SUBDIR+=	maradns
 SUBDIR+=	mate-user-share
 SUBDIR+=	mbrowse

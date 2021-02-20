@@ -1,4 +1,4 @@
-@comment $NetBSD$
+@comment $NetBSD: PLIST,v 1.1 2021/02/19 18:01:39 nros Exp $
 bin/dav1d
 include/dav1d/common.h
 include/dav1d/data.h
@@ -10,3 +10,5 @@ lib/libdav1d.so
 lib/libdav1d.so.5
 lib/libdav1d.so.5.0.0
 lib/pkgconfig/dav1d.pc
+share/doc/dav1d/AOM-PATENT-LICENSE
+share/doc/dav1d/LICENSE

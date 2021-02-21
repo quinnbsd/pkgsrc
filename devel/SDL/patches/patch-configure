@@ -1,0 +1,111 @@
+$NetBSD$
+
+--- configure.orig	2012-01-19 06:30:12.000000000 +0000
++++ configure
+@@ -3857,7 +3857,7 @@ else
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
+-  netbsd* | freebsd* | openbsd* | darwin* | dragonfly*)
++  netbsd* | freebsd* | openbsd* | darwin* | dragonfly* | quinnbsd*)
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+@@ -4209,7 +4209,7 @@ darwin* | rhapsody*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     case $host_cpu in
+     i*86 )
+@@ -8411,7 +8411,7 @@ if test -z "$aix_libpath"; then aix_libp
+       ;;
+ 
+     # FreeBSD 3 and greater uses gcc -shared to do shared libraries.
+-    freebsd* | dragonfly*)
++    freebsd* | dragonfly* | quinnbsd*)
+       archive_cmds='$CC -shared -o $lib $libobjs $deplibs $compiler_flags'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+@@ -9290,7 +9290,7 @@ freebsd1*)
+   dynamic_linker=no
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -13308,7 +13308,7 @@ if test -z "$aix_libpath"; then aix_libp
+         archive_cmds_need_lc_CXX=no
+         ;;
+ 
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+         # FreeBSD 3 and later use GNU C++ and GNU ld with standard ELF
+         # conventions
+         ld_shlibs_CXX=yes
+@@ -14258,7 +14258,7 @@ echo $ECHO_N "checking for $compiler opt
+ 	    ;;
+ 	esac
+ 	;;
+-      freebsd* | dragonfly*)
++      freebsd* | dragonfly* | quinnbsd*)
+ 	# FreeBSD uses GNU C++
+ 	;;
+       hpux9* | hpux10* | hpux11*)
+@@ -15062,7 +15062,7 @@ freebsd1*)
+   dynamic_linker=no
+   ;;
+ 
+-freebsd* | dragonfly*)
++freebsd* | dragonfly* | quinnbsd*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+   if test -x /usr/bin/objformat; then
+@@ -26934,7 +26934,7 @@ fi
+ # causes Carbon.p complaints?
+ #            pthread_cflags="-D_REENTRANT -D_THREAD_SAFE"
+             ;;
+-        *-*-freebsd*|*-*-dragonfly*)
++        *-*-freebsd*|*-*-dragonfly*|*-*-quinnbsd*)
+             pthread_cflags="-D_REENTRANT -D_THREAD_SAFE"
+             pthread_lib="-pthread"
+             ;;
+@@ -29518,7 +29518,7 @@ _ACEOF
+             have_timers=yes
+         fi
+         ;;
+-    *-*-linux*|*-*-uclinux*|*-*-gnu*|*-*-k*bsd*-gnu|*-*-bsdi*|*-*-freebsd*|*-*-dragonfly*|*-*-netbsd*|*-*-openbsd*|*-*-sysv5*|*-*-solaris*|*-*-hpux*|*-*-irix*|*-*-aix*|*-*-osf*)
++    *-*-linux*|*-*-uclinux*|*-*-gnu*|*-*-k*bsd*-gnu|*-*-bsdi*|*-*-freebsd*|*-*-dragonfly*|*-*-netbsd*|*-*-openbsd*|*-*-sysv5*|*-*-solaris*|*-*-hpux*|*-*-irix*|*-*-aix*|*-*-osf*|*-*-quinnbsd*)
+         case "$host" in
+             *-*-linux*)         ARCH=linux ;;
+             *-*-uclinux*)       ARCH=linux ;;
+@@ -29529,6 +29529,7 @@ _ACEOF
+             *-*-bsdi*)          ARCH=bsdi ;;
+             *-*-freebsd*)       ARCH=freebsd ;;
+             *-*-dragonfly*)     ARCH=freebsd ;;
++            *-*-quinnbsd*)	ARCH=freebsd ;;
+             *-*-netbsd*)        ARCH=netbsd ;;
+             *-*-openbsd*)       ARCH=openbsd ;;
+             *-*-sysv5*)         ARCH=sysv5 ;;
+@@ -29628,7 +29629,7 @@ _ACEOF
+                 SOURCES="$SOURCES $srcdir/src/cdrom/linux/*.c"
+                 have_cdrom=yes
+             ;;
+-            *freebsd*)
++            *freebsd*|*quinnbsd*)
+                 cat >>confdefs.h <<\_ACEOF
+ #define SDL_CDROM_FREEBSD 1
+ _ACEOF
+@@ -30242,7 +30243,7 @@ SDLMAIN_OBJECTS=`echo $SDLMAIN_OBJECTS |
+ # Set runtime shared library paths as needed
+ 
+ if test "x$enable_rpath" = "xyes"; then
+-  if test $ARCH = bsdi -o $ARCH = freebsd -o $ARCH = irix -o $ARCH = linux -o $ARCH = netbsd; then
++  if test $ARCH = bsdi -o $ARCH = freebsd -o $ARCH = irix -o $ARCH = linux -o $ARCH = netbsd -o $ARCH = quinnbsd; then
+     SDL_RLD_FLAGS="-Wl,-rpath,\${libdir}"
+   fi
+   if test $ARCH = solaris; then

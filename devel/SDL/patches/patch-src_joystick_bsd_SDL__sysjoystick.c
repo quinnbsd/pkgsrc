@@ -1,4 +1,4 @@
-$NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryoon Exp $
+$NetBSD$
 
 --- src/joystick/bsd/SDL_sysjoystick.c.orig	2012-01-19 06:30:06.000000000 +0000
 +++ src/joystick/bsd/SDL_sysjoystick.c
@@ -15,7 +15,16 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  #else
  #include <dev/usb/usb.h>
  #include <dev/usb/usbhid.h>
-@@ -77,7 +83,7 @@
+@@ -59,7 +65,7 @@
+ #include <libusbhid.h>
+ #endif
+ 
+-#if defined(__FREEBSD__) || defined(__FreeBSD_kernel__)
++#if defined(__FREEBSD__) || defined(__FreeBSD_kernel__) || defined(__QuinnBSD__)
+ #ifndef __DragonFly__
+ #include <osreldate.h>
+ #endif
+@@ -77,12 +83,12 @@
  #include "../SDL_sysjoystick.h"
  #include "../SDL_joystick_c.h"
  
@@ -24,12 +33,18 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  #define MAX_JOY_JOYS	2
  #define MAX_JOYS	(MAX_UHID_JOYS + MAX_JOY_JOYS)
  
+ struct report {
+-#if defined(__FREEBSD__) && (__FreeBSD_kernel_version > 800063)
++#if (defined(__FREEBSD__) || defined(__QuinnBSD__)) && (__FreeBSD_kernel_version > 800063)
+ 	struct	usb_gen_descriptor *buf;	/* Buffer */
+ #else
+ 	struct	usb_ctl_report *buf;	/* Buffer */
 @@ -148,9 +154,11 @@ static char *joydevnames[MAX_JOYS];
  static int	report_alloc(struct report *, struct report_desc *, int);
  static void	report_free(struct report *);
  
 -#if defined(USBHID_UCR_DATA) || defined(__FreeBSD_kernel__)
-+#if defined(__FreeBSD__) && (__FreeBSD_kernel_version >= 900000)
++#if (defined(__FreeBSD__) || defined(__QuinnBSD__)) && (__FreeBSD_kernel_version >= 900000)
 +#define REP_BUF_DATA(rep) ((rep)->buf->ugd_data)
 +#elif defined(USBHID_UCR_DATA) || defined(__FreeBSD_kernel__)
  #define REP_BUF_DATA(rep) ((rep)->buf->ucr_data)
@@ -38,6 +53,15 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  #define REP_BUF_DATA(rep) ((rep)->buf->ugd_data)
  #else
  #define REP_BUF_DATA(rep) ((rep)->buf->data)
+@@ -306,7 +314,7 @@ SDL_SYS_JoystickOpen(SDL_Joystick *joy)
+ 		goto usberr;
+ 	}
+ 	rep = &hw->inreport;
+-#if defined(__FREEBSD__) && (__FreeBSD_kernel_version > 800063) || defined(__FreeBSD_kernel__)
++#if (defined(__FREEBSD__) || defined(__QuinnBSD__)) && (__FreeBSD_kernel_version > 800063) || defined(__FreeBSD_kernel__)
+        rep->rid = hid_get_report_id(fd);
+        if (rep->rid < 0) {
+ #else
 @@ -314,6 +322,45 @@ SDL_SYS_JoystickOpen(SDL_Joystick *joy)
  #endif
  		rep->rid = -1; /* XXX */
@@ -84,6 +108,15 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  	if (report_alloc(rep, hw->repdesc, REPORT_INPUT) < 0) {
  		goto usberr;
  	}
+@@ -323,7 +370,7 @@ SDL_SYS_JoystickOpen(SDL_Joystick *joy)
+ 		goto usberr;
+ 	}
+ 
+-#if defined(USBHID_NEW) || (defined(__FREEBSD__) && __FreeBSD_kernel_version >= 500111) || defined(__FreeBSD_kernel__)
++#if defined(USBHID_NEW) || ((defined(__FREEBSD__) || defined(__QuinnBSD__)) && __FreeBSD_kernel_version >= 500111) || defined(__FreeBSD_kernel__)
+ 	hdata = hid_start_parse(hw->repdesc, 1 << hid_input, rep->rid);
+ #else
+ 	hdata = hid_start_parse(hw->repdesc, 1 << hid_input);
 @@ -386,10 +433,21 @@ SDL_SYS_JoystickOpen(SDL_Joystick *joy)
  		if (hw->axis_map[i] > 0)
  			hw->axis_map[i] = joy->naxes++;
@@ -106,6 +139,15 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  	return (0);
  usberr:
  	close(hw->fd);
+@@ -407,7 +465,7 @@ SDL_SYS_JoystickUpdate(SDL_Joystick *joy
+ 	int nbutton, naxe = -1;
+ 	Sint32 v;
+ 
+-#if defined(__FREEBSD__) || SDL_JOYSTICK_USBHID_MACHINE_JOYSTICK_H || defined(__FreeBSD_kernel__)
++#if (defined(__FREEBSD__) || defined(__QuinnBSD__)) || SDL_JOYSTICK_USBHID_MACHINE_JOYSTICK_H || defined(__FreeBSD_kernel__)
+ 	struct joystick gameport;
+  
+ 	if (joy->hwdata->type == BSDJOY_JOY) {
 @@ -459,63 +517,62 @@ SDL_SYS_JoystickUpdate(SDL_Joystick *joy
  	
  	rep = &joy->hwdata->inreport;
@@ -113,9 +155,10 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
 -	if (read(joy->hwdata->fd, REP_BUF_DATA(rep), rep->size) != rep->size) {
 -		return;
 -	}
-+	while (read(joy->hwdata->fd, REP_BUF_DATA(rep), rep->size) == rep->size) {
- #if defined(USBHID_NEW) || (defined(__FREEBSD__) && __FreeBSD_kernel_version >= 500111) || defined(__FreeBSD_kernel__)
+-#if defined(USBHID_NEW) || (defined(__FREEBSD__) && __FreeBSD_kernel_version >= 500111) || defined(__FreeBSD_kernel__)
 -	hdata = hid_start_parse(joy->hwdata->repdesc, 1 << hid_input, rep->rid);
++	while (read(joy->hwdata->fd, REP_BUF_DATA(rep), rep->size) == rep->size) {
++#if defined(USBHID_NEW) || ((defined(__FREEBSD__) || defined(__QuinnBSD__)) && __FreeBSD_kernel_version >= 500111) || defined(__FreeBSD_kernel__)
 +		hdata = hid_start_parse(joy->hwdata->repdesc, 1 << hid_input, rep->rid);
  #else
 -	hdata = hid_start_parse(joy->hwdata->repdesc, 1 << hid_input);
@@ -215,3 +258,12 @@ $NetBSD: patch-src_joystick_bsd_SDL__sysjoystick.c,v 1.6 2017/12/25 00:18:39 ryo
  
  	return;
  }
+@@ -557,7 +614,7 @@ report_alloc(struct report *r, struct re
+ 
+ #ifdef __DragonFly__
+ 	len = hid_report_size(rd, r->rid, repinfo[repind].kind);
+-#elif __FREEBSD__
++#elif __FREEBSD__ || __QuinnBSD__
+ # if (__FreeBSD_kernel_version >= 460000) || defined(__FreeBSD_kernel__)
+ #  if (__FreeBSD_kernel_version <= 500111)
+ 	len = hid_report_size(rd, r->rid, repinfo[repind].kind);

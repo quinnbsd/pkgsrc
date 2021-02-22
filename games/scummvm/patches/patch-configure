@@ -1,0 +1,52 @@
+$NetBSD$
+
+--- configure.orig	2020-09-13 21:05:37.000000000 +0000
++++ configure
+@@ -2951,6 +2951,11 @@ EOF
+ 		append_var LDFLAGS "-L/usr/local/lib"
+ 		append_var CXXFLAGS "-I/usr/local/include"
+ 		;;
++	quinnbsd*)
++                append_var LDFLAGS "-L/usr/pkg/lib"
++                append_var CXXFLAGS "-I/usr/pkg/include"
++                ;;
++
+ 	gamecube)
+ 		_optimization_level=-Os
+ 		append_var CXXFLAGS "-mogc"
+@@ -3917,7 +3922,7 @@ case $_host_os in
+ 	amigaos* | cygwin* | dreamcast | ds | gamecube | mingw* | morphos | n64 | ps3 | psp2 | psp | riscos | wii)
+ 		_posix=no
+ 		;;
+-	3ds | android | androidsdl | beos* | bsd* | darwin* | freebsd* | gnu* | gph-linux | haiku* | hpux* | iphone | ios7 | irix*| k*bsd*-gnu* | linux* | maemo | mint* | netbsd* | openbsd* | solaris* | sunos* | switch | uclinux*)
++	3ds | android | androidsdl | beos* | bsd* | darwin* | freebsd* | gnu* | gph-linux | haiku* | hpux* | iphone | ios7 | irix*| k*bsd*-gnu* | linux* | maemo | mint* | netbsd* | openbsd* | solaris* | sunos* | switch | uclinux* | quinnbsd*)
+ 		_posix=yes
+ 		;;
+ 	os2-emx*)
+@@ -4059,7 +4064,7 @@ _mak_plugins='
+ PLUGIN_LDFLAGS		+= -Wl,-T$(srcdir)/backends/plugins/ds/plugin.ld -mthumb-interwork -mfloat-abi=soft
+ '
+ 		;;
+-	freebsd* | openbsd*)
++	freebsd* | openbsd* | quinnbsd*)
+ 		_plugin_prefix="lib"
+ 		_plugin_suffix=".so"
+ 		append_var CXXFLAGS "-fPIC"
+@@ -4248,7 +4253,7 @@ int main(void) { return 0; }
+ EOF
+ 			cc_check -lsapi -lole32 && _tts=yes
+ 			;;
+-		linux* | freebsd* | openbsd*)
++		linux* | freebsd* | openbsd* | quinnbsd*)
+ 			cat > $TMPC << EOF
+ #include <speech-dispatcher/libspeechd.h>
+ int main(void) { return 0; }
+@@ -5593,7 +5598,7 @@ if test "$_tts" = "no"; then
+ 	echo "no"
+ else
+ 	case $_host_os in
+-	linux* | freebsd* | openbsd*)
++	linux* | freebsd* | openbsd* | quinnbsd*)
+ 		echo "speech dispatcher"
+ 		_tts=yes
+ 		define_in_config_if_yes $_tts 'USE_SPEECH_DISPATCHER'

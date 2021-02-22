@@ -1,0 +1,21 @@
+$NetBSD$
+
+--- config.guess.orig	2020-09-13 21:05:37.000000000 +0000
++++ config.guess
+@@ -861,6 +861,16 @@ EOF
+ 	    echo "${UNAME_PROCESSOR}"-unknown-freebsd"`echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'`"-gnueabihf
+ 	fi
+ 	exit ;;
++    *:QuinnBSD:*:*)
++        UNAME_PROCESSOR=`/usr/bin/uname -p`
++        case "$UNAME_PROCESSOR" in
++            amd64)
++                UNAME_PROCESSOR=x86_64 ;;
++            i386)
++                UNAME_PROCESSOR=i586 ;;
++        esac
++        echo "$UNAME_PROCESSOR"-unknown-quinnbsd"`echo "$UNAME_RELEASE"|sed -e 's/[-(].*//'`"
++        exit ;;
+     *:FreeBSD:*:*)
+ 	UNAME_PROCESSOR=`/usr/bin/uname -p`
+ 	case "$UNAME_PROCESSOR" in

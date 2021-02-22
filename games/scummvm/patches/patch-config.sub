@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- config.sub.orig	2020-09-13 21:05:37.000000000 +0000
++++ config.sub
+@@ -1346,7 +1346,7 @@ case $os in
+ 	     | aos* | aros* | cloudabi* | sortix* | twizzler* \
+ 	     | nindy* | vxsim* | vxworks* | ebmon* | hms* | mvs* \
+ 	     | clix* | riscos* | uniplus* | iris* | isc* | rtu* | xenix* \
+-	     | knetbsd* | mirbsd* | netbsd* \
++	     | knetbsd* | mirbsd* | netbsd* | quinnbsd* \
+ 	     | bitrig* | openbsd* | solidbsd* | libertybsd* | os108* \
+ 	     | ekkobsd* | kfreebsd* | freebsd* | riscix* | lynxos* \
+ 	     | bosx* | nextstep* | cxux* | aout* | elf* | oabi* \

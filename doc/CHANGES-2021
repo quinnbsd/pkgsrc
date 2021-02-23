@@ -1,4 +1,4 @@
-$NetBSD: CHANGES-2021,v 1.1224 2021/02/21 18:59:32 bouyer Exp $
+$NetBSD: CHANGES-2021,v 1.1232 2021/02/22 20:49:45 wiz Exp $
 
 Changes to the packages collection and infrastructure in 2021:
 
@@ -1954,3 +1954,20 @@ Changes to the packages collection and infrastructure in 2021:
 	Updated cad/kicad-packages3d  to 5.1.9 [bouyer 2021-02-21]
 	Updated cad/kicad-symbols  to 5.1.9 [bouyer 2021-02-21]
 	Updated cad/kicad-templates to 5.1.9 [bouyer 2021-02-21]
+	Updated devel/py-astroid to 2.5 [adam 2021-02-22]
+	Updated devel/py-pylint to 2.7.0 [adam 2021-02-22]
+	Updated audio/librespot to 0.1.6 [pin 2021-02-22]
+	Updated print/tex-ptex to 3.2pl55920 [markd 2021-02-22]
+	Removed print/tex-ptex-doc [markd 2021-02-22]
+	Added print/tex-uptex version 2020 [markd 2021-02-22]
+	Added print/tex-uptex-doc version 2020 [markd 2021-02-22]
+	Added print/tex-uplatex version 2020 [markd 2021-02-22]
+	Added print/tex-uplatex-doc version 2020 [markd 2021-02-22]
+	Updated meta-pkgs/texlive-collection-langjapanese to 2020 [markd 2021-02-22]
+	Updated textproc/py-precis-i18n to 1.0.3 [adam 2021-02-22]
+	Updated databases/py-aiosqlite to 0.17.0 [adam 2021-02-22]
+	Updated textproc/py-tabulate to 0.8.9 [adam 2021-02-22]
+	Updated databases/py-pypika to 0.47.7 [adam 2021-02-22]
+	Added archivers/lunzip version 1.12 [fcambus 2021-02-22]
+	Updated sysutils/yank to 1.2.0nb1 [wiz 2021-02-22]
+	Added fonts/unifraktur-ttf version 20170319 [wiz 2021-02-22]

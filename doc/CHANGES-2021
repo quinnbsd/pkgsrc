@@ -1,4 +1,4 @@
-$NetBSD: CHANGES-2021,v 1.1232 2021/02/22 20:49:45 wiz Exp $
+$NetBSD: CHANGES-2021,v 1.1238 2021/02/23 18:20:15 pin Exp $
 
 Changes to the packages collection and infrastructure in 2021:
 
@@ -1971,3 +1971,10 @@ Changes to the packages collection and infrastructure in 2021:
 	Added archivers/lunzip version 1.12 [fcambus 2021-02-22]
 	Updated sysutils/yank to 1.2.0nb1 [wiz 2021-02-22]
 	Added fonts/unifraktur-ttf version 20170319 [wiz 2021-02-22]
+	Updated devel/py-jaraco.classes to 3.2.1 [adam 2021-02-23]
+	Updated finance/py-stripe to 2.56.0 [adam 2021-02-23]
+	Updated security/pleaser to 0.3.23 [pin 2021-02-23]
+	Updated math/kalk to 0.3.14 [pin 2021-02-23]
+	Updated www/firefox to 86.0 [ryoon 2021-02-23]
+	Updated www/firefox-l10n to 86.0 [ryoon 2021-02-23]
+	Added print/jpeg-to-pdf version 0.2.1 [pin 2021-02-23]

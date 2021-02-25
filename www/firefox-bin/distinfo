@@ -1,6 +1,6 @@
 $NetBSD$
 
-SHA1 (firefox-85.0.2,2.txz) = 805c91e52b9d7949edbb8086c1558776151697fa
-RMD160 (firefox-85.0.2,2.txz) = 96d404f128abc7ad6140aeeb06090fab040f0094
-SHA512 (firefox-85.0.2,2.txz) = 46e1f1a6e33ceffb2c00ef9621397f9dcda46f730ed5a00029b81011eab8bea600bf9afdd73b042726da3ecea461c0f217b146aa6ed3a70cdfdf8037f51055cc
-Size (firefox-85.0.2,2.txz) = 55459628 bytes
+SHA1 (firefox-86.0_1,2.txz) = c0b92fa548ca87dc3a9ba76e83f5e17fcfb24f4e
+RMD160 (firefox-86.0_1,2.txz) = 7c6fdae538a38783dd69df09c1771a7b16468b2e
+SHA512 (firefox-86.0_1,2.txz) = 4c6150b8e37dd34602d6b624637d8dbfc6e2643e215e5e25a7006b1ac62df9c6dfe08431f28462905bcfbe631963db763b2366d83c4e9ab2241b3d425929de49
+Size (firefox-86.0_1,2.txz) = 55900540 bytes

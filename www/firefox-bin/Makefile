@@ -1,7 +1,7 @@
 # $NetBSD$
 
-DISTNAME=	firefox-85.0.2,2
-PKGNAME=	firefox-85.0.2
+DISTNAME=	firefox-86.0_1,2
+PKGNAME=	firefox-86.0
 CATEGORIES=	lang
 MASTER_SITES=	http://ftp.quinnbsd.org/pub/QuinnBSD/packages/distfiles/
 EXTRACT_SUFX=	.txz

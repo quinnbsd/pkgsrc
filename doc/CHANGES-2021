@@ -1,4 +1,4 @@
-$NetBSD: CHANGES-2021,v 1.1238 2021/02/23 18:20:15 pin Exp $
+$NetBSD: CHANGES-2021,v 1.1259 2021/02/24 23:32:50 gutteridge Exp $
 
 Changes to the packages collection and infrastructure in 2021:
 
@@ -1978,3 +1978,31 @@ Changes to the packages collection and infrastructure in 2021:
 	Updated www/firefox to 86.0 [ryoon 2021-02-23]
 	Updated www/firefox-l10n to 86.0 [ryoon 2021-02-23]
 	Added print/jpeg-to-pdf version 0.2.1 [pin 2021-02-23]
+	Updated x11/xorgproto to 2021.2 [wiz 2021-02-24]
+	Updated devel/py-tortoisehg to 5.7 [wiz 2021-02-24]
+	Updated devel/protobuf to 3.15.2 [adam 2021-02-24]
+	Updated devel/py-protobuf to 3.15.2 [adam 2021-02-24]
+	Updated print/jpeg-to-pdf to 0.2.2 [pin 2021-02-24]
+	Updated lang/nodejs10 to 10.24.0 [adam 2021-02-24]
+	Updated lang/nodejs12 to 12.21.0 [adam 2021-02-24]
+	Updated lang/nodejs to 14.16.0 [adam 2021-02-24]
+	Updated audio/libebur128 to 1.2.6 [wiz 2021-02-24]
+	Updated audio/musicpd to 0.22.6 [wiz 2021-02-24]
+	Updated audio/taglib to 1.12 [wiz 2021-02-24]
+	Updated databases/mongo-c-driver to 1.17.4 [adam 2021-02-24]
+	Updated devel/py-pylint to 2.7.1 [adam 2021-02-24]
+	Added textproc/paperoni version 0.3.0 [pin 2021-02-24]
+	Updated www/firefox78 to 78.8.0 [nia 2021-02-24]
+	Added biology/igv version 2.9.2 [bacon 2021-02-24]
+	Updated emulators/mame to 0.229 [wiz 2021-02-24]
+	Added x11/nx-libs version 3.5.99.22 [hauke 2021-02-24]
+	Added x11/x2go-client version 4.1.2.2 [hauke 2021-02-24]
+	Updated net/openvpn to 2.5.1 [adam 2021-02-24]
+	Updated security/py-rsa to 4.7.2 [adam 2021-02-24]
+	Updated devel/py-rply to 0.7.8 [adam 2021-02-24]
+	Added graphics/py-tifffile version 2021.2.1 [markd 2021-02-24]
+	Updated math/py-scikit-image to 0.18.1 [markd 2021-02-24]
+	Updated print/tex-latex-bin to 2020 [markd 2021-02-24]
+	Updated print/tex-latex-bin-doc to 2020 [markd 2021-02-24]
+	Updated audio/py-music21 to 6.7.1 [gutteridge 2021-02-24]
+	Updated time/p5-DateTime-TimeZone to 2.47 [gutteridge 2021-02-24]

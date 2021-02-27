@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/irrlicht_changes/irrUString.h.orig	2020-07-09 20:04:20.000000000 +0000
+--- src/irrlicht_changes/irrUString.h.orig	2021-02-23 18:50:37.000000000 +0000
 +++ src/irrlicht_changes/irrUString.h
 @@ -48,7 +48,7 @@
  #define __BIG_ENDIAN 1

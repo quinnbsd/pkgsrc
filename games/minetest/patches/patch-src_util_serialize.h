@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/util/serialize.h.orig	2020-07-09 20:04:20.000000000 +0000
+--- src/util/serialize.h.orig	2021-02-23 18:50:37.000000000 +0000
 +++ src/util/serialize.h
 @@ -32,7 +32,7 @@ with this program; if not, write to the
  		#define __BIG_ENDIAN 1

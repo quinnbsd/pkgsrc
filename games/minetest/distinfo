@@ -1,18 +1,17 @@
 $NetBSD: distinfo,v 1.5 2020/12/01 13:16:25 nia Exp $
 
-SHA1 (minetest-5.3.0/minetest-game.tar.gz) = f38130614b8571b2c422471185ff13b773dc2d08
-RMD160 (minetest-5.3.0/minetest-game.tar.gz) = 8042e143599c6066d9e14e4cff796768b0611c1f
-SHA512 (minetest-5.3.0/minetest-game.tar.gz) = 986e9ca436159b115a8d2a07c4d863e0f5b90343447864e737bfd93bdc75a6d4b9d97b9dc90486858dda69e9a76ffdf79186e163d55978196e8cb98091ff97e6
-Size (minetest-5.3.0/minetest-game.tar.gz) = 1904865 bytes
-SHA1 (minetest-5.3.0/minetest.tar.gz) = 8099bfa9122ef64d22c065f3bc5c7ea0eba23d28
-RMD160 (minetest-5.3.0/minetest.tar.gz) = a36cbe02f7bf511ecb47c6212846aa4a528a61dd
-SHA512 (minetest-5.3.0/minetest.tar.gz) = 7bb34a80107861539a9ac2417812625ef11d145bf9401afdb8e0a1b9f619adcce24e2becf5bf361b805f4610097cf9d44c76d497ab08d489a43655852ce44777
-Size (minetest-5.3.0/minetest.tar.gz) = 10828893 bytes
+SHA1 (minetest-5.4.0/minetest-game.tar.gz) = ed8457e8c52ac0aeb268c0252d63a0418084a53b
+RMD160 (minetest-5.4.0/minetest-game.tar.gz) = e7d90f8c53c65bd57b1d9e35f03a40e3312c1181
+SHA512 (minetest-5.4.0/minetest-game.tar.gz) = b0cfa5fc76b56dc6d188a5285af003c348f25e797aec2399369c6230e682c2ee8dbc6ae8769bcbd0bb45864588f0522cd609356f407833db30c601df4ddf9f8d
+Size (minetest-5.4.0/minetest-game.tar.gz) = 2474273 bytes
+SHA1 (minetest-5.4.0/minetest.tar.gz) = 7aa8be458346d68f0b102040548b2062fcc15670
+RMD160 (minetest-5.4.0/minetest.tar.gz) = d9f52a47e053801dac4d520adf728af39e950b39
+SHA512 (minetest-5.4.0/minetest.tar.gz) = 4cb43678c56ee2ccf9d5dd9c1fc0007119d598a4a56df43fc2a1b827efe08feba0008a30bdb1a1fcd4efe0ada88484b7be0c9e46f108d5424451adb0999b0bcb
+Size (minetest-5.4.0/minetest.tar.gz) = 11205196 bytes
 SHA1 (patch-CMakeLists.txt) = 50ceef7b158a92900c8d5b6b178d1ab0570e16b1
-SHA1 (patch-src_irrlicht__changes_irrUString.h) = 05fe4da73a0ec933c27628177982909194f724fc
-SHA1 (patch-src_noise.h) = 54e72bf65fb642542985b1eb5dcd45fb3da4a57f
-SHA1 (patch-src_porting.cpp) = c6322a6acc663346526f7f4afe0bedb0d0d5238e
-SHA1 (patch-src_porting.h) = a7340baedbba30921a043a9ebf9b9b887c2acb19
-SHA1 (patch-src_threading_thread.cpp) = 8553e9dd7022a13cca69e021da27e57074b0a8d7
-SHA1 (patch-src_util_serialize.h) = dc4a5e1a4206efca10accbffc4145b3cb1008cea
-SHA1 (patch-src_util_string.cpp) = 2fd56613fb27e72a25e7b453951f3416f7510c7c
+SHA1 (patch-src_irrlicht__changes_irrUString.h) = 3157afd3e4874d27467faee39c7e852876d40357
+SHA1 (patch-src_porting.cpp) = 890c87b8cfdfbdbcf82756b0e91fc79d7d3fd365
+SHA1 (patch-src_porting.h) = 7940ab1364349be40138ef8c5e81a3f4d457e6bd
+SHA1 (patch-src_threading_thread.cpp) = 8eb0d6aa62e411c15ec11dfb2ab0c2a81f4c0b50
+SHA1 (patch-src_util_serialize.h) = 6c07d1f8f1fe84e10bac86f580bd34cdde9a5e6b
+SHA1 (patch-src_util_string.cpp) = 828c0c3121bcb02f0874d09e60fb32a8cf533acd

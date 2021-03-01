@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1198 2021/02/24 13:18:45 pin Exp $
+# $NetBSD: Makefile,v 1.1200 2021/02/25 01:38:55 gutteridge Exp $
 #
 
 COMMENT=	Text processing utilities (does not include desktop publishing)
